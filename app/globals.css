@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+
+body {
+  @apply bg-white text-[#0a0a0a] antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@keyframes phone-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-phone-float {
+  animation: phone-float 4s ease-in-out infinite;
+}
+
+@keyframes handheld-shake {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1.02);
+  }
+  20% {
+    transform: translate3d(-1px, 1px, 0) rotate(-0.15deg) scale(1.02);
+  }
+  40% {
+    transform: translate3d(1.5px, -0.5px, 0) rotate(0.1deg) scale(1.02);
+  }
+  60% {
+    transform: translate3d(-1px, 0.5px, 0) rotate(-0.1deg) scale(1.02);
+  }
+  80% {
+    transform: translate3d(1px, -1px, 0) rotate(0.15deg) scale(1.02);
+  }
+}
+
+.animate-handheld {
+  animation: handheld-shake 3.8s ease-in-out infinite;
+}
+
+/* Section 6: vlog-style sequence — pan → focus → handheld wobble (single image) */
+@keyframes vlog-camera-sequence {
+  /* Phase 1: Camera scanning the room (slight pan) */
+  0% {
+    transform: translate(3%, 2%) scale(0.94) rotate(0.4deg);
+  }
+  8% {
+    transform: translate(-2%, 1%) scale(0.95) rotate(-0.25deg);
+  }
+  16% {
+    transform: translate(1%, -1.5%) scale(0.96) rotate(0.2deg);
+  }
+  /* Phase 2: Settling on subject — "hand grabs container, brings closer" */
+  24% {
+    transform: translate(-1%, 0.5%) scale(0.98) rotate(-0.1deg);
+  }
+  32% {
+    transform: translate(0.5%, 0%) scale(1) rotate(0.05deg);
+  }
+  40% {
+    transform: translate(0, 0) scale(1.02) rotate(0deg);
+  }
+  /* Phase 3: Holding on the moment — casual handheld wobble */
+  50% {
+    transform: translate(-0.3%, 0.2%) scale(1.02) rotate(-0.08deg);
+  }
+  60% {
+    transform: translate(0.25%, -0.15%) scale(1.02) rotate(0.06deg);
+  }
+  70% {
+    transform: translate(-0.2%, 0.1%) scale(1.02) rotate(-0.05deg);
+  }
+  80% {
+    transform: translate(0.15%, 0.1%) scale(1.02) rotate(0.04deg);
+  }
+  90% {
+    transform: translate(-0.1%, -0.05%) scale(1.02) rotate(-0.03deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1.02) rotate(0deg);
+  }
+}
+
+.animate-vlog-sequence {
+  animation: vlog-camera-sequence 12s ease-in-out infinite;
+}
+
+/* Hero: clock rotation (60s per full turn) */
+@keyframes clock-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-clock-rotate {
+  animation: clock-rotate 60s linear infinite;
+}
+
+/* Hero: fade-in on load */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-hero-fade-in {
+  animation: hero-fade-in 1.5s ease-out forwards;
+}

@@ -1,0 +1,75 @@
+import type { Metadata } from 'next'
+import { Source_Serif_4, Inter, IBM_Plex_Mono, EB_Garamond, DM_Sans, Noto_Serif, Cormorant_Garamond } from 'next/font/google'
+import './globals.css'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
+
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
+const ebGaramond = EB_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['normal', 'italic'],
+  variable: '--font-garamond',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
+
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-noto-serif',
+  display: 'swap',
+})
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+export const metadata: Metadata = {
+  title: 'UX Portfolio',
+  description: 'Designer-friendly UX portfolio',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={`${sourceSerif.variable} ${inter.variable} ${ibmPlexMono.variable} ${ebGaramond.variable} ${dmSans.variable} ${notoSerif.variable} ${cormorant.variable}`}>
+      <body className="min-h-screen flex flex-col font-sans text-base antialiased bg-white text-[#0a0a0a]">
+        <Nav />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  )
+}
