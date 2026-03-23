@@ -13,7 +13,7 @@ export default function Hero3D() {
           muted
           playsInline
           style={{
-            width: 'clamp(600px, 85vw, 1200px)',
+            width: 'clamp(700px, 95vw, 1400px)',
             height: 'auto',
           }}
           draggable={false}
