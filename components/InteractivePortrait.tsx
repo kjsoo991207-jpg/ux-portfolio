@@ -61,13 +61,12 @@ export default function InteractivePortrait() {
         <div
           className="absolute rounded-full transition-transform duration-75 pointer-events-none"
           style={{
-            width: 10,
-            height: 10,
+            width: 7,
+            height: 7,
             backgroundColor: 'red',
-            top: '29.5%',
-            left: '39.5%',
+            top: '33%',
+            left: '40%',
             transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
-            filter: 'blur(0.5px)',
           }}
         />
 
@@ -75,13 +74,12 @@ export default function InteractivePortrait() {
         <div
           className="absolute rounded-full transition-transform duration-75 pointer-events-none"
           style={{
-            width: 10,
-            height: 10,
+            width: 7,
+            height: 7,
             backgroundColor: 'red',
-            top: '29%',
-            left: '55.5%',
+            top: '32.5%',
+            left: '55%',
             transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
-            filter: 'blur(0.5px)',
           }}
         />
 
