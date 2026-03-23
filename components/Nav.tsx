@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const RESUME_URL = 'https://example.com/your-resume.pdf'
+const RESUME_URL = '/resume/jinsoo-kim-cv.pdf'
 
 const navLinks = [
-  { href: '/about', label: 'About' },
   { href: '/', label: 'Work' },
+  { href: '/about', label: 'About' },
   { href: RESUME_URL, label: 'CV', external: true },
 ]
 

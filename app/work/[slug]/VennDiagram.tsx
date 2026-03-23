@@ -20,10 +20,26 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
       className="w-full"
       aria-label="Pain point overlap diagram"
     >
-      {/* Three overlapping circles */}
-      <circle cx="285" cy="330" r="200" fill="#0a0a0a" fillOpacity="0.04" stroke="#d4d4d4" strokeWidth="1.5" />
-      <circle cx="515" cy="330" r="200" fill="#0a0a0a" fillOpacity="0.04" stroke="#d4d4d4" strokeWidth="1.5" />
-      <circle cx="400" cy="490" r="200" fill="#0a0a0a" fillOpacity="0.04" stroke="#d4d4d4" strokeWidth="1.5" />
+      {/* Center highlight (abc intersection) */}
+      <defs>
+        <clipPath id="clip-ab">
+          <circle cx="285" cy="330" r="200" />
+        </clipPath>
+        <clipPath id="clip-abc">
+          <circle cx="400" cy="490" r="200" />
+        </clipPath>
+      </defs>
+      {/* Three overlapping circles — very faint */}
+      <circle cx="285" cy="330" r="200" fill="#e8e8e4" fillOpacity="0.5" stroke="#ddd" strokeWidth="1" />
+      <circle cx="515" cy="330" r="200" fill="#e8e8e4" fillOpacity="0.5" stroke="#ddd" strokeWidth="1" />
+      <circle cx="400" cy="490" r="200" fill="#e8e8e4" fillOpacity="0.5" stroke="#ddd" strokeWidth="1" />
+
+      {/* ABC intersection highlight — strong green */}
+      <g clipPath="url(#clip-ab)">
+        <g clipPath="url(#clip-abc)">
+          <circle cx="515" cy="330" r="200" fill="#D4A853" fillOpacity="0.35" />
+        </g>
+      </g>
 
       {/* Circle A label — upper left */}
       <text x="195" y="88" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#0a0a0a" fontFamily="system-ui,sans-serif" fontWeight="500">
@@ -59,15 +75,16 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
       {venn.zones.map((zone) => {
         const pos = ZONE_POS[zone.id]
         if (!pos) return null
+        const isCenter = zone.id === 'abc'
         return (
           <g key={zone.id}>
             <text
               x={pos.x}
               y={pos.y}
               textAnchor="middle"
-              fontSize="18"
-              fontWeight="500"
-              fill="#0a0a0a"
+              fontSize={isCenter ? '14' : '18'}
+              fontWeight={isCenter ? '700' : '500'}
+              fill={isCenter ? '#D4A853' : '#0a0a0a'}
               fontFamily="system-ui,sans-serif"
             >
               {zone.heading}
@@ -78,7 +95,7 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
                 y={pos.y + 20}
                 textAnchor="middle"
                 fontSize="11"
-                fill="#737373"
+                fill={isCenter ? '#D4A853' : '#737373'}
                 fontFamily="system-ui,sans-serif"
               >
                 {zone.sub}

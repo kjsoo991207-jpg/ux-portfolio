@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jinsoo Kim - CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0 auto;
+    padding: 48px 56px;
+    position: relative;
+  }
+
+  /* ── Header ── */
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .name {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #111;
+  }
+
+  .role {
+    font-size: 13px;
+    font-weight: 400;
+    color: #666;
+    margin-top: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .contact-info {
+    text-align: right;
+    font-size: 10px;
+    color: #555;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+  }
+
+  .contact-info a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .contact-info a:hover {
+    color: #111;
+  }
+
+  /* ── Section rows ── */
+  .section {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 28px;
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111;
+    padding-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .section-title::after {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1.5px;
+    background: #111;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .section-body {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+
+  /* ── Items ── */
+  .entry {
+    margin-bottom: 18px;
+  }
+
+  .entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .entry-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .entry-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  .entry-date {
+    font-size: 9.5px;
+    font-weight: 400;
+    color: #999;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .entry-sub {
+    font-size: 10px;
+    color: #777;
+    margin-top: 1px;
+  }
+
+  .entry-body {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 5px;
+    max-width: 520px;
+  }
+
+  /* ── Skills ── */
+  .skills-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+  }
+
+  .skill-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 4px;
+  }
+
+  .skill-items {
+    font-size: 10px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .lang-row {
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="name">JINSOO KIM</div>
+        <div class="role">Product Designer</div>
+      </div>
+      <div class="contact-info">
+        <a href="mailto:jinsoo991207@ucla.edu">jinsoo991207@ucla.edu</a><br>
+        (310) 367-3025<br>
+        <a href="https://jinsookim.com">jinsookim.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div style="margin-bottom: 28px; font-size: 10.5px; color: #555; line-height: 1.65; max-width: 540px;">
+    UCLA Cognitive Science student applying behavioral research principles to product design. Experienced in user research, behavioral observation, and stakeholder coordination across athletic, military, and construction contexts. Designed Aika, a longevity health app, end-to-end from research through interactive prototype.
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="section-body">
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">University of California, Los Angeles</span>
+          <span class="entry-date">Sep 2025 - Present</span>
+        </div>
+        <div class="entry-sub">B.A. in Cognitive Science</div>
+        <div class="entry-body">
+          Relevant coursework: Psychology of Learning, Cognitive Psychology, Psycholinguistics, Sociogenomics
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Berkeley City College</span>
+          <span class="entry-date">2021 - 2023</span>
+        </div>
+        <div class="entry-sub">Transfer Program</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+    <div class="section-body">
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Aika | Product Designer (End-to-End)</span>
+          <span class="entry-date">Feb - Mar 2026</span>
+        </div>
+        <div class="entry-body">
+          Designed a longevity health app from research to prototype. Conducted concept surveys and in-depth interviews with 8 participants, synthesized behavioral insights, and designed 9 core features addressing habit abandonment. Built interactive Figma prototype and full case study.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Construction Operations Assistant</span>
+          <span class="entry-date">Apr - Sep 2025</span>
+        </div>
+        <div class="entry-body">
+          Embedded in a construction firm to understand field operations and worker needs. Identified communication gaps between management and on-site teams through direct observation and informal interviews. Proposed workflow improvements that improved team coordination.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Republic of Korea Army | Squad Leader</span>
+          <span class="entry-date">Oct 2023 - Apr 2025</span>
+        </div>
+        <div class="entry-body">
+          Led a squad through basic training, coordinating between instructors and soldiers. Managed daily operations, resolved interpersonal conflicts, and maintained team cohesion under high-pressure constraints. Team ranked among top performers in evaluations.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Student Athletic Program Lead</span>
+          <span class="entry-date">2020 - 2021</span>
+        </div>
+        <div class="entry-body">
+          Led 15+ student athletes preparing for university admissions across two consecutive programs. Designed warm-up protocols, facilitated daily check-ins, and served as liaison between coaching staff and students. Managed individual conditioning needs and communicated progress to stakeholders.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Baseball Analytics Recorder | Haneurro Program</span>
+          <span class="entry-date">2019</span>
+        </div>
+        <div class="entry-body">
+          Tracked performance metrics, play styles, and engagement for 20+ athletes across inter-school competitions. Identified individual behavioral patterns and conditioning trends that directly informed coaching decisions.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Volunteering -->
+  <div class="section">
+    <div class="section-title">Volunteering</div>
+    <div class="section-body">
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Behavioral Observation Volunteer | Nursing Home</span>
+          <span class="entry-date">2016</span>
+        </div>
+        <div class="entry-body">
+          Assisted non-verbal elderly residents with daily care. Developed empathy-driven communication by observing behavioral patterns and emotional cues, enabling trust-building with residents who could not communicate verbally.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-row">
+          <span class="entry-title">Coal Delivery Volunteer | Guryong Village, Seoul</span>
+          <span class="entry-date">2016</span>
+        </div>
+        <div class="entry-body">
+          Delivered heating supplies to underserved residents in one of Seoul's last informal settlements, adjacent to the affluent Gangnam district. Gained firsthand understanding of socioeconomic disparity and invisible user contexts.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="section-body">
+      <div class="skills-row">
+        <div>
+          <div class="skill-label">Tools</div>
+          <div class="skill-items">
+            Figma, Miro, HTML/CSS
+          </div>
+        </div>
+        <div>
+          <div class="skill-label">Design</div>
+          <div class="skill-items">
+            User Research, User Interviews,<br>
+            Wireframing, Prototyping,<br>
+            Behavioral Analysis
+          </div>
+        </div>
+      </div>
+      <div class="lang-row">
+        <div class="skill-label">Languages</div>
+        <div class="skill-items">Korean (Native), English (Fluent)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

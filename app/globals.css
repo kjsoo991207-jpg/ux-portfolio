@@ -122,3 +122,38 @@ body {
 .animate-hero-fade-in {
   animation: hero-fade-in 1.5s ease-out forwards;
 }
+
+/* Hero: swipe through app screens inside phone (horizontal) */
+@keyframes hero-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  /* Pause on first screen */
+  20% {
+    transform: translateX(0);
+  }
+  /* Swipe to second screen */
+  33% {
+    transform: translateX(-25%);
+  }
+  /* Pause on second screen */
+  53% {
+    transform: translateX(-25%);
+  }
+  /* Swipe to third screen */
+  66% {
+    transform: translateX(-50%);
+  }
+  /* Pause on third screen */
+  86% {
+    transform: translateX(-50%);
+  }
+  /* Swipe back to first (via duplicate) */
+  100% {
+    transform: translateX(-75%);
+  }
+}
+
+.animate-hero-scroll {
+  animation: hero-scroll 12s ease-in-out infinite;
+}

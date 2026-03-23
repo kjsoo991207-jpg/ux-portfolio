@@ -7,27 +7,19 @@ const phoneSections = new Set(['01', '02', '05', '07', '08', '09'])
 function PhoneFrame({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex justify-center">
-      <div className="relative flex-shrink-0" style={{ width: 360 }}>
-        {/* Frame image (base layer) */}
+      <div className="relative flex-shrink-0" style={{ width: 340 }}>
+        {/* Screenshot behind frame */}
+        <div className="absolute overflow-hidden" style={{ top: '1.5%', left: '4%', right: '4%', bottom: '1.5%', borderRadius: '28px', zIndex: 1 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} className="w-full h-full object-cover object-top" />
+        </div>
+        {/* Frame on top */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/iphone-frame.jpg"
+          src="/images/iphone-17-frame.png"
           alt=""
-          className="w-full h-auto block select-none"
+          className="w-full h-auto block select-none relative z-[2]"
           draggable={false}
-        />
-        {/* Screenshot on top, positioned within screen area */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          className="absolute z-10"
-          style={{
-            top: '2%',
-            left: '4%',
-            width: '92%',
-            borderRadius: '32px',
-          }}
         />
       </div>
     </div>
@@ -35,7 +27,7 @@ function PhoneFrame({ src, alt }: { src: string; alt: string }) {
 }
 
 // ─── Active sections (excluding 04) ─────────────────────────────────────────
-const activeSections = ['01', '02', '03', '05', '06', '07', '08', '09']
+const activeSections = ['01', '02', '03', '04', '05', '06', '07', '08', '09']
 
 // ─── Mockup images ───────────────────────────────────────────────────────────
 const mockupImages: Record<string, string> = {
@@ -119,25 +111,17 @@ const loggingBeforeAfter = {
 const colorParagraphs: Record<string, { text: string; isKey: boolean }[][]> = {
   '03': [
     [
-      { text: 'During interviews, one thing became clear quickly: people didn\u2019t just have different habits. They had different relationships with health itself. Some wanted only what was proven and safe. Others were already following cutting-edge protocols.', isKey: false },
-      { text: 'The same recommendation meant something completely different depending on who was receiving it.', isKey: true },
-    ],
-    [
-      { text: 'A single protocol alienated users whose scientific worldview didn\u2019t match the app\u2019s fixed assumption.', isKey: false },
-      { text: 'If the delivery didn\u2019t match the person\u2019s beliefs, even well-aligned content yielded zero behavioral uptake.', isKey: true },
+      { text: 'People don\u2019t just have different habits. They have different relationships with health itself.', isKey: false },
+      { text: 'The same recommendation meant something completely different depending on who was receiving it. If the delivery didn\u2019t match the person\u2019s beliefs, even good content yielded zero behavioral uptake.', isKey: true },
     ],
     [
       { text: 'I introduced three selectable philosophy modes: Traditional, Standard, and Biohacker.', isKey: true },
-      { text: 'Each one filters the habit library, coaching tone, and recommendations to match the worldview the user already trusts. The content doesn\u2019t change. What changes is the lens it\u2019s delivered through.', isKey: false },
+      { text: 'The content doesn\u2019t change. What changes is the lens it\u2019s delivered through.', isKey: false },
     ],
   ],
   '05': [
     [
-      { text: 'During interviews, all three participants described the same pattern. They started strong, opening the app daily, logging consistently. But over time, the list of things they had to check never got shorter. It kept growing.', isKey: false },
-      { text: 'Opening the app stopped feeling like progress and started feeling like obligation.', isKey: true },
-    ],
-    [
-      { text: 'What happens when a habit is done? When someone has been taking NMN every morning for three months without thinking about it, why is the app still asking them to log it?', isKey: false },
+      { text: 'The list of things to check never got shorter. It kept growing. Opening the app stopped feeling like progress and started feeling like obligation.', isKey: false },
       { text: 'Health apps weren\u2019t designed with an ending. Every behavior stayed active forever.', isKey: true },
     ],
     [
@@ -147,69 +131,53 @@ const colorParagraphs: Record<string, { text: string; isKey: boolean }[][]> = {
   ],
   '06': [
     [
-      { text: 'When I looked into why people abandon health apps, the answer wasn\u2019t what I expected. It wasn\u2019t that the features were wrong or the design was confusing.', isKey: false },
-      { text: 'The most common reason people stopped logging was simpler than that: the input itself was too much effort.', isKey: true },
+      { text: 'The most common reason people stopped logging wasn\u2019t bad features or confusing design.', isKey: false },
+      { text: 'The input itself was too much effort. Five manual entries a day isn\u2019t a habit. It\u2019s a job.', isKey: true },
     ],
     [
-      { text: 'If someone has to log three supplements, a meal, and a workout every day, that\u2019s potentially five separate manual entries.', isKey: false },
-      { text: 'That\u2019s not a habit. That\u2019s a job. The only way to make daily logging sustainable was to make it faster than the resistance to do it.', isKey: true },
-    ],
-    [
-      { text: 'I replaced the text-input path with three parallel modes: Snap (photo or barcode), Talk (voice input), and Type (quick text).', isKey: true },
+      { text: 'I replaced text input with three parallel modes: Snap (photo or barcode), Talk (voice input), and Type (quick text).', isKey: true },
       { text: 'The fastest route is always within a single tap.', isKey: false },
     ],
   ],
   '07': [
     [
-      { text: 'When I started designing the Coach, I looked at how existing AI health assistants worked. The pattern was consistent: ask a question, get an answer. The answers were technically accurate.', isKey: false },
-      { text: 'But they had no idea what the user had done that morning. So the advice was always the same. Accurate. Useless.', isKey: true },
+      { text: 'Existing AI health assistants gave technically accurate answers. But they had no idea what the user had done that morning.', isKey: false },
+      { text: 'Trust in AI coaching isn\u2019t determined by accuracy. It\u2019s determined by perceived fit between response and personal context.', isKey: true },
     ],
     [
-      { text: 'What actually makes health advice feel trustworthy? I assumed it was accuracy. But the research pointed somewhere else entirely.', isKey: false },
-      { text: 'Trust in AI health coaching isn\u2019t determined by factual correctness. It\u2019s determined by perceived fit between response and personal context.', isKey: true },
-    ],
-    [
-      { text: 'I built the Coach to ingest that session\u2019s logged data first, then output guidance only when each prompt can be directly tied to those inputs.', isKey: true },
-      { text: 'If the data isn\u2019t there, the Coach doesn\u2019t guess. Generic advice isn\u2019t just unhelpful. It actively erodes trust.', isKey: false },
+      { text: 'I built the Coach to ingest that session\u2019s logged data first, then output guidance only when tied to those inputs.', isKey: true },
+      { text: 'If the data isn\u2019t there, the Coach doesn\u2019t guess. Generic advice actively erodes trust.', isKey: false },
     ],
   ],
   '08': [
     [
-      { text: 'Changing the language helped.', isKey: false },
-      { text: 'But the number was still there. And when it hit zero, none of the words mattered.', isKey: true },
-    ],
-    [
-      { text: 'A streak counter tells you how many days in a row you did something. It says nothing about who you\u2019re becoming.', isKey: false },
-      { text: 'And loss aversion research is clear: a setback registers roughly twice as intensely as an equivalent gain. The moment a 7-day streak hits zero, it doesn\u2019t feel like starting over. It feels like everything was taken away.', isKey: true },
+      { text: 'Changing the language helped. But the number was still there.', isKey: false },
+      { text: 'A streak counter says nothing about who you\u2019re becoming. And when it hits zero, a setback registers twice as intensely as an equivalent gain.', isKey: true },
     ],
     [
       { text: 'I replaced the numeric streak with named growth stages: Baby Seed, Sprout Scout, Leafy Rookie.', isKey: true },
-      { text: 'They advance on consistency, not perfection, and survive any single skipped session. You\u2019re not a number that can shatter. You\u2019re something that\u2019s growing.', isKey: false },
+      { text: 'They advance on consistency, not perfection, and survive any single skip. You\u2019re not a number that can shatter. You\u2019re something that\u2019s growing.', isKey: false },
     ],
   ],
   '09': [
     [
-      { text: 'One participant stood out. A homemaker in her 50s who had tried every tracking app and abandoned each one within weeks. But she hadn\u2019t given up. She\u2019d organized a small group of neighbors who met weekly to check in on each other\u2019s habits.', isKey: false },
-      { text: 'She didn\u2019t need a better tracker. She needed people.', isKey: true },
+      { text: 'Every design decision had assumed people would build habits alone.', isKey: false },
+      { text: 'But structured accountability consistently outperforms self-monitoring. It\u2019s one of the strongest predictors of long-term adherence.', isKey: true },
     ],
     [
-      { text: 'That interview changed how I thought about the problem. Every design decision I\u2019d made assumed people would build habits alone.', isKey: false },
-      { text: 'But the mHealth literature is clear: structured accountability partnerships consistently outperform self-monitoring. The effect isn\u2019t marginal. It\u2019s one of the strongest predictors of long-term adherence.', isKey: true },
-    ],
-    [
-      { text: 'I designed Aika Circles as the social layer of the product.', isKey: true },
-      { text: 'Topic-based communities for shared interests. Habit Clubs for structured group accountability. Weekly challenges that create natural rhythms of participation. Verification badges so trust is built into the system.', isKey: false },
+      { text: 'I designed Aika Circles as the social layer.', isKey: true },
+      { text: 'Habit Clubs for group accountability. Weekly challenges for natural rhythms. Verification badges so trust is built into the system.', isKey: false },
     ],
   ],
 }
 
 function ColorHierarchyBlock({ paragraphs }: { paragraphs: { text: string; isKey: boolean }[][] }) {
   return (
-    <div className="mt-6 space-y-4">
+    <div className="mt-6 space-y-4 max-w-[700px]">
       {paragraphs.map((segs, i) => (
         <p key={i}>
-          <span className={segs[0].isKey ? 'text-[20px] font-medium leading-[1.8] text-[#111]' : 'text-[17px] leading-[1.7] text-[#767676]'}>{segs[0].text}</span>
-          {segs[1] && <>{' '}<span className={segs[1].isKey ? 'text-[20px] font-medium leading-[1.8] text-[#111]' : 'text-[17px] leading-[1.7] text-[#767676]'}>{segs[1].text}</span></>}
+          <span className={segs[0].isKey ? 'text-[15px] font-bold leading-[1.7] text-[#111]' : 'text-[15px] leading-[1.7] text-[#767676]'}>{segs[0].text}</span>
+          {segs[1] && <>{' '}<span className={segs[1].isKey ? 'text-[15px] font-bold leading-[1.7] text-[#111]' : 'text-[15px] leading-[1.7] text-[#767676]'}>{segs[1].text}</span></>}
         </p>
       ))}
     </div>
@@ -338,13 +306,13 @@ function IMessageMockup() {
 }
 
 // ─── Shared components ───────────────────────────────────────────────────────
-function SectionHeader({ sec }: { sec: ProcessSection }) {
+function SectionHeader({ sec, color }: { sec: ProcessSection; color?: string }) {
   return (
     <div className="mb-8">
-      <span className="text-[15px] text-[#767676] block mb-2">{sec.number}.</span>
+      <span className="text-[15px] block mb-2" style={{ color: color || '#767676' }}>{sec.number}.</span>
       <h3 className="text-[36px] font-bold text-[#111] leading-[1.1]">{sec.title}</h3>
       {sec.titleLine2 && (
-        <p className="text-[17px] text-[#888] mt-2">{sec.titleLine2}</p>
+        <p className="text-[15px] text-[#888] mt-2">{sec.titleLine2}</p>
       )}
     </div>
   )
@@ -355,8 +323,8 @@ function SubFeatureList({ features }: { features: { heading: string; desc: strin
     <div className="space-y-6 mt-8">
       {features.map((f, i) => (
         <div key={i}>
-          <p className="text-[20px] font-semibold text-[#111]">{f.heading}</p>
-          <p className="text-[16px] text-[#888] leading-[1.6] mt-1">{f.desc}</p>
+          <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
+          <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">{f.desc}</p>
         </div>
       ))}
     </div>
@@ -368,12 +336,12 @@ function BeforeAfterCard({ before, after }: { before: string; after: string }) {
     <div className="grid grid-cols-[1fr_1px_1fr] bg-[#f7f7f7] rounded-lg overflow-hidden mb-6">
       <div className="py-5 px-5">
         <p className="text-[10px] uppercase tracking-[0.1em] text-[#767676] mb-2">Before</p>
-        <p className="text-[16px] text-[#767676] line-through">{before}</p>
+        <p className="text-[15px] text-[#767676] line-through">{before}</p>
       </div>
       <div className="bg-[#e5e5e5]" />
       <div className="py-5 px-5">
         <p className="text-[10px] uppercase tracking-[0.1em] text-[#111] mb-2">After</p>
-        <p className="text-[16px] text-[#111] font-medium">{after}</p>
+        <p className="text-[15px] text-[#111] font-medium">{after}</p>
       </div>
     </div>
   )
@@ -501,7 +469,7 @@ function AdherenceChart() {
 function StreakIterationCard() {
   return (
     <div className="mt-10 mb-4">
-      <p className="text-[11px] uppercase tracking-[0.08em] text-[#767676] mb-6">Design iteration</p>
+      <p className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#111] mb-6"><span className="w-[3px] h-[16px] bg-[#3478F6] rounded-full inline-block"></span>Design iteration</p>
       <div className="grid grid-cols-[1fr_auto_1fr] gap-0 items-stretch">
         {/* Before */}
         <div className="bg-[#f7f7f7] rounded-l-lg p-6">
@@ -558,7 +526,7 @@ function StreakIterationCard() {
               <span className="text-[20px]">{'\u{1F331}'}</span>
               <div>
                 <p className="text-[15px] font-medium text-[#111]">Still Sprout Scout</p>
-                <p className="text-[11px] text-[#2d6a4f]">Stage survives a single skip</p>
+                <p className="text-[11px] text-[#3478F6]">Stage survives a single skip</p>
               </div>
             </div>
           </div>
@@ -566,6 +534,18 @@ function StreakIterationCard() {
       </div>
     </div>
   )
+}
+
+// ─── Section accent colors ──────────────────────────────────────────────────
+const sectionColors: Record<string, string> = {
+  '01': '#3478F6',
+  '02': '#3478F6',
+  '03': '#3478F6',
+  '05': '#3478F6',
+  '06': '#3478F6',
+  '07': '#3478F6',
+  '08': '#3478F6',
+  '09': '#3478F6',
 }
 
 // ─── Main export ─────────────────────────────────────────────────────────────
@@ -584,58 +564,38 @@ export function SolutionContent({
 
   return (
     <div>
-      <p className="text-[17px] leading-[1.7] text-[#767676] max-w-[660px] -mt-4 pb-20">
+      <p className="text-[15px] leading-[1.7] text-[#767676] max-w-[700px] -mt-4 pb-16">
         {cs.solutionIntro}
       </p>
+      <div className="border-b border-[#e8e8e4] mb-20" />
 
       {sections.map((sec, idx) => {
         const features = subFeatures[sec.number]
         const img = mockupImages[sec.number]
+        const accentColor = sectionColors[sec.number] || '#3478F6'
 
         // ── Aika Age (01): Problem → Thinking → Solution ──────────
         if (sec.number === '01') {
           return (
-            <section key={sec.number} className={`max-w-[1100px] mx-auto ${idx > 0 ? 'mt-[120px]' : ''}`}>
+            <section key={sec.number} className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}>
               {/* Section header */}
               <div className="mb-12">
-                <span className="text-[15px] text-[#767676] block mb-2">01.</span>
+                <span className="text-[15px] block mb-2" style={{ color: '#3478F6' }}>01.</span>
                 <h3 className="text-[36px] font-bold text-[#111] leading-[1.1]">Aika Age</h3>
-                <p className="text-[17px] text-[#888] mt-2">One number, less overwhelm</p>
+                <p className="text-[15px] text-[#888] mt-2">One number, less overwhelm</p>
               </div>
 
               {/* Context paragraphs */}
-              <div className="mb-12 space-y-4">
-                <p>
-                  <span className="text-[17px] leading-[1.7] text-[#767676]">When I started researching longevity, I searched for every metric that could affect healthspan, and the list never stopped growing. Steps, sleep, HRV, NMN intake, fasting windows, LDL, VO2 max.</span>{' '}
-                  <span className="text-[20px] font-medium leading-[1.8] text-[#111]">The more I looked, the more I realized: there was no shortage of things to track. The problem was something else entirely.</span>
-                </p>
-                <p>
-                  <span className="text-[17px] leading-[1.7] text-[#767676]">If there are this many metrics, how is anyone supposed to know if they{'\u2019'}re actually doing well? You can{'\u2019'}t hold fifty numbers in your head and arrive at a conclusion.</span>{' '}
-                  <span className="text-[20px] font-medium leading-[1.8] text-[#111]">I realized that showing people more data wasn{'\u2019'}t the answer. It was the problem. What people needed wasn{'\u2019'}t a complete picture. They needed a single, legible signal: am I moving in the right direction today, or not?</span>
-                </p>
-                <p>
-                  <span className="text-[20px] font-medium leading-[1.8] text-[#111]">That{'\u2019'}s what led me to Aika Age.</span>{' '}
-                  <span className="text-[17px] leading-[1.7] text-[#767676]">Instead of displaying every metric separately, I collapsed them into one number: your biological age, recalculated daily based on what you actually did. A simple line graph that goes up or down. No interpretation needed. You can see at a glance whether today moved you forward.</span>
+              <div className="mb-12 max-w-[700px]">
+                <p className="text-[15px] leading-[1.7] text-[#767676]">
+                  Fifty metrics. No clarity. <span className="font-bold text-[#111]">Aika Age collapses them all into one number: your biological age, recalculated daily.</span> One line graph. One answer: am I moving forward, or not?
                 </p>
               </div>
 
-              {/* Solution (2-column) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center justify-center">
-                <div className="space-y-5 flex flex-col justify-center">
-                  <div>
-                    <p className="text-[20px] font-semibold text-[#111]">One Score, Not Many</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">Every metric collapsed into a single biological age, recalculated daily from what you actually did.</p>
-                  </div>
-                  <div>
-                    <p className="text-[20px] font-semibold text-[#111]">Reduces Overwhelm</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">No more juggling fifty numbers across separate dashboards. One line graph tells the whole story.</p>
-                  </div>
-                  <div>
-                    <p className="text-[20px] font-semibold text-[#111]">Motivates Progress</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">A number that moves up or down each day gives you a reason to keep going, not a wall of data to decode.</p>
-                  </div>
-                </div>
-                <PhoneFrame src="/images/aika/aika-home.png" alt="Aika Age home screen" />
+              {/* Annotated image */}
+              <div className="mt-8">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/aika/aika-age-annotated.jpeg" alt="Aika Age screen with annotations explaining each component" className="w-full h-auto rounded-xl" />
               </div>
             </section>
           )
@@ -646,47 +606,258 @@ export function SolutionContent({
           return (
             <section
               key={sec.number}
-              className={`max-w-[1100px] mx-auto ${idx > 0 ? 'mt-[120px]' : ''}`}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
             >
-              {/* Header + color hierarchy paragraphs */}
-              <div className="mb-12">
-                <SectionHeader sec={sec} />
-                <div className="mt-6 space-y-4">
-                  <p>
-                    <span className="text-[17px] leading-[1.7] text-[#767676]">When I looked at the most-used habit tracking apps, one pattern was everywhere: missed days were marked in red. A broken streak reset to zero.</span>{' '}
-                    <span className="text-[20px] font-medium leading-[1.8] text-[#111]">The interface made failure impossible to ignore.</span>
-                  </p>
-                  <p>
-                    <span className="text-[17px] leading-[1.7] text-[#767676]">Research on drop-off patterns shows the critical moment isn{'\u2019'}t the first week. It{'\u2019'}s the day after a missed entry.</span>{' '}
-                    <span className="text-[20px] font-medium leading-[1.8] text-[#111]">People don{'\u2019'}t quit because the app is hard to use. They quit because opening it feels like walking into a room where their failures are displayed on the wall.</span>
-                  </p>
-                </div>
-                <AbandonmentChart />
-                <div className="mt-6 space-y-4">
-                  <p>
-                    <span className="text-[20px] font-medium leading-[1.8] text-[#111]">I rewrote every failure indicator as {'\u2018'}slip,{'\u2019'} surfaced accomplishments by default, and stripped all punitive copy from the interface.</span>{' '}
-                    <span className="text-[17px] leading-[1.7] text-[#767676]">The daily view leads with Wins before surfacing anything that fell short.</span>
-                  </p>
-                </div>
+              {/* Context */}
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Every health app punished failure the same way: red marks, reset streaks. <span className="font-bold text-[#111]">I rewrote every failure indicator as &lsquo;slip,&rsquo; surfaced wins first, and stripped all punitive copy.</span>
+                </p>
               </div>
 
-              {/* Solution card (2-column) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center justify-center">
+              {/* Phone left + bullets right */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                {img && <PhoneFrame src={img} alt={sec.title} />}
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
-                    <p className="text-[20px] font-semibold text-[#111]">Slip, Not Fail</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">Every failure indicator rewritten as a recoverable slip, not a permanent mark.</p>
+                    <p className="text-[14px] font-semibold text-[#111]">Slip, Not Fail</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Every failure indicator rewritten as a <span className="font-bold text-[#111]">recoverable slip</span>, not a permanent mark.</p>
                   </div>
                   <div>
-                    <p className="text-[20px] font-semibold text-[#111]">Wins First</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">The daily view leads with accomplishments before surfacing anything that fell short.</p>
+                    <p className="text-[14px] font-semibold text-[#111]">Wins First</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">The daily view leads with <span className="font-bold text-[#111]">accomplishments</span> before surfacing anything that fell short.</p>
                   </div>
                   <div>
-                    <p className="text-[20px] font-semibold text-[#111]">Recovery-Centered</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">All punitive copy stripped from the interface, replaced with language that invites return.</p>
+                    <p className="text-[14px] font-semibold text-[#111]">Recovery-Centered</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">All punitive copy stripped, replaced with <span className="font-bold text-[#111]">language that invites return</span>.</p>
                   </div>
                 </div>
-                {img && <PhoneFrame src={img} alt={sec.title} />}
+              </div>
+            </section>
+          )
+        }
+
+        // ── Tailored Habits (04): context + mockup left + bullets right ────────
+        if (sec.number === '04') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Showing everyone the same fifty habits meant ignoring the person. <span className="font-bold text-[#111]">Participants froze. No signal about where to start.</span> Research backs this: 6 options convert at 30%, 24 options drop to 3%. I redesigned the habit library as a personalized shelf with <span className="font-bold text-[#111]">impact scores</span> showing exactly how each habit affects your Aika Age.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div className="space-y-5 flex flex-col justify-center md:order-1">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">&ldquo;For You&rdquo; Shelf</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits ranked by <span className="font-bold text-[#111]">age, mode, and behavior patterns</span>. No more scrolling through fifty options.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Impact Scores</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Each habit shows its <span className="font-bold text-[#111]">+0.X effect on Aika Age</span>, turning abstract choices into clear priorities.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Reduced Choice</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Only <span className="font-bold text-[#111]">relevant habits surface first</span>. The rest are available, not pushed.</p>
+                  </div>
+                </div>
+                <div className="md:order-2"><PhoneFrame src="/images/aika/aika-add-habit-mockup.jpeg" alt="Add Habit screen with personalized For You recommendations" /></div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── Community (09): context + mockup + bullets ────────
+        if (sec.number === '09') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Every design decision had assumed people would build habits alone. <span className="font-bold text-[#111]">But structured accountability consistently outperforms self-monitoring. It&rsquo;s one of the strongest predictors of long-term adherence.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <PhoneFrame src="/images/aika/aika-community-mockup.jpeg" alt="Aika community features" />
+                <div className="space-y-5 flex flex-col justify-center">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Habit Clubs</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Join others working on the <span className="font-bold text-[#111]">same habit</span>. Shared progress, shared accountability.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Weekly Challenges</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Time-bound goals</span> that create natural rhythms of participation.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Trust Signals</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Verification badges so accountability comes from <span className="font-bold text-[#111]">people you can trust</span>.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── Streak / Growth Stages (08): context + mockup + bullets ────────
+        if (sec.number === '08') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Changing the language helped. But the number was still there. <span className="font-bold text-[#111]">A streak counter says nothing about who you&rsquo;re becoming. And when it hits zero, a setback registers twice as intensely as an equivalent gain.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div className="space-y-5 flex flex-col justify-center md:order-1">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Growth Stages</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Named stages like <span className="font-bold text-[#111]">Baby Seed and Sprout Scout</span> that reflect identity, not a count.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Survives Missed Days</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Stages advance on <span className="font-bold text-[#111]">consistency, not perfection</span>. A single skip doesn&rsquo;t reset anything.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Identity Over Number</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">You&rsquo;re <span className="font-bold text-[#111]">something growing</span>, not a number that can shatter.</p>
+                  </div>
+                </div>
+                <div className="md:order-2"><PhoneFrame src="/images/aika/aika-streak-mockup.jpeg" alt="Aika growth stages - Baby Seed, Sprout Scout, Leafy Rookie" /></div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── Coach (07): context + mockup + bullets ────────
+        if (sec.number === '07') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Existing AI health assistants gave technically accurate answers. But they had no idea what the user had done that morning. <span className="font-bold text-[#111]">Trust in AI coaching isn&rsquo;t determined by accuracy. It&rsquo;s determined by perceived fit between response and personal context.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <PhoneFrame src="/images/aika/aika-coach-mockup.jpeg" alt="Aika Coach providing context-aware health guidance" />
+                <div className="space-y-5 flex flex-col justify-center">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Context-First Responses</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Coach ingests <span className="font-bold text-[#111]">today&rsquo;s logged data</span> before generating any guidance.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">No Data, No Guess</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">If the data isn&rsquo;t there, the Coach <span className="font-bold text-[#111]">stays silent</span>. Generic advice actively erodes trust.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Trust Through Relevance</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Perceived fit</span> between response and context determines whether advice is followed.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── Logging (06): context + mockup + bullets ────────
+        if (sec.number === '06') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  The most common reason people stopped logging wasn&rsquo;t bad features or confusing design. <span className="font-bold text-[#111]">The input itself was too much effort. Five manual entries a day isn&rsquo;t a habit. It&rsquo;s a job.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div className="space-y-5 flex flex-col justify-center md:order-1">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Snap</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Take a photo or <span className="font-bold text-[#111]">scan a barcode</span> to log supplements instantly.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Talk</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Voice input</span> for hands-free logging on the go.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Type</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Quick text entry when that&rsquo;s the <span className="font-bold text-[#111]">fastest route</span>.</p>
+                  </div>
+                </div>
+                <div className="md:order-2"><PhoneFrame src="/images/aika/hero-logging.jpeg" alt="Aika camera logging - snap a photo or scan a barcode" /></div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── From Tracking to Autopilot (05): context + mockup + bullets ────────
+        if (sec.number === '05') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Health apps weren&rsquo;t designed with an ending. Every habit stayed active forever. <span className="font-bold text-[#111]">Automaticity averages 66 days. I designed habits to graduate off the dashboard once they become automatic behavior.</span> Your queue gets shorter over time, not longer.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <PhoneFrame src="/images/aika/aika-reinforcement-mockup.jpeg" alt="Take NMN habit detail showing reinforcement phase and graduation timeline" />
+                <div className="space-y-5 flex flex-col justify-center">
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">66-Day Reinforcement</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits follow a <span className="font-bold text-[#111]">research-backed automaticity timeline</span> with a defined finish line.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Graduation System</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits move to background once they become <span className="font-bold text-[#111]">automatic behavior</span>. No more endless tracking.</p>
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-semibold text-[#111]">Shrinking Dashboard</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Your active queue gets <span className="font-bold text-[#111]">shorter over time</span>, not longer. A finish line, not a treadmill.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        // ── Longevity Modes (03): context + annotated image ────────
+        if (sec.number === '03') {
+          return (
+            <section
+              key={sec.number}
+              className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
+            >
+              <div className="mb-12 max-w-[700px]">
+                <SectionHeader sec={sec} color={accentColor} />
+                {colorParagraphs['03'] && (
+                  <ColorHierarchyBlock paragraphs={colorParagraphs['03']} />
+                )}
+              </div>
+              <div className="mt-8">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/aika/longevity-modes-annotated.png" alt="Three longevity modes: Traditional, Standard, and Biohacker" className="w-full h-auto rounded-xl" />
               </div>
             </section>
           )
@@ -696,11 +867,11 @@ export function SolutionContent({
         return (
           <section
             key={sec.number}
-            className={`max-w-[1100px] mx-auto ${idx > 0 ? 'mt-[120px]' : ''}`}
+            className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}
           >
             {/* Header + color hierarchy paragraphs */}
             <div className="mb-12">
-              <SectionHeader sec={sec} />
+              <SectionHeader sec={sec} color={accentColor} />
               {colorParagraphs[sec.number] && (sec.number === '05' || sec.number === '08' || sec.number === '09') ? (
                 <>
                   <ColorHierarchyBlock paragraphs={colorParagraphs[sec.number].slice(0, 2)} />
@@ -725,7 +896,7 @@ export function SolutionContent({
                     className="bg-[#fafafa] border border-[#ebebeb] rounded-xl p-5 text-center"
                   >
                     <span className="text-[28px] block mb-3">{card.emoji}</span>
-                    <p className="text-[17px] font-semibold text-[#111]">{card.title}</p>
+                    <p className="text-[15px] font-semibold text-[#111]">{card.title}</p>
                     <p className="text-[14px] text-[#888] mt-1">{card.subtitle}</p>
                     <p className="text-[15px] text-[#666] leading-[1.6] mt-3">{card.body}</p>
                   </div>
@@ -738,8 +909,8 @@ export function SolutionContent({
               <div className="space-y-5 flex flex-col justify-center">
                 {features?.map((f, i) => (
                   <div key={i}>
-                    <p className="text-[20px] font-semibold text-[#111]">{f.heading}</p>
-                    <p className="text-[16px] text-[#888] leading-[1.6] mt-1">{f.desc}</p>
+                    <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">{f.desc}</p>
                   </div>
                 ))}
               </div>

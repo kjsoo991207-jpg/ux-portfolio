@@ -8,7 +8,7 @@ const AikaShowcase = dynamic(() => import('@/components/AikaShowcase'), { ssr: f
 
 export default function HomePage() {
   return (
-    <>
+    <div className="max-w-7xl mx-auto border-l border-r border-neutral-200">
       <Hero3D />
 
       {/* ── Work section ──────────────────────────────────────────────── */}
@@ -66,6 +66,6 @@ export default function HomePage() {
         ))}
         <div className="border-t border-neutral-200" />
       </main>
-    </>
+    </div>
   )
 }

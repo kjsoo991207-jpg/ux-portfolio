@@ -1,21 +1,58 @@
 import type { JourneyMap } from '@/content/projects'
 
-// Sentiment → Y coordinate (viewBox height 260, y range 40–180)
 function sentimentY(s: number): number {
-  // +2 → y=40, 0 → y=110, -2 → y=180
-  return 110 - s * 35
+  return 160 - s * 55
+}
+
+const quoteTexts: Record<number, string> = {
+  2: '"What does this number mean?"',
+  3: '"I already ruined my streak"',
+  5: '"I just deleted the app"',
 }
 
 export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
   const steps = journeyMap.steps
   const n = steps.length
 
-  // X positions: spread evenly from 80 to 680
-  const xs = steps.map((_, i) => 80 + (i * (680 - 80)) / (n - 1))
+  const xs = steps.map((_, i) => 80 + (i * (640 - 80)) / (n - 1))
   const ys = steps.map((s) => sentimentY(s.sentiment))
 
-  // Build polyline points string
-  const points = xs.map((x, i) => `${x},${ys[i]}`).join(' ')
+  const breakIdx = steps.findIndex((s) => s.sentiment < 0)
+
+  function buildPath(startIdx: number, endIdx: number): string {
+    const pts = []
+    for (let i = startIdx; i <= endIdx; i++) {
+      pts.push({ x: xs[i], y: ys[i] })
+    }
+    if (pts.length < 2) return ''
+    let d = `M ${pts[0].x},${pts[0].y}`
+    for (let i = 0; i < pts.length - 1; i++) {
+      const cx = (pts[i].x + pts[i + 1].x) / 2
+      d += ` C ${cx},${pts[i].y} ${cx},${pts[i + 1].y} ${pts[i + 1].x},${pts[i + 1].y}`
+    }
+    return d
+  }
+
+  // Build area paths (line + close to bottom)
+  function buildAreaPath(startIdx: number, endIdx: number, bottomY: number): string {
+    const pts = []
+    for (let i = startIdx; i <= endIdx; i++) {
+      pts.push({ x: xs[i], y: ys[i] })
+    }
+    if (pts.length < 2) return ''
+    let d = `M ${pts[0].x},${pts[0].y}`
+    for (let i = 0; i < pts.length - 1; i++) {
+      const cx = (pts[i].x + pts[i + 1].x) / 2
+      d += ` C ${cx},${pts[i].y} ${cx},${pts[i + 1].y} ${pts[i + 1].x},${pts[i + 1].y}`
+    }
+    d += ` L ${pts[pts.length - 1].x},${300} L ${pts[0].x},${300} Z`
+    return d
+  }
+
+  const positivePath = buildPath(0, breakIdx)
+  const negativePath = buildPath(breakIdx, n - 1)
+  const positiveArea = buildAreaPath(0, breakIdx, 200)
+  const negativeArea = buildAreaPath(breakIdx, n - 1, 200)
 
   return (
     <div className="mt-14">
@@ -26,96 +63,95 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
         From first download to abandonment
       </p>
       <svg
-        viewBox="0 0 760 270"
+        viewBox="0 0 720 360"
         className="w-full"
         aria-label="Emotional journey map from app download to abandonment"
       >
+        <defs>
+          <linearGradient id="blue-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#3478F6" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#3478F6" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="coral-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#E85555" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#E85555" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
         {/* Neutral baseline */}
-        <line x1="60" y1="110" x2="720" y2="110" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="4 4" />
-        <text x="50" y="114" textAnchor="end" fontSize="9" fill="#d4d4d4" fontFamily="system-ui,sans-serif">0</text>
+        <line x1="60" y1="160" x2="680" y2="160" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="4 4" />
 
         {/* Y axis labels */}
-        <text x="50" y="44" textAnchor="end" fontSize="8" fill="#a3a3a3" fontFamily="system-ui,sans-serif">Motivated</text>
-        <text x="50" y="184" textAnchor="end" fontSize="8" fill="#a3a3a3" fontFamily="system-ui,sans-serif">Defeated</text>
+        <text x="50" y="54" textAnchor="end" fontSize="8" fill="#3478F6" fontFamily="system-ui,sans-serif" fontWeight="500">Motivated</text>
+        <text x="50" y="274" textAnchor="end" fontSize="8" fill="#E85555" fontFamily="system-ui,sans-serif" fontWeight="500">Defeated</text>
 
-        {/* Journey line */}
-        <polyline
-          points={points}
-          fill="none"
-          stroke="#0a0a0a"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
+        {/* Area fills */}
+        <path d={positiveArea} fill="url(#blue-fade)" />
+        <path d={negativeArea} fill="url(#coral-fade)" />
 
-        {/* Dots and labels */}
+        {/* Lines */}
+        <path d={positivePath} fill="none" stroke="#3478F6" strokeWidth="2.5" strokeLinecap="round" />
+        <path d={negativePath} fill="none" stroke="#E85555" strokeWidth="2.5" strokeLinecap="round" />
+
+        {/* Dots, labels, quotes */}
         {steps.map((step, i) => {
           const x = xs[i]
           const y = ys[i]
-          const isBelow = step.sentiment >= 0
-          const emotionY = isBelow ? y - 14 : y + 22
-          const stageY = 230
+          const isPositive = step.sentiment >= 0
+          const dotColor = isPositive ? '#3478F6' : '#E85555'
+          const quote = quoteTexts[i]
+          const stageY = 330
 
           return (
             <g key={i}>
-              {/* Dot */}
               <circle
                 cx={x}
                 cy={y}
-                r={4}
-                fill={step.sentiment < 0 ? '#0a0a0a' : '#ffffff'}
-                stroke="#0a0a0a"
-                strokeWidth="1.5"
+                r={5}
+                fill={isPositive ? '#fff' : dotColor}
+                stroke={dotColor}
+                strokeWidth="2"
               />
-
-              {/* Emotion label */}
               <text
                 x={x}
-                y={emotionY}
+                y={isPositive ? y - 14 : y + 20}
                 textAnchor="middle"
-                fontSize="9"
-                fontWeight="500"
-                fill="#0a0a0a"
+                fontSize="10"
+                fontWeight="600"
+                fill={dotColor}
                 fontFamily="system-ui,sans-serif"
               >
                 {step.emotion}
               </text>
-
-              {/* Note (small, below emotion) */}
-              {step.note && (
+              {quote && (
                 <text
                   x={x}
-                  y={emotionY + (isBelow ? -12 : 12)}
+                  y={isPositive ? y - 26 : y + 32}
                   textAnchor="middle"
                   fontSize="8"
-                  fill="#a3a3a3"
+                  fill="#999"
                   fontFamily="system-ui,sans-serif"
+                  fontStyle="italic"
                 >
-                  {step.note}
+                  {quote}
                 </text>
               )}
-
-              {/* Stage label at bottom */}
               <text
                 x={x}
                 y={stageY}
                 textAnchor="middle"
-                fontSize="9"
+                fontSize="8"
                 fill="#737373"
                 fontFamily="system-ui,sans-serif"
-                letterSpacing="0.05em"
               >
                 {step.stage}
               </text>
-
-              {/* Tick mark at stage label */}
-              <line x1={x} y1="210" x2={x} y2="215" stroke="#e5e5e5" strokeWidth="1" />
+              <line x1={x} y1="310" x2={x} y2="315" stroke="#e5e5e5" strokeWidth="1" />
             </g>
           )
         })}
 
-        {/* X axis line */}
-        <line x1="60" y1="210" x2="720" y2="210" stroke="#e5e5e5" strokeWidth="1" />
+        <line x1="60" y1="310" x2="680" y2="310" stroke="#e5e5e5" strokeWidth="1" />
       </svg>
     </div>
   )
