@@ -1,5 +1,5 @@
-const CONTACT_EMAIL = 'kjsoo991207@gmail.com'
-const RESUME_URL = 'https://example.com/your-resume.pdf'
+const CONTACT_EMAIL = 'jinsoo991207@ucla.edu'
+const RESUME_URL = '/resume/jinsoo-kim-cv.pdf'
 
 export default function Footer() {
   return (
