@@ -19,8 +19,8 @@ export default function AboutPage() {
           <div className="mt-12 space-y-6">
             <div>
               <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-1">Education</p>
-              <p className="text-[14px] text-[#111]">UCLA — Cognitive Science, Third Year</p>
-              <p className="text-[13px] text-[#767676]">Berkeley City College — Transfer Program</p>
+              <p className="text-[14px] text-[#111]">UCLA — B.S. Cognitive Science, Third Year (Sep 2025 - Present)</p>
+              <p className="text-[13px] text-[#767676]">Berkeley City College — Transfer Program (2021 - 2023)</p>
             </div>
             <div>
               <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-1">Skills</p>
