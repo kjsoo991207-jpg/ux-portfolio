@@ -65,6 +65,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${sourceSerif.variable} ${inter.variable} ${ibmPlexMono.variable} ${ebGaramond.variable} ${dmSans.variable} ${notoSerif.variable} ${cormorant.variable}`}>
+      <head>
+        <link rel="preload" href="/images/iphone-17-frame.png" as="image" />
+        <link rel="preload" href="/images/aika/aika-daily.png" as="image" />
+        <link rel="preload" href="/images/aika/aika-add-habit.png" as="image" />
+      </head>
       <body className="min-h-screen flex flex-col font-sans text-base antialiased bg-white text-[#0a0a0a]">
         <Nav />
         <main className="flex-1">{children}</main>
