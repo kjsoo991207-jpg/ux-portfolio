@@ -15,6 +15,7 @@ export default function Hero3D() {
           style={{
             width: 'clamp(700px, 95vw, 1400px)',
             height: 'auto',
+            filter: 'contrast(1.8) brightness(1.05)',
           }}
           draggable={false}
         >
