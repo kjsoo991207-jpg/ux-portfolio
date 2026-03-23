@@ -83,26 +83,6 @@ export default function InteractivePortrait() {
           }}
         />
 
-        {/* Smile overlay - appears when mouse is near */}
-        <svg
-          className="absolute transition-opacity duration-500 pointer-events-none"
-          style={{
-            top: '44%',
-            left: '40%',
-            width: 50,
-            height: 16,
-            opacity: isNear ? 0.5 : 0,
-          }}
-          viewBox="0 0 50 16"
-        >
-          <path
-            d="M 8 4 Q 25 16 42 4"
-            fill="none"
-            stroke="#2a2a2a"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-        </svg>
       </div>
     </div>
   )
