@@ -2,6 +2,7 @@ node_modules
 .next
 .DS_Store
 *.tsbuildinfo
-hero-prototype.mov
+*.mov
 next
 ice-melting.mp4
+water-reflection.gif
