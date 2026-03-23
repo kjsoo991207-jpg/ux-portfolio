@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import InteractivePortrait from '@/components/InteractivePortrait'
 
 export default function AboutPage() {
   return (
@@ -37,15 +37,7 @@ export default function AboutPage() {
         </div>
 
         <div className="flex-shrink-0">
-          <div className="relative h-72 w-56 rounded-lg bg-neutral-100 overflow-hidden sm:h-96 sm:w-72">
-            <Image
-              src="/images/jinsoo-profile.png"
-              alt="Jinsoo Kim"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-          </div>
+          <InteractivePortrait />
         </div>
       </div>
     </div>
