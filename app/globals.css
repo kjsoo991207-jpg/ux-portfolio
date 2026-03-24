@@ -157,3 +157,15 @@ body {
 .animate-hero-scroll {
   animation: hero-scroll 12s ease-in-out infinite;
 }
+
+/* About page: observation notes fade in */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
