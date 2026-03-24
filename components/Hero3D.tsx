@@ -25,11 +25,11 @@ export default function Hero3D() {
         <p
           style={{
             fontFamily: 'var(--font-mono), monospace',
-            fontSize: '10px',
-            color: '#aaa',
+            fontSize: '12px',
+            color: '#999',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            marginTop: '16px',
+            marginTop: '-20px',
           }}
         >
           Product Designer
@@ -37,11 +37,11 @@ export default function Hero3D() {
         <p
           className="font-serif"
           style={{
-            fontSize: '15px',
+            fontSize: '18px',
             fontStyle: 'italic',
-            color: '#ccc',
+            color: '#888',
             letterSpacing: '0.02em',
-            marginTop: '8px',
+            marginTop: '12px',
           }}
         >
           I don&apos;t ask users what they want. I watch what they do.
