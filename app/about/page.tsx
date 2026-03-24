@@ -23,6 +23,28 @@ export default function AboutPage() {
               className="object-cover"
               unoptimized
             />
+            {/* Left eye dot */}
+            <div
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                width: 10,
+                height: 10,
+                backgroundColor: 'red',
+                top: '33%',
+                left: '37%',
+              }}
+            />
+            {/* Right eye dot */}
+            <div
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                width: 10,
+                height: 10,
+                backgroundColor: 'red',
+                top: '32.5%',
+                left: '53%',
+              }}
+            />
           </div>
         </div>
       </div>
