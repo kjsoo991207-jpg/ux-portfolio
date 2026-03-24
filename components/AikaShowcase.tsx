@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import AutoPlayVideo from '@/components/AutoPlayVideo'
 
 const TAGS = ['Case Study', 'Longevity Health', 'AI Coaching', 'Habit Design', 'Product Design / Research']
 
@@ -57,15 +58,7 @@ export default function AikaShowcase({ galleryImages, name }: AikaShowcaseProps)
             className="absolute overflow-hidden"
             style={{ top: '1.5%', left: '4%', right: '4%', bottom: '1.5%', borderRadius: '28px', zIndex: 1 }}
           >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/images/aika/hero-prototype.mp4" type="video/mp4" />
-            </video>
+            <AutoPlayVideo src="/images/aika/hero-prototype.mp4" className="w-full h-full object-cover" />
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

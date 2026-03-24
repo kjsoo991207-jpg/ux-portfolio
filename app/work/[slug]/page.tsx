@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { getProjectBySlug, projects } from '@/content/projects'
 import { SolutionContent } from './SolutionContent'
+import AutoPlayVideo from '@/components/AutoPlayVideo'
 // VennDiagram replaced with convergence cards
 import { JourneyMapDiagram } from './JourneyMap'
 import { ResearchViz } from './ResearchViz'
@@ -67,15 +68,7 @@ export default async function ProjectPage({
             {/* Center phone - Video prototype */}
             <div className="relative" style={{ width: 'clamp(140px, 25vw, 260px)' }}>
               <div className="absolute overflow-hidden" style={{ top: '1.5%', left: '4%', right: '4%', bottom: '1.5%', borderRadius: '28px', zIndex: 1 }}>
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/images/aika/hero-prototype.mp4" type="video/mp4" />
-                </video>
+                <AutoPlayVideo src="/images/aika/hero-prototype.mp4" className="w-full h-full object-cover" />
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/iphone-17-frame.png" alt="" className="w-full h-auto block select-none relative z-[2]" draggable={false} />
