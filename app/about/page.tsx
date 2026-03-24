@@ -203,7 +203,7 @@ export default function AboutPage() {
                     style={{ left: `${d1x}%`, top: `${d1y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
                   />
                   <div
-                    className={`absolute w-[8px] h-[8px] sm:w-[12px] sm:h-[12px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
+                    className={`absolute hidden sm:block w-[12px] h-[12px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
                     style={{ left: `${d2x}%`, top: `${d2y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
                   />
                 </div>
