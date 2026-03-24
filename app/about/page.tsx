@@ -9,9 +9,9 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Fan out from Jinsoo's head (left ~22%, top ~32%) at different angles
-    bubble: { left: '30%', top: '5%' },
-    dotsOffset: '-10px',
+    // Jinsoo's head center: ~20%, ~28%. Fan out at ~30deg upward-right
+    bubble: { left: '34%', top: '2%' },
+    dotAngle: 210, // pointing down-left toward Jinsoo
     zoom: { x: 45, y: 45 },
     person: { left: '33%', top: '28%', width: '24%', height: '70%' },
   },
@@ -19,8 +19,8 @@ const SECTIONS = [
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    bubble: { left: '33%', top: '18%' },
-    dotsOffset: '-15px',
+    bubble: { left: '37%', top: '16%' },
+    dotAngle: 190, // pointing left toward Jinsoo
     zoom: { x: 65, y: 50 },
     person: { left: '55%', top: '30%', width: '20%', height: '68%' },
   },
@@ -28,19 +28,19 @@ const SECTIONS = [
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    bubble: { left: '36%', top: '32%' },
-    dotsOffset: '-15px',
+    bubble: { left: '38%', top: '33%' },
+    dotAngle: 170, // pointing up-left toward Jinsoo
     zoom: { x: 85, y: 45 },
     person: { left: '76%', top: '25%', width: '20%', height: '73%' },
   },
 ]
 
-function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
+function CloudBubble({ label, isActive, onClick, style, dotAngle = 180 }: {
   label: string
   isActive: boolean
   onClick: () => void
   style: React.CSSProperties
-  dotsOffset?: string
+  dotAngle?: number // angle in degrees pointing toward Jinsoo's head
 }) {
   const lines = label.split('\n')
 
@@ -80,13 +80,26 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
           </text>
         </svg>
       </div>
-      {/* Trail dots - horizontal, pointing left toward Jinsoo */}
-      <div
-        className="absolute left-[-20px] sm:left-[-28px] top-1/2 -translate-y-1/2 flex flex-row-reverse items-center gap-[4px]"
-      >
-        <div className={`w-[10px] h-[10px] sm:w-[14px] sm:h-[14px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
-        <div className={`w-[7px] h-[7px] sm:w-[9px] sm:h-[9px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
-      </div>
+      {/* Trail dots - pointing toward Jinsoo's head at specified angle */}
+      {(() => {
+        const rad = (dotAngle * Math.PI) / 180
+        const d1x = Math.cos(rad) * 18 // first dot distance
+        const d1y = Math.sin(rad) * 18
+        const d2x = Math.cos(rad) * 32 // second dot distance
+        const d2y = Math.sin(rad) * 32
+        return (
+          <>
+            <div
+              className={`absolute w-[10px] h-[10px] sm:w-[14px] sm:h-[14px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`}
+              style={{ left: `calc(50% + ${d1x}px)`, top: `calc(50% + ${d1y}px)`, transform: 'translate(-50%, -50%)' }}
+            />
+            <div
+              className={`absolute w-[7px] h-[7px] sm:w-[9px] sm:h-[9px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`}
+              style={{ left: `calc(50% + ${d2x}px)`, top: `calc(50% + ${d2y}px)`, transform: 'translate(-50%, -50%)' }}
+            />
+          </>
+        )
+      })()}
     </button>
   )
 }
@@ -181,7 +194,7 @@ export default function AboutPage() {
                 label={section.label}
                 isActive={activeSection === section.id}
                 onClick={() => handleClick(section.id)}
-                dotsOffset={section.dotsOffset}
+                dotAngle={section.dotAngle}
                 style={{
                   left: section.bubble.left,
                   top: section.bubble.top,
