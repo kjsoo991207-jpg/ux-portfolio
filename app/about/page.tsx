@@ -159,8 +159,10 @@ export default function AboutPage() {
         <div
           className="relative w-full overflow-hidden transition-all duration-700 ease-in-out"
           style={{
-            maxHeight: activeSection ? '280px' : '2000px',
+            maxHeight: activeSection ? '180px' : '2000px',
+            cursor: activeSection ? 'pointer' : 'default',
           }}
+          onClick={() => { if (activeSection) setActiveSection(null) }}
         >
           <div
             className="transition-all duration-700 ease-in-out"
