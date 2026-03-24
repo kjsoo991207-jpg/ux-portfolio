@@ -40,7 +40,7 @@ function CloudBubble({ label, isActive, onClick, style }: {
       style={{ ...style, zIndex: 20, transform: 'translateX(-50%)' }}
       aria-label={label.replace('\n', ' ')}
     >
-      <div className="relative">
+      <div className="relative" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
         <svg
           viewBox="0 0 180 100"
           className="w-[120px] sm:w-[150px] h-auto transition-all duration-300"
@@ -123,12 +123,18 @@ export default function AboutPage() {
       {/* Bus Observation Scene */}
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
-          <p
-            className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-8"
-            style={{ fontFamily: 'var(--font-mono), monospace' }}
-          >
-            Click a thought to observe
-          </p>
+          <div className="flex items-center gap-3 mb-8">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#111] opacity-40" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#111]" />
+            </span>
+            <p
+              className="text-[12px] tracking-[0.15em] uppercase text-[#555]"
+              style={{ fontFamily: 'var(--font-mono), monospace' }}
+            >
+              Click a thought bubble to observe
+            </p>
+          </div>
         )}
 
         {/* Bus image - shrinks when content is open */}
