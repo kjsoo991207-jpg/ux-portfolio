@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-export default function AutoPlayVideo({ src, className }: { src: string; className?: string }) {
+export default function AutoPlayVideo({ src, className, style }: { src: string; className?: string; style?: React.CSSProperties }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -48,6 +48,8 @@ export default function AutoPlayVideo({ src, className }: { src: string; classNa
       muted
       playsInline
       className={className}
+      style={style}
+      draggable={false}
     >
       <source src={src} type="video/mp4" />
     </video>

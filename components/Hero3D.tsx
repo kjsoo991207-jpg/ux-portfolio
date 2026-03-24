@@ -1,3 +1,7 @@
+'use client'
+
+import AutoPlayVideo from '@/components/AutoPlayVideo'
+
 export default function Hero3D() {
   return (
     <section
@@ -6,19 +10,13 @@ export default function Hero3D() {
       aria-label="Hero"
     >
       <div className="flex flex-col items-center select-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <AutoPlayVideo
+          src="/images/hero-name.mp4"
           style={{
             width: 'clamp(700px, 95vw, 1400px)',
             height: 'auto',
           }}
-          draggable={false}
-        >
-          <source src="/images/hero-name.mp4" type="video/mp4" />
-        </video>
+        />
       </div>
 
       {/* Slogan - bottom right with vertical line */}
