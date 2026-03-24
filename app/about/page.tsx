@@ -10,21 +10,21 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     bubble: { left: '43%', top: '8%' },
-    dotsOffset: '5px', // shift dots right to align with businessman's head
+    dotsOffset: '15px',
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     bubble: { left: '63%', top: '6%' },
-    dotsOffset: '3px',
+    dotsOffset: '8px',
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     bubble: { left: '84%', top: '8%' },
-    dotsOffset: '2px',
+    dotsOffset: '10px',
   },
 ]
 
