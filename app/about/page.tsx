@@ -57,9 +57,9 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
           <path
             d="M30,70 C10,70 5,55 15,45 C5,35 15,15 35,20 C40,5 65,0 80,10 C95,0 120,0 135,15 C155,10 175,25 165,45 C175,55 170,70 150,70 Z"
             fill={isActive ? '#111' : 'white'}
-            stroke={isActive ? '#111' : '#999'}
+            stroke={isActive ? '#111' : undefined}
             strokeWidth={isActive ? 0 : 1.5}
-            className="transition-all duration-300 group-hover:stroke-[#111]"
+            className={`transition-all duration-300 group-hover:stroke-[#111] ${!isActive ? 'animate-border-pulse' : ''}`}
           />
           <text
             x="90"
@@ -136,23 +136,9 @@ export default function AboutPage() {
       {/* Bus Observation Scene */}
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
-          <div className="mb-8">
-            <p className="font-serif text-[18px] sm:text-[22px] text-[#555] leading-relaxed mb-4">
-              On the bus, on the subway, in a coffee shop. Everywhere I go, I&apos;m watching how people behave.
-            </p>
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#111] opacity-40" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#111]" />
-              </span>
-              <p
-                className="text-[11px] tracking-[0.15em] uppercase text-[#999]"
-                style={{ fontFamily: 'var(--font-mono), monospace' }}
-              >
-                Click a thought bubble to observe
-              </p>
-            </div>
-          </div>
+          <p className="font-serif text-[22px] sm:text-[28px] text-[#333] leading-snug mb-10">
+            Pick someone. I&apos;ll tell you what I see.
+          </p>
         )}
 
         {/* Bus image - zooms into person when clicked */}
