@@ -129,27 +129,25 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Bridge text */}
-      <div className="py-16 text-center">
-        <p className="font-serif text-[20px] sm:text-[24px] text-[#555] leading-relaxed max-w-[480px] mx-auto">
-          On the bus, on the subway, in a coffee shop. Everywhere I go, I&apos;m watching how people behave.
-        </p>
-      </div>
-
       {/* Bus Observation Scene */}
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
-          <div className="flex items-center gap-3 mb-8">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#111] opacity-40" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#111]" />
-            </span>
-            <p
-              className="text-[12px] tracking-[0.15em] uppercase text-[#555]"
-              style={{ fontFamily: 'var(--font-mono), monospace' }}
-            >
-              Click a thought bubble to observe
+          <div className="mb-8">
+            <p className="font-serif text-[18px] sm:text-[22px] text-[#555] leading-relaxed mb-4">
+              On the bus, on the subway, in a coffee shop. Everywhere I go, I&apos;m watching how people behave.
             </p>
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#111] opacity-40" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#111]" />
+              </span>
+              <p
+                className="text-[11px] tracking-[0.15em] uppercase text-[#999]"
+                style={{ fontFamily: 'var(--font-mono), monospace' }}
+              >
+                Click a thought bubble to observe
+              </p>
+            </div>
           </div>
         )}
 
