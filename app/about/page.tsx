@@ -67,8 +67,8 @@ export default function AboutPage() {
                 width: 6,
                 height: 6,
                 backgroundColor: '#111',
-                top: '29%',
-                left: '44%',
+                top: '35%',
+                left: '42%',
                 transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
@@ -79,8 +79,8 @@ export default function AboutPage() {
                 width: 6,
                 height: 6,
                 backgroundColor: '#111',
-                top: '28.5%',
-                left: '57%',
+                top: '34.5%',
+                left: '55%',
                 transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
