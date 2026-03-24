@@ -1,88 +1,30 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type SectionId = 'background' | 'philosophy' | 'love' | null
 
-const PEOPLE = [
+const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    description: 'The path that led me here',
+    // Businessman with phone - center-left area (percentage of image)
+    hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design Philosophy',
-    description: 'How I think about design',
+    // Woman reading - center-right area
+    hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
     label: 'Things I Love',
-    description: 'What drives my curiosity',
+    // Elderly man - far right
+    hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
-
-function PersonSilhouette({ index, isActive, onClick }: { index: number; isActive: boolean; onClick: () => void }) {
-  // Three different silhouette poses
-  const silhouettes = [
-    // Person 1: standing straight, slight head tilt
-    <svg key="p1" viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <circle cx="40" cy="28" r="14" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <path d="M24 56 C24 44 56 44 56 56 L56 100 C56 104 52 108 48 108 L32 108 C28 108 24 104 24 100 Z" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="28" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="44" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="14" y="58" width="8" height="30" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(-8 18 58)" />
-      <rect x="58" y="58" width="8" height="30" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(8 62 58)" />
-    </svg>,
-    // Person 2: walking pose
-    <svg key="p2" viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <circle cx="42" cy="28" r="14" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <path d="M26 56 C26 44 58 44 58 56 L56 100 C56 104 52 108 48 108 L32 108 C28 108 26 104 26 100 Z" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="26" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(10 30 108)" />
-      <rect x="46" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(-10 50 108)" />
-      <rect x="16" y="56" width="8" height="32" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(-15 20 56)" />
-      <rect x="56" y="60" width="8" height="28" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(12 60 60)" />
-    </svg>,
-    // Person 3: relaxed, one hand on hip
-    <svg key="p3" viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <circle cx="38" cy="28" r="14" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <path d="M22 56 C22 44 54 44 54 56 L54 100 C54 104 50 108 46 108 L30 108 C26 108 22 104 22 100 Z" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="26" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" />
-      <rect x="42" y="108" width="8" height="36" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(5 46 108)" />
-      <rect x="12" y="56" width="8" height="30" rx="4" fill={isActive ? '#111' : '#ccc'} className="transition-colors duration-500" transform="rotate(-12 16 56)" />
-      <path d="M54 60 Q68 72 58 90" stroke={isActive ? '#111' : '#ccc'} strokeWidth="8" strokeLinecap="round" fill="none" className="transition-colors duration-500" />
-    </svg>,
-  ]
-
-  return (
-    <button
-      onClick={onClick}
-      className="group flex flex-col items-center gap-3 cursor-pointer transition-transform duration-300 hover:scale-105"
-    >
-      <div className="relative">
-        <div className="w-20 h-36 sm:w-24 sm:h-40">
-          {silhouettes[index]}
-        </div>
-        {/* Magnifying glass hint on hover */}
-        {!isActive && (
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
-              <circle cx="11" cy="11" r="7" />
-              <path d="M16 16 L21 21" />
-            </svg>
-          </div>
-        )}
-      </div>
-      <span
-        className="text-[11px] tracking-[0.12em] uppercase transition-colors duration-300"
-        style={{ fontFamily: 'var(--font-mono), monospace', color: isActive ? '#111' : '#999' }}
-      >
-        {PEOPLE[index].label}
-      </span>
-    </button>
-  )
-}
 
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<SectionId>(null)
@@ -92,19 +34,18 @@ export default function AboutPage() {
     setActiveSection(prev => prev === id ? null : id)
   }
 
-  // Scroll to content when opened
   useEffect(() => {
     if (activeSection && contentRef.current) {
       setTimeout(() => {
         contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-      }, 100)
+      }, 150)
     }
   }, [activeSection])
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
       {/* Header */}
-      <div className="flex flex-col gap-12 lg:flex-row lg:gap-16 mb-20">
+      <div className="flex flex-col gap-12 lg:flex-row lg:gap-16 mb-16">
         <div className="flex-1">
           <h1 className="text-4xl font-bold tracking-tight text-[#111] mb-6">
             Jinsoo Kim
@@ -130,58 +71,108 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Three People - Observation Targets */}
-      <div className="border-t border-neutral-200 pt-16 pb-8">
+      {/* Bus Observation Scene */}
+      <div className="border-t border-neutral-200 pt-12 pb-4">
         <p
-          className="text-center text-[11px] tracking-[0.2em] uppercase text-[#999] mb-12"
+          className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-8"
           style={{ fontFamily: 'var(--font-mono), monospace' }}
         >
-          Click to observe
+          Click a passenger to observe
         </p>
 
-        <div className="flex justify-center items-end gap-12 sm:gap-20">
-          {PEOPLE.map((person, i) => (
-            <PersonSilhouette
-              key={person.id}
-              index={i}
-              isActive={activeSection === person.id}
-              onClick={() => handleClick(person.id)}
-            />
-          ))}
-        </div>
-      </div>
+        <div className="relative w-full">
+          {/* Bus illustration */}
+          <Image
+            src="/images/bus-observation.png"
+            alt="Jinsoo observing passengers on a Korean bus"
+            width={1456}
+            height={816}
+            className="w-full h-auto"
+            unoptimized
+            priority
+          />
 
-      {/* Expanded Content - Magnifying Glass Reveal */}
-      <div ref={contentRef}>
-        {activeSection && (
-          <div
-            className="mt-8 mb-8"
-            style={{ animation: 'lensReveal 0.5s ease-out forwards' }}
-          >
-            {/* Lens frame */}
-            <div className="relative mx-auto max-w-[640px]">
-              {/* Circle top decoration */}
-              <div className="flex justify-center mb-6">
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-full border-2 border-[#111] flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
+          {/* Clickable hotspots over each person */}
+          {SECTIONS.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => handleClick(section.id)}
+              className="absolute group"
+              style={{
+                left: section.hotspot.left,
+                top: section.hotspot.top,
+                width: section.hotspot.width,
+                height: section.hotspot.height,
+              }}
+              aria-label={`Observe: ${section.label}`}
+            >
+              {/* Hover overlay - magnifying glass circle */}
+              <div className={`
+                absolute inset-0 flex items-center justify-center rounded-full
+                transition-all duration-300
+                ${activeSection === section.id
+                  ? 'bg-black/5 ring-2 ring-[#111]/20'
+                  : 'bg-transparent group-hover:bg-black/5 group-hover:ring-2 group-hover:ring-[#111]/10'
+                }
+              `}>
+                {activeSection !== section.id && (
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
                       <circle cx="11" cy="11" r="7" />
                       <path d="M16 16 L21 21" />
                     </svg>
                   </div>
-                  {/* Connecting line */}
-                  <div className="absolute top-full left-1/2 w-[1px] h-6 bg-[#ddd] -translate-x-1/2" />
+                )}
+              </div>
+
+              {/* Label */}
+              <span
+                className={`
+                  absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap
+                  text-[10px] tracking-[0.1em] uppercase transition-opacity duration-300
+                  ${activeSection === section.id ? 'opacity-100 text-[#111]' : 'opacity-0 group-hover:opacity-100 text-[#777]'}
+                `}
+                style={{ fontFamily: 'var(--font-mono), monospace' }}
+              >
+                {section.label}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Expanded Content */}
+      <div ref={contentRef}>
+        {activeSection && (
+          <div
+            className="mt-12 mb-8"
+            style={{ animation: 'lensReveal 0.5s ease-out forwards' }}
+          >
+            <div className="relative mx-auto max-w-[640px]">
+              {/* Magnifying glass icon + connecting line */}
+              <div className="flex justify-center mb-6">
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-full border-[1.5px] border-[#111] flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="M16 16 L21 21" />
+                    </svg>
+                  </div>
+                  <div className="absolute top-full left-1/2 w-[1px] h-5 bg-[#ddd] -translate-x-1/2" />
                 </div>
               </div>
 
               {/* Content card */}
               <div className="border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10">
-                <h2 className="text-[20px] font-semibold text-[#111] mb-2">
-                  {PEOPLE.find(p => p.id === activeSection)?.label}
-                </h2>
-                <p className="text-[12px] text-[#999] mb-6" style={{ fontFamily: 'var(--font-mono), monospace' }}>
-                  {PEOPLE.find(p => p.id === activeSection)?.description}
+                <p
+                  className="text-[10px] tracking-[0.2em] uppercase text-[#999] mb-2"
+                  style={{ fontFamily: 'var(--font-mono), monospace' }}
+                >
+                  Observation
                 </p>
+                <h2 className="text-[22px] font-semibold text-[#111] mb-6">
+                  {SECTIONS.find(s => s.id === activeSection)?.label}
+                </h2>
 
                 {activeSection === 'background' && (
                   <div className="space-y-4">
