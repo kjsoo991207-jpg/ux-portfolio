@@ -80,26 +80,7 @@ function CloudBubble({ label, isActive, onClick, style, dotAngle = 180 }: {
           </text>
         </svg>
       </div>
-      {/* Trail dots - pointing toward Jinsoo's head at specified angle */}
-      {(() => {
-        const rad = (dotAngle * Math.PI) / 180
-        const d1x = Math.cos(rad) * 90
-        const d1y = Math.sin(rad) * 90
-        const d2x = Math.cos(rad) * 112
-        const d2y = Math.sin(rad) * 112
-        return (
-          <>
-            <div
-              className={`absolute w-[10px] h-[10px] sm:w-[14px] sm:h-[14px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`}
-              style={{ left: `calc(50% + ${d1x}px)`, top: `calc(50% + ${d1y}px)`, transform: 'translate(-50%, -50%)' }}
-            />
-            <div
-              className={`absolute w-[7px] h-[7px] sm:w-[9px] sm:h-[9px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`}
-              style={{ left: `calc(50% + ${d2x}px)`, top: `calc(50% + ${d2y}px)`, transform: 'translate(-50%, -50%)' }}
-            />
-          </>
-        )
-      })()}
+      {/* Trail dots removed - now rendered directly on the image */}
     </button>
   )
 }
@@ -201,6 +182,33 @@ export default function AboutPage() {
                 }}
               />
             ))}
+
+            {/* Trail dots: from Jinsoo's ear (20%, 35%) toward each bubble */}
+            {SECTIONS.map((section) => {
+              const earX = 20
+              const earY = 35
+              const bx = parseFloat(section.bubble.left)
+              const by = parseFloat(section.bubble.top) + 5 // center of bubble approx
+              // Dot 1: 30% of the way from ear to bubble (smaller, closer to ear)
+              const d1x = earX + (bx - earX) * 0.35
+              const d1y = earY + (by - earY) * 0.35
+              // Dot 2: 55% of the way from ear to bubble (bigger, closer to bubble)
+              const d2x = earX + (bx - earX) * 0.6
+              const d2y = earY + (by - earY) * 0.6
+              const isActive = activeSection === section.id
+              return (
+                <div key={`dots-${section.id}`}>
+                  <div
+                    className={`absolute rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
+                    style={{ left: `${d1x}%`, top: `${d1y}%`, width: 8, height: 8, transform: 'translate(-50%, -50%)', zIndex: 15 }}
+                  />
+                  <div
+                    className={`absolute rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
+                    style={{ left: `${d2x}%`, top: `${d2y}%`, width: 12, height: 12, transform: 'translate(-50%, -50%)', zIndex: 15 }}
+                  />
+                </div>
+              )
+            })}
 
             {/* Invisible clickable hotspots over each person */}
             {SECTIONS.map((section) => (
