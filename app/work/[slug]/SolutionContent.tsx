@@ -322,8 +322,8 @@ function SubFeatureList({ features }: { features: { heading: string; desc: strin
   return (
     <div className="space-y-6 mt-8">
       {features.map((f, i) => (
-        <div key={i} className="flex items-start gap-3">
-          <div className="w-[2px] bg-[#3478F6] rounded-full flex-shrink-0 mt-[3px]" style={{ minHeight: '100%', alignSelf: 'stretch' }} />
+        <div key={i} className="flex gap-3">
+          <div className="w-[2px] bg-[#3478F6] rounded-full flex-shrink-0 self-stretch" />
           <div>
             <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
             <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">{f.desc}</p>
