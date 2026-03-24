@@ -160,8 +160,8 @@ body {
 
 /* About page: thought bubble border pulse */
 @keyframes borderPulse {
-  0%, 100% { stroke: #bbb; }
-  50% { stroke: #333; }
+  0%, 100% { stroke: #ccc; }
+  50% { stroke: #000; stroke-width: 2.5; }
 }
 
 .animate-border-pulse {
