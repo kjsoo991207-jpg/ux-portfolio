@@ -24,7 +24,6 @@ export default function AboutPage() {
   const philosophyRef = useRef<HTMLDivElement>(null)
   const loveRef = useRef<HTMLDivElement>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
-  const timeStartRef = useRef(Date.now())
 
   const trigger = useCallback((id: string, text?: string) => {
     setObservations(prev => {
@@ -135,7 +134,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="lg:w-[200px] flex-shrink-0 mt-4 lg:mt-0">
+          <div className="lg:w-[220px] flex-shrink-0 mt-4 lg:mt-0 lg:pt-10">
             <ObservationNote obs={getObs('background')} />
           </div>
         </div>
@@ -155,7 +154,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="lg:w-[200px] flex-shrink-0 mt-4 lg:mt-0">
+          <div className="lg:w-[220px] flex-shrink-0 mt-4 lg:mt-0 lg:pt-10">
             <ObservationNote obs={getObs('philosophy')} />
           </div>
         </div>
@@ -172,7 +171,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="lg:w-[200px] flex-shrink-0 mt-4 lg:mt-0">
+          <div className="lg:w-[220px] flex-shrink-0 mt-4 lg:mt-0 lg:pt-10">
             <ObservationNote obs={getObs('love')} />
           </div>
         </div>
@@ -213,18 +212,49 @@ function ObservationNote({ obs, className = '' }: { obs?: Observation; className
 
   return (
     <div
-      className={`animate-fade-in ${className}`}
+      className={className}
       style={{ animation: 'fadeSlideIn 0.6s ease-out forwards' }}
     >
-      <div className="flex items-start gap-2">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#bbb] mt-[7px] flex-shrink-0" />
-        <p
-          className="text-[13px] text-[#999] leading-[1.6]"
-          style={{ fontFamily: 'var(--font-mono), monospace' }}
-        >
-          {obs.text}
-        </p>
+      <div className="border border-neutral-200 rounded-lg bg-[#fafafa] px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-2 h-2 rounded-full bg-[#111] animate-pulse" />
+          <span
+            className="text-[10px] uppercase tracking-[0.15em] text-[#999]"
+            style={{ fontFamily: 'var(--font-mono), monospace' }}
+          >
+            Observing...
+          </span>
+        </div>
+        <TypingText text={obs.text} />
       </div>
     </div>
+  )
+}
+
+function TypingText({ text }: { text: string }) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const interval = setInterval(() => {
+      i++
+      setDisplayed(text.slice(0, i))
+      if (i >= text.length) {
+        clearInterval(interval)
+        setDone(true)
+      }
+    }, 25)
+    return () => clearInterval(interval)
+  }, [text])
+
+  return (
+    <p
+      className="text-[13px] text-[#555] leading-[1.6]"
+      style={{ fontFamily: 'var(--font-mono), monospace' }}
+    >
+      {displayed}
+      {!done && <span className="inline-block w-[2px] h-[14px] bg-[#111] ml-[1px] animate-pulse align-text-bottom" />}
+    </p>
   )
 }
