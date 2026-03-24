@@ -10,26 +10,30 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     bubble: { left: '43%', top: '8%' },
+    dotsOffset: '5px', // shift dots right to align with businessman's head
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     bubble: { left: '63%', top: '6%' },
+    dotsOffset: '3px',
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     bubble: { left: '84%', top: '8%' },
+    dotsOffset: '2px',
   },
 ]
 
-function CloudBubble({ label, isActive, onClick, style }: {
+function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
   label: string
   isActive: boolean
   onClick: () => void
   style: React.CSSProperties
+  dotsOffset?: string
 }) {
   const lines = label.split('\n')
 
@@ -40,7 +44,8 @@ function CloudBubble({ label, isActive, onClick, style }: {
       style={{ ...style, zIndex: 20, transform: 'translateX(-50%)' }}
       aria-label={label.replace('\n', ' ')}
     >
-      <div className="relative" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
+      {/* Cloud */}
+      <div style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
         <svg
           viewBox="0 0 180 100"
           className="w-[120px] sm:w-[150px] h-auto transition-all duration-300"
@@ -67,10 +72,14 @@ function CloudBubble({ label, isActive, onClick, style }: {
             ))}
           </text>
         </svg>
-        <div className="flex flex-col items-center gap-[5px] mt-[3px]">
-          <div className={`w-[16px] h-[16px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
-          <div className={`w-[10px] h-[10px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
-        </div>
+      </div>
+      {/* Trail dots - positioned to align with person's head */}
+      <div
+        className="flex flex-col items-center gap-[5px] mt-[3px]"
+        style={{ marginLeft: dotsOffset }}
+      >
+        <div className={`w-[16px] h-[16px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+        <div className={`w-[10px] h-[10px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
       </div>
     </button>
   )
@@ -162,6 +171,7 @@ export default function AboutPage() {
               label={section.label}
               isActive={activeSection === section.id}
               onClick={() => handleClick(section.id)}
+              dotsOffset={section.dotsOffset}
               style={{
                 left: section.bubble.left,
                 top: section.bubble.top,
