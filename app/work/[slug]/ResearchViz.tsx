@@ -50,10 +50,10 @@ function Ring({ value, color, size = 100 }: { value: number; color: string; size
 function EngagementDropChart() {
   return (
     <div className="mt-10">
-      <div className="flex items-center gap-4 sm:gap-6">
-        <Ring value={82} color="#3478F6" />
-        <span className="text-[20px] text-neutral-300 font-light">→</span>
-        <Ring value={24} color="#E85555" />
+      <div className="flex items-center gap-3 sm:gap-6">
+        <Ring value={82} color="#3478F6" size={80} />
+        <span className="text-[18px] text-neutral-300 font-light">→</span>
+        <Ring value={24} color="#E85555" size={80} />
       </div>
       <p className="text-[13px] text-neutral-500 font-light leading-relaxed mt-4 max-w-[320px]">
         Engagement <span className="font-bold text-[#111]">drops sharply</span> when tracking <span className="font-bold text-[#111]">8+ metrics</span>
@@ -65,10 +65,10 @@ function EngagementDropChart() {
 function StreakAbandonmentChart() {
   return (
     <div className="mt-10">
-      <div className="flex items-center gap-4 sm:gap-6">
-        <Ring value={68} color="#E85555" />
+      <div className="flex items-center gap-3 sm:gap-6">
+        <Ring value={68} color="#E85555" size={80} />
         <span className="text-[14px] text-neutral-400 font-light">vs</span>
-        <Ring value={18} color="#3478F6" />
+        <Ring value={18} color="#3478F6" size={80} />
       </div>
       <p className="text-[13px] text-neutral-500 font-light leading-relaxed mt-4 max-w-[320px]">
         <span className="font-bold text-[#111]">Quit rate</span> after missing one day: <span className="font-bold text-[#E85555]">streak counter</span> vs <span className="font-bold text-[#3478F6]">flexible tracking</span>
@@ -80,10 +80,10 @@ function StreakAbandonmentChart() {
 function SocialAdherenceChart() {
   return (
     <div className="mt-10">
-      <div className="flex items-center gap-4 sm:gap-6">
-        <Ring value={31} color="#b0b0b0" />
+      <div className="flex items-center gap-3 sm:gap-6">
+        <Ring value={31} color="#b0b0b0" size={80} />
         <span className="text-[14px] text-neutral-400 font-light">vs</span>
-        <Ring value={67} color="#3478F6" />
+        <Ring value={67} color="#3478F6" size={80} />
       </div>
       <p className="text-[13px] text-neutral-500 font-light leading-relaxed mt-4 max-w-[320px]">
         <span className="font-bold text-[#111]">90-day adherence</span>: <span className="font-bold text-neutral-400">solo</span> vs <span className="font-bold text-[#3478F6]">social accountability</span>
