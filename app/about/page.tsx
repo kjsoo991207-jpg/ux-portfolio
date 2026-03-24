@@ -197,14 +197,14 @@ export default function AboutPage() {
               const d2y = earY + (by - earY) * 0.6
               const isActive = activeSection === section.id
               return (
-                <div key={`dots-${section.id}`} className="hidden sm:block">
+                <div key={`dots-${section.id}`}>
                   <div
-                    className={`absolute rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
-                    style={{ left: `${d1x}%`, top: `${d1y}%`, width: 8, height: 8, transform: 'translate(-50%, -50%)', zIndex: 15 }}
+                    className={`absolute w-[5px] h-[5px] sm:w-[8px] sm:h-[8px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
+                    style={{ left: `${d1x}%`, top: `${d1y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
                   />
                   <div
-                    className={`absolute rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
-                    style={{ left: `${d2x}%`, top: `${d2y}%`, width: 12, height: 12, transform: 'translate(-50%, -50%)', zIndex: 15 }}
+                    className={`absolute w-[8px] h-[8px] sm:w-[12px] sm:h-[12px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
+                    style={{ left: `${d2x}%`, top: `${d2y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
                   />
                 </div>
               )
