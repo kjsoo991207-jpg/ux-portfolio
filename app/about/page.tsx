@@ -82,8 +82,8 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
         className="flex flex-col items-center gap-[5px] mt-[3px]"
         style={{ marginLeft: dotsOffset }}
       >
-        <div className={`w-[16px] h-[16px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
-        <div className={`w-[10px] h-[10px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+        <div className={`w-[16px] h-[16px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
+        <div className={`w-[10px] h-[10px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
       </div>
     </button>
   )

@@ -168,6 +168,15 @@ body {
   animation: borderPulse 1.5s ease-in-out infinite;
 }
 
+@keyframes dotPulse {
+  0%, 100% { border-color: #ccc; }
+  50% { border-color: #000; }
+}
+
+.animate-dot-pulse {
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+
 /* About page: thought bubble float */
 @keyframes bubbleFloat {
   0%, 100% { transform: translateY(0); }
