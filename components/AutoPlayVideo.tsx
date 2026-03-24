@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-export default function AutoPlayVideo({ src, className, style, mobileSpeed }: { src: string; className?: string; style?: React.CSSProperties; mobileSpeed?: number }) {
+export default function AutoPlayVideo({ src, className, style, mobileSpeed, poster }: { src: string; className?: string; style?: React.CSSProperties; mobileSpeed?: number; poster?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -58,6 +58,7 @@ export default function AutoPlayVideo({ src, className, style, mobileSpeed }: { 
       playsInline
       className={className}
       style={style}
+      poster={poster}
       draggable={false}
     >
       <source src={src} type="video/mp4" />
