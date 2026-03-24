@@ -11,6 +11,8 @@ const SECTIONS = [
     label: 'Background',
     bubble: { left: '43%', top: '8%' },
     dotsOffset: '15px',
+    // Zoom target: businessman center
+    zoom: { x: 45, y: 45 },
   },
   {
     id: 'philosophy' as const,
@@ -18,6 +20,7 @@ const SECTIONS = [
     labelShort: 'Design Philosophy',
     bubble: { left: '63%', top: '6%' },
     dotsOffset: '8px',
+    zoom: { x: 65, y: 50 },
   },
   {
     id: 'love' as const,
@@ -25,6 +28,7 @@ const SECTIONS = [
     labelShort: 'Things I Love',
     bubble: { left: '84%', top: '8%' },
     dotsOffset: '10px',
+    zoom: { x: 85, y: 45 },
   },
 ]
 
@@ -151,38 +155,50 @@ export default function AboutPage() {
           </div>
         )}
 
-        {/* Bus image - shrinks when content is open */}
+        {/* Bus image - zooms into person when clicked */}
         <div
-          className="relative w-full transition-all duration-500 ease-in-out overflow-hidden"
+          className="relative w-full overflow-hidden transition-all duration-700 ease-in-out"
           style={{
-            maxHeight: activeSection ? '200px' : '2000px',
-            opacity: activeSection ? 0.4 : 1,
+            maxHeight: activeSection ? '280px' : '2000px',
           }}
         >
-          <Image
-            src="/images/bus-observation.png"
-            alt="Jinsoo observing passengers on a Korean bus"
-            width={1456}
-            height={816}
-            className="w-full h-auto"
-            unoptimized
-            priority
-          />
-
-          {/* Cloud thought bubbles */}
-          {SECTIONS.map((section) => (
-            <CloudBubble
-              key={section.id}
-              label={section.label}
-              isActive={activeSection === section.id}
-              onClick={() => handleClick(section.id)}
-              dotsOffset={section.dotsOffset}
-              style={{
-                left: section.bubble.left,
-                top: section.bubble.top,
-              }}
+          <div
+            className="transition-all duration-700 ease-in-out"
+            style={activeSection ? {
+              transform: `scale(2.5) translate(${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.x ?? 50)}%, ${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.y ?? 50)}%)`,
+              opacity: 0.3,
+              filter: 'blur(2px)',
+            } : {
+              transform: 'scale(1) translate(0%, 0%)',
+              opacity: 1,
+              filter: 'blur(0px)',
+            }}
+          >
+            <Image
+              src="/images/bus-observation.png"
+              alt="Jinsoo observing passengers on a Korean bus"
+              width={1456}
+              height={816}
+              className="w-full h-auto"
+              unoptimized
+              priority
             />
-          ))}
+
+            {/* Cloud thought bubbles */}
+            {SECTIONS.map((section) => (
+              <CloudBubble
+                key={section.id}
+                label={section.label}
+                isActive={activeSection === section.id}
+                onClick={() => handleClick(section.id)}
+                dotsOffset={section.dotsOffset}
+                style={{
+                  left: section.bubble.left,
+                  top: section.bubble.top,
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content - replaces the bus image space */}
