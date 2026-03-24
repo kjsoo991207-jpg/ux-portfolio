@@ -57,29 +57,31 @@ export default function InteractivePortrait() {
           unoptimized
         />
 
-        {/* Left eye pupil */}
+        {/* Left eye pupil - covers original and moves */}
         <div
-          className="absolute rounded-full transition-transform duration-75 pointer-events-none"
+          className="absolute rounded-full transition-transform duration-100 pointer-events-none"
           style={{
-            width: 5,
-            height: 5,
-            backgroundColor: '#1a1a1a',
-            top: '34%',
-            left: '36%',
+            width: 14,
+            height: 14,
+            backgroundColor: '#111',
+            top: '31.5%',
+            left: '36.5%',
             transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
+            boxShadow: '0 0 2px rgba(0,0,0,0.3)',
           }}
         />
 
-        {/* Right eye pupil */}
+        {/* Right eye pupil - covers original and moves */}
         <div
-          className="absolute rounded-full transition-transform duration-75 pointer-events-none"
+          className="absolute rounded-full transition-transform duration-100 pointer-events-none"
           style={{
-            width: 5,
-            height: 5,
-            backgroundColor: '#1a1a1a',
-            top: '33.5%',
-            left: '52%',
+            width: 14,
+            height: 14,
+            backgroundColor: '#111',
+            top: '31%',
+            left: '51%',
             transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
+            boxShadow: '0 0 2px rgba(0,0,0,0.3)',
           }}
         />
 
