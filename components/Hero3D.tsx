@@ -6,6 +6,20 @@ export default function Hero3D() {
       aria-label="Hero"
     >
       <div className="flex flex-col items-center select-none">
+        {/* Product Designer - above video */}
+        <p
+          style={{
+            fontFamily: 'var(--font-mono), monospace',
+            fontSize: '12px',
+            color: '#999',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: '-20px',
+          }}
+        >
+          Product Designer
+        </p>
+
         {/* 물결 반사 영상 */}
         <video
           autoPlay
@@ -20,20 +34,6 @@ export default function Hero3D() {
         >
           <source src="/images/hero-name.mp4" type="video/mp4" />
         </video>
-
-        {/* Product Designer - centered below video */}
-        <p
-          style={{
-            fontFamily: 'var(--font-mono), monospace',
-            fontSize: '12px',
-            color: '#999',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            marginTop: '-20px',
-          }}
-        >
-          Product Designer
-        </p>
       </div>
 
       {/* Slogan - bottom right with vertical line */}
