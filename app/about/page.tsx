@@ -189,7 +189,19 @@ export default function AboutPage() {
               </div>
 
               {/* Content card */}
-              <div className="border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10">
+              <div className="relative border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10">
+                {/* Back button */}
+                <button
+                  onClick={() => setActiveSection(null)}
+                  className="absolute top-4 right-4 flex items-center gap-1.5 text-[11px] tracking-[0.1em] uppercase text-[#999] hover:text-[#111] transition-colors duration-200"
+                  style={{ fontFamily: 'var(--font-mono), monospace' }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                  </svg>
+                  Back
+                </button>
                 <p
                   className="text-[10px] tracking-[0.2em] uppercase text-[#999] mb-2"
                   style={{ fontFamily: 'var(--font-mono), monospace' }}
