@@ -624,16 +624,25 @@ export function SolutionContent({
                 {img && <PhoneFrame src={img} alt={sec.title} />}
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Slip, Not Fail</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Every failure indicator rewritten as a <span className="font-bold text-[#111]">recoverable slip</span>, not a permanent mark.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Slip, Not Fail</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Every failure indicator rewritten as a <span className="font-bold text-[#111]">recoverable slip</span>, not a permanent mark.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Wins First</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">The daily view leads with <span className="font-bold text-[#111]">accomplishments</span> before surfacing anything that fell short.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Wins First</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">The daily view leads with <span className="font-bold text-[#111]">accomplishments</span> before surfacing anything that fell short.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Recovery-Centered</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">All punitive copy stripped, replaced with <span className="font-bold text-[#111]">language that invites return</span>.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Recovery-Centered</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">All punitive copy stripped, replaced with <span className="font-bold text-[#111]">language that invites return</span>.</p>
                   </div>
                 </div>
               </div>
@@ -657,16 +666,25 @@ export function SolutionContent({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">&ldquo;For You&rdquo; Shelf</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits ranked by <span className="font-bold text-[#111]">age, mode, and behavior patterns</span>. No more scrolling through fifty options.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">&ldquo;For You&rdquo; Shelf</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits ranked by <span className="font-bold text-[#111]">age, mode, and behavior patterns</span>. No more scrolling through fifty options.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Impact Scores</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Each habit shows its <span className="font-bold text-[#111]">+0.X effect on Aika Age</span>, turning abstract choices into clear priorities.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Impact Scores</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Each habit shows its <span className="font-bold text-[#111]">+0.X effect on Aika Age</span>, turning abstract choices into clear priorities.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Reduced Choice</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Only <span className="font-bold text-[#111]">relevant habits surface first</span>. The rest are available, not pushed.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Reduced Choice</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Only <span className="font-bold text-[#111]">relevant habits surface first</span>. The rest are available, not pushed.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/aika-add-habit-mockup.jpeg" alt="Add Habit screen with personalized For You recommendations" /></div>
@@ -692,16 +710,25 @@ export function SolutionContent({
                 <PhoneFrame src="/images/aika/aika-community-mockup.jpeg" alt="Aika community features" />
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Habit Clubs</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Join others working on the <span className="font-bold text-[#111]">same habit</span>. Shared progress, shared accountability.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Habit Clubs</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Join others working on the <span className="font-bold text-[#111]">same habit</span>. Shared progress, shared accountability.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Weekly Challenges</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Time-bound goals</span> that create natural rhythms of participation.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Weekly Challenges</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Time-bound goals</span> that create natural rhythms of participation.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Trust Signals</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Verification badges so accountability comes from <span className="font-bold text-[#111]">people you can trust</span>.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Trust Signals</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Verification badges so accountability comes from <span className="font-bold text-[#111]">people you can trust</span>.</p>
                   </div>
                 </div>
               </div>
@@ -725,16 +752,25 @@ export function SolutionContent({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Growth Stages</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Named stages like <span className="font-bold text-[#111]">Baby Seed and Sprout Scout</span> that reflect identity, not a count.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Growth Stages</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Named stages like <span className="font-bold text-[#111]">Baby Seed and Sprout Scout</span> that reflect identity, not a count.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Survives Missed Days</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Stages advance on <span className="font-bold text-[#111]">consistency, not perfection</span>. A single skip doesn&rsquo;t reset anything.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Survives Missed Days</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Stages advance on <span className="font-bold text-[#111]">consistency, not perfection</span>. A single skip doesn&rsquo;t reset anything.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Identity Over Number</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">You&rsquo;re <span className="font-bold text-[#111]">something growing</span>, not a number that can shatter.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Identity Over Number</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">You&rsquo;re <span className="font-bold text-[#111]">something growing</span>, not a number that can shatter.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/aika-streak-mockup.jpeg" alt="Aika growth stages - Baby Seed, Sprout Scout, Leafy Rookie" /></div>
@@ -760,16 +796,25 @@ export function SolutionContent({
                 <PhoneFrame src="/images/aika/aika-coach-mockup.jpeg" alt="Aika Coach providing context-aware health guidance" />
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Context-First Responses</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Coach ingests <span className="font-bold text-[#111]">today&rsquo;s logged data</span> before generating any guidance.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Context-First Responses</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Coach ingests <span className="font-bold text-[#111]">today&rsquo;s logged data</span> before generating any guidance.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">No Data, No Guess</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">If the data isn&rsquo;t there, the Coach <span className="font-bold text-[#111]">stays silent</span>. Generic advice actively erodes trust.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">No Data, No Guess</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">If the data isn&rsquo;t there, the Coach <span className="font-bold text-[#111]">stays silent</span>. Generic advice actively erodes trust.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Trust Through Relevance</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Perceived fit</span> between response and context determines whether advice is followed.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Trust Through Relevance</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Perceived fit</span> between response and context determines whether advice is followed.</p>
                   </div>
                 </div>
               </div>
@@ -793,16 +838,25 @@ export function SolutionContent({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Snap</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Take a photo or <span className="font-bold text-[#111]">scan a barcode</span> to log supplements instantly.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Snap</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Take a photo or <span className="font-bold text-[#111]">scan a barcode</span> to log supplements instantly.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Talk</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1"><span className="font-bold text-[#111]">Voice input</span> for hands-free logging on the go.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Talk</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Voice input</span> for hands-free logging on the go.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Type</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Quick text entry when that&rsquo;s the <span className="font-bold text-[#111]">fastest route</span>.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Type</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Quick text entry when that&rsquo;s the <span className="font-bold text-[#111]">fastest route</span>.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/hero-logging.jpeg" alt="Aika camera logging - snap a photo or scan a barcode" /></div>
@@ -828,16 +882,25 @@ export function SolutionContent({
                 <PhoneFrame src="/images/aika/aika-reinforcement-mockup.jpeg" alt="Take NMN habit detail showing reinforcement phase and graduation timeline" />
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">66-Day Reinforcement</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits follow a <span className="font-bold text-[#111]">research-backed automaticity timeline</span> with a defined finish line.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">66-Day Reinforcement</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits follow a <span className="font-bold text-[#111]">research-backed automaticity timeline</span> with a defined finish line.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Graduation System</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Habits move to background once they become <span className="font-bold text-[#111]">automatic behavior</span>. No more endless tracking.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Graduation System</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits move to background once they become <span className="font-bold text-[#111]">automatic behavior</span>. No more endless tracking.</p>
                   </div>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#111]">Shrinking Dashboard</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">Your active queue gets <span className="font-bold text-[#111]">shorter over time</span>, not longer. A finish line, not a treadmill.</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Shrinking Dashboard</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Your active queue gets <span className="font-bold text-[#111]">shorter over time</span>, not longer. A finish line, not a treadmill.</p>
                   </div>
                 </div>
               </div>
