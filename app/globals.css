@@ -165,7 +165,7 @@ body {
 }
 
 .animate-border-pulse {
-  animation: borderPulse 2.5s ease-in-out infinite;
+  animation: borderPulse 1.5s ease-in-out infinite;
 }
 
 /* About page: thought bubble float */
