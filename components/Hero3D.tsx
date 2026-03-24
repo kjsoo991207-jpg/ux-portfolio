@@ -21,7 +21,7 @@ export default function Hero3D() {
           <source src="/images/hero-name.mp4" type="video/mp4" />
         </video>
 
-        {/* 역할 + 슬로건 */}
+        {/* Product Designer - centered below video */}
         <p
           style={{
             fontFamily: 'var(--font-mono), monospace',
@@ -34,18 +34,27 @@ export default function Hero3D() {
         >
           Product Designer
         </p>
-        <p
-          className="font-serif"
-          style={{
-            fontSize: '18px',
-            fontStyle: 'italic',
-            color: '#888',
-            letterSpacing: '0.02em',
-            marginTop: '12px',
-          }}
-        >
-          I don&apos;t ask users what they want. I watch what they do.
-        </p>
+      </div>
+
+      {/* Slogan - bottom right with vertical line */}
+      <div
+        className="absolute bottom-12 right-8 sm:bottom-16 sm:right-16 flex items-start gap-3"
+      >
+        <div className="w-[1px] h-10 bg-[#ccc] mt-[2px]" />
+        <div>
+          <p
+            className="font-serif text-[15px] sm:text-[17px] text-[#666] leading-snug"
+          >
+            I don&apos;t ask users what they want. I watch what they do.
+          </p>
+          <a
+            href="/about"
+            className="text-[13px] text-[#999] underline underline-offset-2 hover:text-[#111] transition-colors mt-1.5 inline-block"
+            style={{ fontFamily: 'var(--font-mono), monospace' }}
+          >
+            More about me &rarr;
+          </a>
+        </div>
       </div>
     </section>
   )
