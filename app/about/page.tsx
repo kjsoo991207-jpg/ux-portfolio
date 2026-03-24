@@ -258,6 +258,8 @@ export default function AboutPage() {
             <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-2">Education</p>
             <p className="text-[14px] text-[#111]">UCLA — B.S. Cognitive Science</p>
             <p className="text-[13px] text-[#767676]">Sep 2025 - Present</p>
+            <p className="text-[14px] text-[#111] mt-2">ROK Army — Squad Leader</p>
+            <p className="text-[13px] text-[#767676]">Oct 2023 - Apr 2025</p>
             <p className="text-[14px] text-[#111] mt-2">Berkeley City College</p>
             <p className="text-[13px] text-[#767676]">2021 - 2023</p>
           </div>
