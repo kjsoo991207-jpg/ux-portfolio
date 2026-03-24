@@ -17,7 +17,11 @@ export default function AutoPlayVideo({ src, className, style }: { src: string; 
     playVideo()
 
     // Re-play when video ends (backup for loop)
-    video.addEventListener('ended', playVideo)
+    const handleEnded = () => {
+      video.currentTime = 0
+      playVideo()
+    }
+    video.addEventListener('ended', handleEnded)
 
     // Re-play when tab becomes visible
     document.addEventListener('visibilitychange', () => {
@@ -34,7 +38,7 @@ export default function AutoPlayVideo({ src, className, style }: { src: string; 
     window.addEventListener('touchstart', handleInteraction)
 
     return () => {
-      video.removeEventListener('ended', playVideo)
+      video.removeEventListener('ended', handleEnded)
       window.removeEventListener('click', handleInteraction)
       window.removeEventListener('touchstart', handleInteraction)
     }
