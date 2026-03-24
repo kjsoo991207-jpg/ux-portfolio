@@ -197,7 +197,7 @@ export default function AboutPage() {
               const d2y = earY + (by - earY) * 0.6
               const isActive = activeSection === section.id
               return (
-                <div key={`dots-${section.id}`}>
+                <div key={`dots-${section.id}`} className="hidden sm:block">
                   <div
                     className={`absolute rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
                     style={{ left: `${d1x}%`, top: `${d1y}%`, width: 8, height: 8, transform: 'translate(-50%, -50%)', zIndex: 15 }}
