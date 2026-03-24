@@ -76,9 +76,9 @@ function CloudBubble({ label, isActive, onClick, style }: {
         </svg>
 
         {/* Thought trail dots */}
-        <div className="flex flex-col items-center gap-[3px] mt-[2px]">
-          <div className={`w-[8px] h-[8px] rounded-full border transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
-          <div className={`w-[5px] h-[5px] rounded-full border transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+        <div className="flex flex-col items-center gap-[5px] mt-[3px]">
+          <div className={`w-[16px] h-[16px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+          <div className={`w-[10px] h-[10px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
         </div>
       </div>
     </button>
