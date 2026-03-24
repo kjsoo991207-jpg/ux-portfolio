@@ -14,7 +14,9 @@ export default function Hero3D() {
             color: '#999',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            marginBottom: '-20px',
+            marginBottom: '8px',
+            zIndex: 10,
+            position: 'relative' as const,
           }}
         >
           Product Designer
