@@ -1,5 +1,6 @@
 const CONTACT_EMAIL = 'jinsoo991207@ucla.edu'
 const RESUME_URL = '/resume/jinsoo-kim-cv.pdf'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/jinsoo-kim-2715553b9'
 
 export default function Footer() {
   return (
@@ -14,6 +15,14 @@ export default function Footer() {
             className="text-sm text-[#0a0a0a] hover:underline"
           >
             Mail
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[#0a0a0a] hover:underline"
+          >
+            LinkedIn
           </a>
           <a
             href={RESUME_URL}

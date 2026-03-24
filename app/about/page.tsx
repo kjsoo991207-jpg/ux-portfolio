@@ -294,8 +294,11 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-2">Contact</p>
-            <a href="mailto:jinsoo991207@ucla.edu" className="text-[14px] text-[#111] underline underline-offset-2">
+            <a href="mailto:jinsoo991207@ucla.edu" className="text-[14px] text-[#111] underline underline-offset-2 block">
               jinsoo991207@ucla.edu
+            </a>
+            <a href="https://www.linkedin.com/in/jinsoo-kim-2715553b9" target="_blank" rel="noopener noreferrer" className="text-[14px] text-[#111] underline underline-offset-2 block mt-1">
+              LinkedIn
             </a>
           </div>
         </div>
