@@ -10,21 +10,18 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     bubble: { left: '43%', top: '8%' },
-    hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     bubble: { left: '63%', top: '6%' },
-    hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     bubble: { left: '84%', top: '8%' },
-    hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
 
@@ -44,13 +41,10 @@ function CloudBubble({ label, isActive, onClick, style }: {
       aria-label={label.replace('\n', ' ')}
     >
       <div className="relative">
-        {/* Cloud shape */}
         <svg
           viewBox="0 0 180 100"
           className="w-[120px] sm:w-[150px] h-auto transition-all duration-300"
-          style={{ filter: isActive ? 'none' : undefined }}
         >
-          {/* Cloud path */}
           <path
             d="M30,70 C10,70 5,55 15,45 C5,35 15,15 35,20 C40,5 65,0 80,10 C95,0 120,0 135,15 C155,10 175,25 165,45 C175,55 170,70 150,70 Z"
             fill={isActive ? '#111' : 'white'}
@@ -58,7 +52,6 @@ function CloudBubble({ label, isActive, onClick, style }: {
             strokeWidth={isActive ? 0 : 1.5}
             className="transition-all duration-300 group-hover:stroke-[#111]"
           />
-          {/* Label text */}
           <text
             x="90"
             y={lines.length > 1 ? '36' : '44'}
@@ -74,8 +67,6 @@ function CloudBubble({ label, isActive, onClick, style }: {
             ))}
           </text>
         </svg>
-
-        {/* Thought trail dots */}
         <div className="flex flex-col items-center gap-[5px] mt-[3px]">
           <div className={`w-[16px] h-[16px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
           <div className={`w-[10px] h-[10px] rounded-full border-[1.5px] transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
@@ -87,19 +78,18 @@ function CloudBubble({ label, isActive, onClick, style }: {
 
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<SectionId>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (id: SectionId) => {
-    setActiveSection(prev => prev === id ? null : id)
-  }
-
-  useEffect(() => {
-    if (activeSection && contentRef.current) {
+    const next = activeSection === id ? null : id
+    setActiveSection(next)
+    // Scroll to top of the bus section when opening
+    if (next && sectionRef.current) {
       setTimeout(() => {
-        contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-      }, 150)
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
     }
-  }, [activeSection])
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
@@ -131,16 +121,24 @@ export default function AboutPage() {
       </div>
 
       {/* Bus Observation Scene */}
-      <div className="border-t border-neutral-200 pt-12 pb-4">
-        <p
-          className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-8"
-          style={{ fontFamily: 'var(--font-mono), monospace' }}
-        >
-          Click a thought to observe
-        </p>
+      <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
+        {!activeSection && (
+          <p
+            className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-8"
+            style={{ fontFamily: 'var(--font-mono), monospace' }}
+          >
+            Click a thought to observe
+          </p>
+        )}
 
-        <div className="relative w-full">
-          {/* Bus illustration */}
+        {/* Bus image - shrinks when content is open */}
+        <div
+          className="relative w-full transition-all duration-500 ease-in-out overflow-hidden"
+          style={{
+            maxHeight: activeSection ? '200px' : '2000px',
+            opacity: activeSection ? 0.4 : 1,
+          }}
+        >
           <Image
             src="/images/bus-observation.png"
             alt="Jinsoo observing passengers on a Korean bus"
@@ -151,7 +149,7 @@ export default function AboutPage() {
             priority
           />
 
-          {/* Cloud thought bubbles above each person */}
+          {/* Cloud thought bubbles */}
           {SECTIONS.map((section) => (
             <CloudBubble
               key={section.id}
@@ -165,30 +163,14 @@ export default function AboutPage() {
             />
           ))}
         </div>
-      </div>
 
-      {/* Expanded Content */}
-      <div ref={contentRef}>
+        {/* Content - replaces the bus image space */}
         {activeSection && (
           <div
-            className="mt-12 mb-8"
-            style={{ animation: 'lensReveal 0.5s ease-out forwards' }}
+            className="mt-4"
+            style={{ animation: 'lensReveal 0.4s ease-out forwards' }}
           >
             <div className="relative mx-auto max-w-[640px]">
-              {/* Magnifying glass icon + connecting line */}
-              <div className="flex justify-center mb-6">
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-full border-[1.5px] border-[#111] flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
-                      <circle cx="11" cy="11" r="7" />
-                      <path d="M16 16 L21 21" />
-                    </svg>
-                  </div>
-                  <div className="absolute top-full left-1/2 w-[1px] h-5 bg-[#ddd] -translate-x-1/2" />
-                </div>
-              </div>
-
-              {/* Content card */}
               <div className="relative border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10">
                 {/* Back button */}
                 <button
@@ -202,6 +184,7 @@ export default function AboutPage() {
                   </svg>
                   Back
                 </button>
+
                 <p
                   className="text-[10px] tracking-[0.2em] uppercase text-[#999] mb-2"
                   style={{ fontFamily: 'var(--font-mono), monospace' }}
