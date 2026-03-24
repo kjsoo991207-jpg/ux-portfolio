@@ -44,7 +44,7 @@ export default function Hero3D() {
             marginTop: '8px',
           }}
         >
-          Behavior first. Pixels second.
+          I don&apos;t ask users what they want. I watch what they do.
         </p>
       </div>
     </section>
