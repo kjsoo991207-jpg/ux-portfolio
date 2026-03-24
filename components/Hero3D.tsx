@@ -12,6 +12,7 @@ export default function Hero3D() {
       <div className="flex flex-col items-center select-none">
         <AutoPlayVideo
           src="/images/hero-name.mp4"
+          mobileSpeed={1.8}
           style={{
             width: 'clamp(700px, 95vw, 1400px)',
             height: 'auto',

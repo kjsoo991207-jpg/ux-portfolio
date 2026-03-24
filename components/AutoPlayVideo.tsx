@@ -2,12 +2,17 @@
 
 import { useEffect, useRef } from 'react'
 
-export default function AutoPlayVideo({ src, className, style }: { src: string; className?: string; style?: React.CSSProperties }) {
+export default function AutoPlayVideo({ src, className, style, mobileSpeed }: { src: string; className?: string; style?: React.CSSProperties; mobileSpeed?: number }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+
+    // Speed up on mobile if specified
+    if (mobileSpeed && window.innerWidth < 640) {
+      video.playbackRate = mobileSpeed
+    }
 
     // Force play on load
     const playVideo = () => {
