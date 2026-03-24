@@ -212,7 +212,7 @@ export const projects: Project[] = [
     thumbPath: '/images/aika/aika-home.png',
     heroPath: '/images/aika/aika-home.png',
     role: 'Product Designer (End-to-end)',
-    timeline: '6 Weeks',
+    timeline: '10 Weeks',
     team: 'Solo Project',
     tools: 'Figma, Miro, User Interviews',
     summary:
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     learned: '',
     caseStudy: {
       subtitle: 'The Modern Healthspan Companion',
-      duration: '6 Weeks',
+      duration: '10 Weeks',
       role: 'Product Designer (End-to-end)',
       originStory: [
         'My grandfather passed away at 82. But for nearly a decade before that, he wasn\'t really living. Surgeries, procedures, all aimed at buying more time. I kept asking the same question: what if the right tools had existed earlier, before the decline, when small choices still had decades of compounding ahead?',
