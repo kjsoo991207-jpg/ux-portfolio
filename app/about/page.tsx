@@ -56,7 +56,7 @@ export default function AboutPage() {
         </div>
         <div className="max-w-[560px]">
           <p className="text-[15px] text-[#555] leading-[1.7]">
-            I find inspiration in the world around me. I grew up playing <strong className="text-[#111]">baseball</strong> and still love every sport I can get my hands on. When I&rsquo;m not designing, you can find me at the gym, exploring LA, or trying to convince people that <strong className="text-[#111]">Korean food</strong> is the best food on earth. I moved from Seoul to California for college, and the culture shift taught me that great design, like great communication, starts with <strong className="text-[#111]">listening</strong>.
+            I love <strong className="text-[#111]">watching people</strong>. On the subway, on the bus, in a coffee shop. How someone reaches for their phone when they&rsquo;re bored. How a stranger&rsquo;s face shifts when they read a text. The micro-expressions people make when they&rsquo;re confused by a door handle. I&rsquo;ve always been this way. It&rsquo;s not something I learned in school. It&rsquo;s just how I see the world. That habit of <strong className="text-[#111]">observing behavior, emotion, and expression</strong> in everyday life is what makes me want to design products that truly fit people.
           </p>
         </div>
       </div>
