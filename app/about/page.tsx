@@ -1,6 +1,43 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 export default function AboutPage() {
+  const portraitRef = useRef<HTMLDivElement>(null)
+  const [pupilOffset, setPupilOffset] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    function handleMouseMove(e: MouseEvent) {
+      if (!portraitRef.current) return
+      const rect = portraitRef.current.getBoundingClientRect()
+      const centerX = rect.left + rect.width / 2
+      const centerY = rect.top + rect.height * 0.33
+
+      const dx = e.clientX - centerX
+      const dy = e.clientY - centerY
+      const angle = Math.atan2(dy, dx)
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      const move = Math.min(dist / 80, 1) * 4
+
+      setPupilOffset({
+        x: Math.cos(angle) * move,
+        y: Math.sin(angle) * move,
+      })
+    }
+
+    function handleMouseLeave() {
+      setPupilOffset({ x: 0, y: 0 })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseleave', handleMouseLeave)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [])
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
       {/* Header */}
@@ -15,7 +52,7 @@ export default function AboutPage() {
         </div>
 
         <div className="flex-shrink-0">
-          <div className="relative h-72 w-56 rounded-lg bg-neutral-100 overflow-hidden sm:h-96 sm:w-72">
+          <div ref={portraitRef} className="relative h-72 w-56 rounded-lg bg-neutral-100 overflow-hidden sm:h-96 sm:w-72">
             <Image
               src="/images/jinsoo-profile.png"
               alt="Jinsoo Kim"
@@ -23,26 +60,28 @@ export default function AboutPage() {
               className="object-cover"
               unoptimized
             />
-            {/* Left eye dot */}
+            {/* Left eye pupil */}
             <div
-              className="absolute rounded-full pointer-events-none"
+              className="absolute rounded-full pointer-events-none transition-transform duration-75"
               style={{
                 width: 10,
                 height: 10,
-                backgroundColor: 'red',
-                top: '33%',
-                left: '37%',
+                backgroundColor: '#111',
+                top: 'calc(33% + 10px)',
+                left: 'calc(37% + 20px)',
+                transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
-            {/* Right eye dot */}
+            {/* Right eye pupil */}
             <div
-              className="absolute rounded-full pointer-events-none"
+              className="absolute rounded-full pointer-events-none transition-transform duration-75"
               style={{
                 width: 10,
                 height: 10,
-                backgroundColor: 'red',
+                backgroundColor: '#111',
                 top: '32.5%',
                 left: '53%',
+                transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
           </div>
