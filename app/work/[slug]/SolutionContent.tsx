@@ -912,8 +912,11 @@ export function SolutionContent({
               <div className="space-y-5 flex flex-col justify-center">
                 {features?.map((f, i) => (
                   <div key={i}>
-                    <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
-                    <p className="text-[13px] text-[#767676] leading-[1.7] mt-1">{f.desc}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
+                    </div>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">{f.desc}</p>
                   </div>
                 ))}
               </div>
