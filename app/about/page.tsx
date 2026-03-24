@@ -6,11 +6,14 @@ export default function AboutPage() {
       {/* Header */}
       <div className="flex flex-col gap-12 lg:flex-row lg:gap-16 mb-20">
         <div className="flex-1">
-          <h1 className="text-4xl font-bold tracking-tight text-[#111] mb-4">
+          <h1 className="text-4xl font-bold tracking-tight text-[#111] mb-6">
             Jinsoo Kim
           </h1>
-          <p className="text-[15px] text-[#767676] leading-relaxed max-w-[500px]">
-            I don&apos;t ask users what they want. I watch what they do. UCLA Cognitive Science student applying behavioral observation to product design.
+          <p className="font-serif text-[22px] sm:text-[26px] italic text-[#333] leading-snug max-w-[500px] mb-6">
+            &ldquo;I don&apos;t ask users what they want. I watch what they do.&rdquo;
+          </p>
+          <p className="text-[14px] text-[#767676] leading-relaxed max-w-[500px]">
+            Product Designer &middot; UCLA Cognitive Science &middot; Behavioral Observation
           </p>
         </div>
 
