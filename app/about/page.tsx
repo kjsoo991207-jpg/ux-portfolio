@@ -83,10 +83,10 @@ function CloudBubble({ label, isActive, onClick, style, dotAngle = 180 }: {
       {/* Trail dots - pointing toward Jinsoo's head at specified angle */}
       {(() => {
         const rad = (dotAngle * Math.PI) / 180
-        const d1x = Math.cos(rad) * 18 // first dot distance
-        const d1y = Math.sin(rad) * 18
-        const d2x = Math.cos(rad) * 32 // second dot distance
-        const d2y = Math.sin(rad) * 32
+        const d1x = Math.cos(rad) * 55 // first dot distance from center
+        const d1y = Math.sin(rad) * 55
+        const d2x = Math.cos(rad) * 72 // second dot further out
+        const d2y = Math.sin(rad) * 72
         return (
           <>
             <div
