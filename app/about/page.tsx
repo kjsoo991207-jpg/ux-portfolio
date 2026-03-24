@@ -206,11 +206,15 @@ export default function AboutPage() {
         {/* Content - replaces the bus image space */}
         {activeSection && (
           <div
-            className="mt-4"
+            className="mt-4 cursor-pointer"
             style={{ animation: 'lensReveal 0.4s ease-out forwards' }}
+            onClick={() => setActiveSection(null)}
           >
             <div className="relative mx-auto max-w-[640px]">
-              <div className="relative border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10">
+              <div
+                className="relative border border-neutral-200 rounded-2xl bg-[#fafafa] p-8 sm:p-10 cursor-default"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {/* Back button */}
                 <button
                   onClick={() => setActiveSection(null)}
