@@ -52,7 +52,7 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
       <div style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
         <svg
           viewBox="0 0 180 100"
-          className="w-[120px] sm:w-[150px] h-auto transition-all duration-300"
+          className="w-[80px] sm:w-[150px] h-auto transition-all duration-300"
         >
           <path
             d="M30,70 C10,70 5,55 15,45 C5,35 15,15 35,20 C40,5 65,0 80,10 C95,0 120,0 135,15 C155,10 175,25 165,45 C175,55 170,70 150,70 Z"
@@ -82,8 +82,8 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
         className="flex flex-col items-center gap-[5px] mt-[3px]"
         style={{ marginLeft: dotsOffset }}
       >
-        <div className={`w-[16px] h-[16px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
-        <div className={`w-[10px] h-[10px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
+        <div className={`w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
+        <div className={`w-[7px] h-[7px] sm:w-[10px] sm:h-[10px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
       </div>
     </button>
   )
