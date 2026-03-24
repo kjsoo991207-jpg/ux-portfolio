@@ -550,7 +550,7 @@ export default async function ProjectPage({
                   </div>
                 </div>
                 {/* Page 2 - C solution (front, overlapping bottom-right) */}
-                <div className="absolute z-[2] w-[72%]" style={{ bottom: '0', right: '-30px' }}>
+                <div className="absolute z-[2] w-[72%]" style={{ bottom: '0', right: 'clamp(-10px, -2vw, -30px)' }}>
                   <div className="relative pt-3">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[20px] bg-[#D4A853]/40 rounded-sm -rotate-[1deg] z-10" />
                     <div className="rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.12)]">
@@ -580,7 +580,7 @@ export default async function ProjectPage({
                   </div>
                 </div>
                 {/* Page 2 - C solution (front, overlapping bottom-right) */}
-                <div className="absolute z-[2] w-[72%]" style={{ bottom: '0', right: '-30px' }}>
+                <div className="absolute z-[2] w-[72%]" style={{ bottom: '0', right: 'clamp(-10px, -2vw, -30px)' }}>
                   <div className="relative pt-3">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[20px] bg-[#D4A853]/40 rounded-sm rotate-[1deg] z-10" />
                     <div className="rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.12)]">
