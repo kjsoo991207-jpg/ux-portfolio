@@ -64,8 +64,8 @@ export default function AboutPage() {
             <div
               className="absolute rounded-full pointer-events-none"
               style={{
-                width: 8,
-                height: 8,
+                width: 16,
+                height: 16,
                 backgroundColor: '#222',
                 top: '30%',
                 left: '38%',
@@ -77,8 +77,8 @@ export default function AboutPage() {
             <div
               className="absolute rounded-full pointer-events-none"
               style={{
-                width: 8,
-                height: 8,
+                width: 16,
+                height: 16,
                 backgroundColor: '#222',
                 top: '30%',
                 left: '56%',
