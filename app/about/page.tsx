@@ -11,7 +11,7 @@ const SECTIONS = [
     label: 'Background',
     // Jinsoo's head center: ~20%, ~28%. Fan out at ~30deg upward-right
     bubble: { left: '34%', top: '2%' },
-    dotAngle: 210, // pointing down-left toward Jinsoo
+    dotAngle: 248, // pointing down-left toward Jinsoo's ear
     zoom: { x: 45, y: 45 },
     person: { left: '33%', top: '28%', width: '24%', height: '70%' },
   },
@@ -20,7 +20,7 @@ const SECTIONS = [
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     bubble: { left: '37%', top: '16%' },
-    dotAngle: 190, // pointing left toward Jinsoo
+    dotAngle: 232, // pointing down-left toward Jinsoo's ear
     zoom: { x: 65, y: 50 },
     person: { left: '55%', top: '30%', width: '20%', height: '68%' },
   },
@@ -29,7 +29,7 @@ const SECTIONS = [
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     bubble: { left: '38%', top: '33%' },
-    dotAngle: 170, // pointing up-left toward Jinsoo
+    dotAngle: 186, // pointing left slightly down toward Jinsoo's ear
     zoom: { x: 85, y: 45 },
     person: { left: '76%', top: '25%', width: '20%', height: '73%' },
   },
