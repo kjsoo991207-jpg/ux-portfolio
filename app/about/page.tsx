@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 type SectionId = 'background' | 'philosophy' | 'love' | null
 
@@ -9,30 +9,74 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Businessman with phone - center-left area (percentage of image)
+    // Businessman with phone - percentage center point of the person
+    center: { x: 47, y: 50 },
     hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design Philosophy',
-    // Woman reading - center-right area
+    // Woman reading
+    center: { x: 67, y: 50 },
     hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
     label: 'Things I Love',
-    // Elderly man - far right
+    // Elderly man
+    center: { x: 86, y: 50 },
     hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
 
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<SectionId>(null)
+  const [scales, setScales] = useState<Record<string, number>>({
+    background: 1,
+    philosophy: 1,
+    love: 1,
+  })
+  const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (id: SectionId) => {
     setActiveSection(prev => prev === id ? null : id)
   }
+
+  // Proximity-based scaling
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = containerRef.current?.getBoundingClientRect()
+    if (!rect) return
+
+    const mouseX = ((e.clientX - rect.left) / rect.width) * 100
+    const mouseY = ((e.clientY - rect.top) / rect.height) * 100
+
+    const newScales: Record<string, number> = {}
+
+    SECTIONS.forEach((section) => {
+      const dx = mouseX - section.center.x
+      const dy = mouseY - section.center.y
+      const distance = Math.sqrt(dx * dx + dy * dy)
+
+      // Max effect within 20% distance, no effect beyond 40%
+      const maxScale = 1.15
+      const minDistance = 5
+      const maxDistance = 35
+
+      if (distance < maxDistance) {
+        const t = Math.max(0, 1 - (distance - minDistance) / (maxDistance - minDistance))
+        newScales[section.id] = 1 + (maxScale - 1) * t * t // ease-out curve
+      } else {
+        newScales[section.id] = 1
+      }
+    })
+
+    setScales(newScales)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    setScales({ background: 1, philosophy: 1, love: 1 })
+  }, [])
 
   useEffect(() => {
     if (activeSection && contentRef.current) {
@@ -80,7 +124,12 @@ export default function AboutPage() {
           Click a passenger to observe
         </p>
 
-        <div className="relative w-full">
+        <div
+          ref={containerRef}
+          className="relative w-full cursor-crosshair"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
           {/* Bus illustration */}
           <Image
             src="/images/bus-observation.png"
@@ -92,52 +141,64 @@ export default function AboutPage() {
             priority
           />
 
-          {/* Clickable hotspots over each person */}
-          {SECTIONS.map((section) => (
-            <button
-              key={section.id}
-              onClick={() => handleClick(section.id)}
-              className="absolute group"
-              style={{
-                left: section.hotspot.left,
-                top: section.hotspot.top,
-                width: section.hotspot.width,
-                height: section.hotspot.height,
-              }}
-              aria-label={`Observe: ${section.label}`}
-            >
-              {/* Hover overlay - magnifying glass circle */}
-              <div className={`
-                absolute inset-0 flex items-center justify-center rounded-full
-                transition-all duration-300
-                ${activeSection === section.id
-                  ? 'bg-black/5 ring-2 ring-[#111]/20'
-                  : 'bg-transparent group-hover:bg-black/5 group-hover:ring-2 group-hover:ring-[#111]/10'
-                }
-              `}>
-                {activeSection !== section.id && (
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
-                      <circle cx="11" cy="11" r="7" />
-                      <path d="M16 16 L21 21" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              {/* Label */}
-              <span
-                className={`
-                  absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap
-                  text-[10px] tracking-[0.1em] uppercase transition-opacity duration-300
-                  ${activeSection === section.id ? 'opacity-100 text-[#111]' : 'opacity-0 group-hover:opacity-100 text-[#777]'}
-                `}
-                style={{ fontFamily: 'var(--font-mono), monospace' }}
+          {/* Clickable hotspots with proximity scaling */}
+          {SECTIONS.map((section) => {
+            const scale = scales[section.id] || 1
+            return (
+              <button
+                key={section.id}
+                onClick={() => handleClick(section.id)}
+                className="absolute group"
+                style={{
+                  left: section.hotspot.left,
+                  top: section.hotspot.top,
+                  width: section.hotspot.width,
+                  height: section.hotspot.height,
+                  transform: `scale(${scale})`,
+                  transformOrigin: 'center bottom',
+                  transition: 'transform 0.15s ease-out',
+                  zIndex: scale > 1.01 ? 10 : 1,
+                }}
+                aria-label={`Observe: ${section.label}`}
               >
-                {section.label}
-              </span>
-            </button>
-          ))}
+                {/* Hover overlay */}
+                <div className={`
+                  absolute inset-0 flex items-center justify-center rounded-xl
+                  transition-all duration-300
+                  ${activeSection === section.id
+                    ? 'bg-black/5 ring-2 ring-[#111]/20'
+                    : 'bg-transparent group-hover:bg-black/[0.03] group-hover:ring-1 group-hover:ring-[#111]/10'
+                  }
+                `}>
+                  {activeSection !== section.id && (
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M16 16 L21 21" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+
+                {/* Label */}
+                <span
+                  className={`
+                    absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap
+                    text-[10px] tracking-[0.1em] uppercase transition-all duration-300
+                    ${activeSection === section.id
+                      ? 'opacity-100 text-[#111]'
+                      : scale > 1.03
+                        ? 'opacity-100 text-[#777]'
+                        : 'opacity-0 group-hover:opacity-100 text-[#777]'
+                    }
+                  `}
+                  style={{ fontFamily: 'var(--font-mono), monospace' }}
+                >
+                  {section.label}
+                </span>
+              </button>
+            )
+          })}
         </div>
       </div>
 
