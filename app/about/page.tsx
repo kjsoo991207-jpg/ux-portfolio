@@ -133,7 +133,7 @@ export default function AboutPage() {
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
           <p className="font-serif text-[22px] sm:text-[28px] text-[#333] leading-snug mb-10">
-            Pick someone. I&apos;ll tell you what I see.
+            See what I see.
           </p>
         )}
 
