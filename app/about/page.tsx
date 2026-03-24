@@ -129,6 +129,13 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Bridge text */}
+      <div className="py-16 text-center">
+        <p className="font-serif text-[20px] sm:text-[24px] text-[#555] leading-relaxed max-w-[480px] mx-auto">
+          On the bus, on the subway, in a coffee shop. Everywhere I go, I&apos;m watching how people behave.
+        </p>
+      </div>
+
       {/* Bus Observation Scene */}
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
