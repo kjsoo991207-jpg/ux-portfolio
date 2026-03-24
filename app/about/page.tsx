@@ -9,62 +9,77 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Thought bubble position above businessman's head
-    bubble: { left: '38%', top: '2%' },
+    bubble: { left: '33%', top: '-8%' },
     hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
-    label: 'Design Philosophy',
-    // Above woman's head
-    bubble: { left: '58%', top: '4%' },
+    label: 'Design\nPhilosophy',
+    labelShort: 'Design Philosophy',
+    bubble: { left: '55%', top: '-10%' },
     hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
-    label: 'Things I Love',
-    // Above elderly man's head
-    bubble: { left: '78%', top: '0%' },
+    label: 'Things\nI Love',
+    labelShort: 'Things I Love',
+    bubble: { left: '76%', top: '-8%' },
     hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
 
-function ThoughtBubble({ label, isActive, onClick, style }: {
+function CloudBubble({ label, isActive, onClick, style }: {
   label: string
   isActive: boolean
   onClick: () => void
   style: React.CSSProperties
 }) {
+  const lines = label.split('\n')
+
   return (
     <button
       onClick={onClick}
       className="absolute group"
-      style={{ ...style, zIndex: 20 }}
+      style={{ ...style, zIndex: 20, transform: 'translateX(-50%)' }}
+      aria-label={label.replace('\n', ' ')}
     >
-      <div className={`
-        relative flex items-center gap-1.5 px-3 py-1.5 rounded-full
-        border transition-all duration-300 cursor-pointer
-        ${isActive
-          ? 'bg-[#111] border-[#111] text-white shadow-lg'
-          : 'bg-white/90 border-neutral-300 text-[#555] hover:border-[#111] hover:text-[#111] hover:shadow-md'
-        }
-      `}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-          <circle cx="11" cy="11" r="7" />
-          <path d="M16 16 L21 21" />
-        </svg>
-        <span
-          className="text-[10px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap"
-          style={{ fontFamily: 'var(--font-mono), monospace' }}
+      <div className="relative">
+        {/* Cloud shape */}
+        <svg
+          viewBox="0 0 180 100"
+          className="w-[120px] sm:w-[150px] h-auto transition-all duration-300"
+          style={{ filter: isActive ? 'none' : undefined }}
         >
-          {label}
-        </span>
-      </div>
-      {/* Thought bubble tail - three dots going down */}
-      <div className="flex flex-col items-center mt-1 gap-[3px]">
-        <div className={`w-[6px] h-[6px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
-        <div className={`w-[4px] h-[4px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
-        <div className={`w-[3px] h-[3px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
+          {/* Cloud path */}
+          <path
+            d="M30,70 C10,70 5,55 15,45 C5,35 15,15 35,20 C40,5 65,0 80,10 C95,0 120,0 135,15 C155,10 175,25 165,45 C175,55 170,70 150,70 Z"
+            fill={isActive ? '#111' : 'white'}
+            stroke={isActive ? '#111' : '#999'}
+            strokeWidth={isActive ? 0 : 1.5}
+            className="transition-all duration-300 group-hover:stroke-[#111]"
+          />
+          {/* Label text */}
+          <text
+            x="90"
+            y={lines.length > 1 ? '36' : '44'}
+            textAnchor="middle"
+            fill={isActive ? 'white' : '#555'}
+            fontSize="13"
+            fontFamily="var(--font-mono), monospace"
+            letterSpacing="0.05em"
+            className="transition-all duration-300 group-hover:fill-[#111] uppercase"
+          >
+            {lines.map((line, i) => (
+              <tspan key={i} x="90" dy={i === 0 ? 0 : 16}>{line}</tspan>
+            ))}
+          </text>
+        </svg>
+
+        {/* Thought trail dots */}
+        <div className="flex flex-col items-center gap-[3px] mt-[2px]">
+          <div className={`w-[8px] h-[8px] rounded-full border transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+          <div className={`w-[5px] h-[5px] rounded-full border transition-all duration-300 ${isActive ? 'bg-[#111] border-[#111]' : 'bg-white border-[#999] group-hover:border-[#111]'}`} />
+        </div>
       </div>
     </button>
   )
@@ -136,9 +151,9 @@ export default function AboutPage() {
             priority
           />
 
-          {/* Thought bubbles above each person */}
+          {/* Cloud thought bubbles above each person */}
           {SECTIONS.map((section) => (
-            <ThoughtBubble
+            <CloudBubble
               key={section.id}
               label={section.label}
               isActive={activeSection === section.id}
@@ -182,7 +197,7 @@ export default function AboutPage() {
                   Observation
                 </p>
                 <h2 className="text-[22px] font-semibold text-[#111] mb-6">
-                  {SECTIONS.find(s => s.id === activeSection)?.label}
+                  {SECTIONS.find(s => s.id === activeSection)?.labelShort || SECTIONS.find(s => s.id === activeSection)?.label}
                 </h2>
 
                 {activeSection === 'background' && (
