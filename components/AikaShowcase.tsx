@@ -18,7 +18,7 @@ export default function AikaShowcase({ galleryImages, name }: AikaShowcaseProps)
     <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 items-center py-10 md:py-16">
       {/* ── Left: text ── */}
       <div className="flex flex-col items-start">
-        <p className="font-mono text-[10px] tracking-[0.3em] text-neutral-400 uppercase mb-4">
+        <p className="font-mono text-[10px] tracking-[0.3em] text-neutral-600 uppercase mb-4">
           Aika
         </p>
         <h2 className="font-serif text-[36px] font-bold text-[#111] leading-[1.2] tracking-tight">
