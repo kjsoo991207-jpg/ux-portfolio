@@ -1,4 +1,4 @@
-import InteractivePortrait from '@/components/InteractivePortrait'
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
@@ -15,15 +15,21 @@ export default function AboutPage() {
         </div>
 
         <div className="flex-shrink-0">
-          <InteractivePortrait />
+          <div className="relative h-72 w-56 rounded-lg bg-neutral-100 overflow-hidden sm:h-96 sm:w-72">
+            <Image
+              src="/images/jinsoo-profile.png"
+              alt="Jinsoo Kim"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
         </div>
       </div>
 
       {/* Background */}
       <div className="border-t border-neutral-200 py-12">
-        <div className="flex justify-between items-start mb-6">
-          <h2 className="text-[18px] font-semibold text-[#111]">Background</h2>
-        </div>
+        <h2 className="text-[18px] font-semibold text-[#111] mb-6">Background</h2>
         <div className="max-w-[560px] space-y-4">
           <p className="text-[15px] text-[#555] leading-[1.7]">
             Before I ever heard the term &ldquo;user research,&rdquo; I was already doing it. As a <strong className="text-[#111]">baseball analytics recorder</strong>, I tracked behavioral patterns of 20+ athletes, noting what made some improve while others stalled. In a <strong className="text-[#111]">nursing home</strong>, I learned to communicate with residents who couldn&rsquo;t speak, reading their habits and emotional cues to understand what they needed.
@@ -36,9 +42,7 @@ export default function AboutPage() {
 
       {/* Design Philosophy */}
       <div className="border-t border-neutral-200 py-12">
-        <div className="flex justify-between items-start mb-6">
-          <h2 className="text-[18px] font-semibold text-[#111]">Design Philosophy</h2>
-        </div>
+        <h2 className="text-[18px] font-semibold text-[#111] mb-6">Design Philosophy</h2>
         <div className="max-w-[560px] space-y-4">
           <p className="text-[15px] text-[#555] leading-[1.7]">
             I believe the best products are the ones that <strong className="text-[#111]">feel invisible</strong>. If a user has to think about how to use something, the design has already failed. My background in cognitive science shaped this: I prioritize <strong className="text-[#111]">reducing cognitive load</strong> and designing for how people actually process information.
@@ -51,9 +55,7 @@ export default function AboutPage() {
 
       {/* Things I Love */}
       <div className="border-t border-neutral-200 py-12">
-        <div className="flex justify-between items-start mb-6">
-          <h2 className="text-[18px] font-semibold text-[#111]">Things I Love</h2>
-        </div>
+        <h2 className="text-[18px] font-semibold text-[#111] mb-6">Things I Love</h2>
         <div className="max-w-[560px]">
           <p className="text-[15px] text-[#555] leading-[1.7]">
             I love <strong className="text-[#111]">watching people</strong>. On the subway, on the bus, in a coffee shop. How someone reaches for their phone when they&rsquo;re bored. How a stranger&rsquo;s face shifts when they read a text. The micro-expressions people make when they&rsquo;re confused by a door handle. I&rsquo;ve always been this way. It&rsquo;s not something I learned in school. It&rsquo;s just how I see the world. That habit of <strong className="text-[#111]">observing behavior, emotion, and expression</strong> in everyday life is what makes me want to design products that truly fit people.
