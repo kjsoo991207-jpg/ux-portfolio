@@ -64,11 +64,11 @@ export default function AboutPage() {
             <div
               className="absolute rounded-full pointer-events-none transition-transform duration-75"
               style={{
-                width: 10,
-                height: 10,
+                width: 7,
+                height: 7,
                 backgroundColor: '#111',
-                top: 'calc(33% + 10px)',
-                left: 'calc(37% + 20px)',
+                top: '30%',
+                left: '40%',
                 transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
@@ -76,11 +76,11 @@ export default function AboutPage() {
             <div
               className="absolute rounded-full pointer-events-none transition-transform duration-75"
               style={{
-                width: 10,
-                height: 10,
+                width: 7,
+                height: 7,
                 backgroundColor: '#111',
-                top: '32.5%',
-                left: '53%',
+                top: '29.5%',
+                left: '54%',
                 transform: `translate(${pupilOffset.x}px, ${pupilOffset.y}px)`,
               }}
             />
