@@ -9,21 +9,21 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    bubble: { left: '33%', top: '-8%' },
+    bubble: { left: '43%', top: '8%' },
     hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    bubble: { left: '55%', top: '-10%' },
+    bubble: { left: '63%', top: '6%' },
     hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    bubble: { left: '76%', top: '-8%' },
+    bubble: { left: '84%', top: '8%' },
     hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
