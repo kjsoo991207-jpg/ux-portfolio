@@ -112,7 +112,7 @@ const colorParagraphs: Record<string, { text: string; isKey: boolean }[][]> = {
   '03': [
     [
       { text: 'People don\u2019t just have different habits. They have different relationships with health itself.', isKey: false },
-      { text: 'The same recommendation meant something completely different depending on who was receiving it. If the delivery didn\u2019t match the person\u2019s beliefs, even good content yielded zero behavioral uptake.', isKey: true },
+      { text: 'The same recommendation meant something completely different depending on who was receiving it. If the delivery didn\u2019t match the person\u2019s beliefs, even good content yielded zero behavioral uptake.', isKey: false },
     ],
     [
       { text: 'I introduced three selectable philosophy modes: Traditional, Standard, and Biohacker.', isKey: true },
