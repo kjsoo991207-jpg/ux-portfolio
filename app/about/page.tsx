@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type SectionId = 'background' | 'philosophy' | 'love' | null
 
@@ -9,74 +9,74 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Businessman with phone - percentage center point of the person
-    center: { x: 47, y: 50 },
+    // Thought bubble position above businessman's head
+    bubble: { left: '38%', top: '2%' },
     hotspot: { left: '36%', top: '10%', width: '22%', height: '80%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design Philosophy',
-    // Woman reading
-    center: { x: 67, y: 50 },
+    // Above woman's head
+    bubble: { left: '58%', top: '4%' },
     hotspot: { left: '58%', top: '12%', width: '18%', height: '78%' },
   },
   {
     id: 'love' as const,
     label: 'Things I Love',
-    // Elderly man
-    center: { x: 86, y: 50 },
+    // Above elderly man's head
+    bubble: { left: '78%', top: '0%' },
     hotspot: { left: '76%', top: '10%', width: '20%', height: '80%' },
   },
 ]
 
+function ThoughtBubble({ label, isActive, onClick, style }: {
+  label: string
+  isActive: boolean
+  onClick: () => void
+  style: React.CSSProperties
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="absolute group"
+      style={{ ...style, zIndex: 20 }}
+    >
+      <div className={`
+        relative flex items-center gap-1.5 px-3 py-1.5 rounded-full
+        border transition-all duration-300 cursor-pointer
+        ${isActive
+          ? 'bg-[#111] border-[#111] text-white shadow-lg'
+          : 'bg-white/90 border-neutral-300 text-[#555] hover:border-[#111] hover:text-[#111] hover:shadow-md'
+        }
+      `}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M16 16 L21 21" />
+        </svg>
+        <span
+          className="text-[10px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap"
+          style={{ fontFamily: 'var(--font-mono), monospace' }}
+        >
+          {label}
+        </span>
+      </div>
+      {/* Thought bubble tail - three dots going down */}
+      <div className="flex flex-col items-center mt-1 gap-[3px]">
+        <div className={`w-[6px] h-[6px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
+        <div className={`w-[4px] h-[4px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
+        <div className={`w-[3px] h-[3px] rounded-full transition-colors duration-300 ${isActive ? 'bg-[#111]' : 'bg-neutral-300'}`} />
+      </div>
+    </button>
+  )
+}
+
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<SectionId>(null)
-  const [scales, setScales] = useState<Record<string, number>>({
-    background: 1,
-    philosophy: 1,
-    love: 1,
-  })
-  const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (id: SectionId) => {
     setActiveSection(prev => prev === id ? null : id)
   }
-
-  // Proximity-based scaling
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = containerRef.current?.getBoundingClientRect()
-    if (!rect) return
-
-    const mouseX = ((e.clientX - rect.left) / rect.width) * 100
-    const mouseY = ((e.clientY - rect.top) / rect.height) * 100
-
-    const newScales: Record<string, number> = {}
-
-    SECTIONS.forEach((section) => {
-      const dx = mouseX - section.center.x
-      const dy = mouseY - section.center.y
-      const distance = Math.sqrt(dx * dx + dy * dy)
-
-      // Max effect within 20% distance, no effect beyond 40%
-      const maxScale = 1.15
-      const minDistance = 5
-      const maxDistance = 35
-
-      if (distance < maxDistance) {
-        const t = Math.max(0, 1 - (distance - minDistance) / (maxDistance - minDistance))
-        newScales[section.id] = 1 + (maxScale - 1) * t * t // ease-out curve
-      } else {
-        newScales[section.id] = 1
-      }
-    })
-
-    setScales(newScales)
-  }, [])
-
-  const handleMouseLeave = useCallback(() => {
-    setScales({ background: 1, philosophy: 1, love: 1 })
-  }, [])
 
   useEffect(() => {
     if (activeSection && contentRef.current) {
@@ -121,15 +121,10 @@ export default function AboutPage() {
           className="text-[11px] tracking-[0.2em] uppercase text-[#999] mb-8"
           style={{ fontFamily: 'var(--font-mono), monospace' }}
         >
-          Click a passenger to observe
+          Click a thought to observe
         </p>
 
-        <div
-          ref={containerRef}
-          className="relative w-full cursor-crosshair"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className="relative w-full">
           {/* Bus illustration */}
           <Image
             src="/images/bus-observation.png"
@@ -141,64 +136,19 @@ export default function AboutPage() {
             priority
           />
 
-          {/* Clickable hotspots with proximity scaling */}
-          {SECTIONS.map((section) => {
-            const scale = scales[section.id] || 1
-            return (
-              <button
-                key={section.id}
-                onClick={() => handleClick(section.id)}
-                className="absolute group"
-                style={{
-                  left: section.hotspot.left,
-                  top: section.hotspot.top,
-                  width: section.hotspot.width,
-                  height: section.hotspot.height,
-                  transform: `scale(${scale})`,
-                  transformOrigin: 'center bottom',
-                  transition: 'transform 0.15s ease-out',
-                  zIndex: scale > 1.01 ? 10 : 1,
-                }}
-                aria-label={`Observe: ${section.label}`}
-              >
-                {/* Hover overlay */}
-                <div className={`
-                  absolute inset-0 flex items-center justify-center rounded-xl
-                  transition-all duration-300
-                  ${activeSection === section.id
-                    ? 'bg-black/5 ring-2 ring-[#111]/20'
-                    : 'bg-transparent group-hover:bg-black/[0.03] group-hover:ring-1 group-hover:ring-[#111]/10'
-                  }
-                `}>
-                  {activeSection !== section.id && (
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.5" strokeLinecap="round">
-                        <circle cx="11" cy="11" r="7" />
-                        <path d="M16 16 L21 21" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-
-                {/* Label */}
-                <span
-                  className={`
-                    absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap
-                    text-[10px] tracking-[0.1em] uppercase transition-all duration-300
-                    ${activeSection === section.id
-                      ? 'opacity-100 text-[#111]'
-                      : scale > 1.03
-                        ? 'opacity-100 text-[#777]'
-                        : 'opacity-0 group-hover:opacity-100 text-[#777]'
-                    }
-                  `}
-                  style={{ fontFamily: 'var(--font-mono), monospace' }}
-                >
-                  {section.label}
-                </span>
-              </button>
-            )
-          })}
+          {/* Thought bubbles above each person */}
+          {SECTIONS.map((section) => (
+            <ThoughtBubble
+              key={section.id}
+              label={section.label}
+              isActive={activeSection === section.id}
+              onClick={() => handleClick(section.id)}
+              style={{
+                left: section.bubble.left,
+                top: section.bubble.top,
+              }}
+            />
+          ))}
         </div>
       </div>
 
