@@ -52,7 +52,7 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
       aria-label={label.replace('\n', ' ')}
     >
       {/* Cloud */}
-      <div style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
+      <div className="relative" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
         <svg
           viewBox="0 0 180 100"
           className="w-[80px] sm:w-[150px] h-auto transition-all duration-300"
@@ -80,13 +80,12 @@ function CloudBubble({ label, isActive, onClick, style, dotsOffset = '0px' }: {
           </text>
         </svg>
       </div>
-      {/* Trail dots - positioned to align with person's head */}
+      {/* Trail dots - horizontal, pointing left toward Jinsoo */}
       <div
-        className="flex flex-col items-center gap-[5px] mt-[3px]"
-        style={{ marginLeft: dotsOffset }}
+        className="absolute left-[-20px] sm:left-[-28px] top-1/2 -translate-y-1/2 flex flex-row-reverse items-center gap-[4px]"
       >
-        <div className={`w-[10px] h-[10px] sm:w-[16px] sm:h-[16px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
-        <div className={`w-[7px] h-[7px] sm:w-[10px] sm:h-[10px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
+        <div className={`w-[10px] h-[10px] sm:w-[14px] sm:h-[14px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
+        <div className={`w-[7px] h-[7px] sm:w-[9px] sm:h-[9px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111] border-[1.5px] border-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse group-hover:border-[#111]'}`} />
       </div>
     </button>
   )
