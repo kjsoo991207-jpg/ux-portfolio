@@ -11,8 +11,8 @@ const SECTIONS = [
     label: 'Background',
     bubble: { left: '43%', top: '8%' },
     dotsOffset: '15px',
-    // Zoom target: businessman center
     zoom: { x: 45, y: 45 },
+    person: { left: '33%', top: '28%', width: '24%', height: '70%' },
   },
   {
     id: 'philosophy' as const,
@@ -21,6 +21,7 @@ const SECTIONS = [
     bubble: { left: '63%', top: '6%' },
     dotsOffset: '8px',
     zoom: { x: 65, y: 50 },
+    person: { left: '55%', top: '30%', width: '20%', height: '68%' },
   },
   {
     id: 'love' as const,
@@ -29,6 +30,7 @@ const SECTIONS = [
     bubble: { left: '84%', top: '8%' },
     dotsOffset: '10px',
     zoom: { x: 85, y: 45 },
+    person: { left: '76%', top: '25%', width: '20%', height: '73%' },
   },
 ]
 
@@ -184,6 +186,23 @@ export default function AboutPage() {
                   left: section.bubble.left,
                   top: section.bubble.top,
                 }}
+              />
+            ))}
+
+            {/* Invisible clickable hotspots over each person */}
+            {SECTIONS.map((section) => (
+              <button
+                key={`person-${section.id}`}
+                onClick={() => handleClick(section.id)}
+                className="absolute cursor-pointer hover:bg-black/[0.03] transition-colors duration-200 rounded-lg"
+                style={{
+                  left: section.person.left,
+                  top: section.person.top,
+                  width: section.person.width,
+                  height: section.person.height,
+                  zIndex: 10,
+                }}
+                aria-label={`Observe: ${section.label.replace('\n', ' ')}`}
               />
             ))}
           </div>
