@@ -10,7 +10,7 @@ export default function AboutPage() {
             Jinsoo Kim
           </h1>
           <p className="text-[15px] text-[#767676] leading-relaxed max-w-[500px]">
-            UCLA Cognitive Science student with a B.S. in progress. I design products by observing how people actually behave, not how we assume they do.
+            I don&apos;t ask users what they want. I watch what they do. UCLA Cognitive Science student applying behavioral observation to product design.
           </p>
         </div>
 
