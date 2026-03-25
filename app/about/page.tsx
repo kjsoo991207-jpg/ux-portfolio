@@ -85,30 +85,25 @@ export default function AboutPage() {
           </p>
         )}
 
-        {/* Desk image - zooms into device when clicked */}
+        {/* Desk image - shrinks when section is active */}
         <div
           className="relative w-full overflow-hidden transition-all duration-700 ease-in-out"
           style={{
-            maxHeight: activeSection ? '220px' : '2000px',
             cursor: activeSection ? 'pointer' : 'default',
           }}
           onClick={() => { if (activeSection) setActiveSection(null) }}
         >
-          {/* Bottom fade when zoomed */}
-          {activeSection && (
-            <div
-              className="absolute bottom-0 left-0 right-0 h-20 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(to bottom, transparent, white)' }}
-            />
-          )}
           <div
             className="transition-all duration-700 ease-in-out"
             style={activeSection ? {
-              transform: `scale(${SECTIONS.find(s => s.id === activeSection)?.zoom.scale ?? 2.5}) translate(${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.x ?? 50)}%, ${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.y ?? 50)}%)`,
+              transform: 'scale(0.6)',
               transformOrigin: 'center top',
+              opacity: 0.4,
+              maxHeight: '200px',
             } : {
-              transform: 'scale(1) translate(0%, 0%)',
+              transform: 'scale(1)',
               transformOrigin: 'center top',
+              opacity: 1,
             }}
           >
             <Image
@@ -137,7 +132,7 @@ export default function AboutPage() {
                 aria-label={section.labelShort || section.label.replace('\n', ' ')}
               >
                 <span
-                  className={`text-[28px] sm:text-[36px] block transition-all duration-300 select-none ${
+                  className={`text-[40px] sm:text-[52px] block transition-all duration-300 select-none ${
                     activeSection === section.id
                       ? 'scale-125 drop-shadow-[0_0_10px_rgba(255,220,100,0.7)]'
                       : 'group-hover:scale-115 group-hover:drop-shadow-[0_0_8px_rgba(255,220,100,0.5)]'
