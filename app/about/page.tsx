@@ -211,6 +211,7 @@ export default function AboutPage() {
           </div>
         )}
         </div>
+      </div>
 
       {/* Education + Skills + Contact */}
       <div className="border-t border-neutral-200 py-12">
