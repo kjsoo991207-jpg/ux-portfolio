@@ -11,7 +11,7 @@ const SECTIONS = [
     label: 'Background',
     labelShort: 'Background',
     // Left macbook screen
-    screen: { left: '7%', top: '14%', width: '24%', height: '34%' },
+    screen: { left: '8%', top: '24%', width: '21%', height: '24%' },
     zoom: { x: 20, y: 40 },
     person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
@@ -20,7 +20,7 @@ const SECTIONS = [
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     // Center monitor screen
-    screen: { left: '32%', top: '6%', width: '32%', height: '44%' },
+    screen: { left: '36%', top: '20%', width: '24%', height: '28%' },
     zoom: { x: 50, y: 40 },
     person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
@@ -29,7 +29,7 @@ const SECTIONS = [
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     // Right iPad screen
-    screen: { left: '67%', top: '22%', width: '22%', height: '32%' },
+    screen: { left: '70%', top: '32%', width: '16%', height: '20%' },
     zoom: { x: 80, y: 40 },
     person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
