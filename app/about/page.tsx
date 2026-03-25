@@ -97,8 +97,6 @@ export default function AboutPage() {
             className="transition-all duration-1000 ease-in-out"
             style={{
               opacity: activeSection ? 0.15 : 1,
-              transform: activeSection ? 'scale(0.55) translateY(-30%)' : 'scale(1) translateY(0)',
-              transformOrigin: 'center top',
             }}
           >
             <Image
