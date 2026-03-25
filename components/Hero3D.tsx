@@ -28,7 +28,7 @@ export default function Hero3D() {
         <div className="w-[1px] h-10 bg-[#ccc] mt-[2px]" />
         <div>
           <p
-            className="text-[15px] sm:text-[17px] text-[#666] leading-snug"
+            className="text-[13px] sm:text-[14px] text-[#666] leading-snug"
             style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}
           >
             I design products that just feel right.
