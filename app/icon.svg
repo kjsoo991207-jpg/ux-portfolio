@@ -1,49 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- J vertical stem with serifs -->
-  <path d="
-    M12,4 L12,2 L22,2 L22,4
-    L19,4 L19,42
-    Q19,52 14,56 Q10,58 6,56
-    Q2,54 2,48
-    Q2,44 5,42
-    Q8,40 11,42
-    Q13,44 13,47
-    Q13,50 11,51
-    Q9,52 8,50
-    L8,50
-    M15,4 L15,42
-  " fill="#111"/>
-
-  <!-- J stem solid -->
-  <rect x="14" y="2" width="5" height="40" fill="#111"/>
-  <!-- J top serif left -->
-  <rect x="10" y="2" width="12" height="2.5" fill="#111"/>
-  <!-- J serif brackets -->
-  <polygon points="10,2 10,4.5 12,4.5 14,2" fill="#111"/>
-  <polygon points="22,2 22,4.5 20,4.5 18,2" fill="white"/>
-  <polygon points="19,2 19,4.5 22,4.5 22,2" fill="#111"/>
-
-  <!-- J bottom curl -->
-  <path d="M14,42 L14,48 Q14,55 9,57 Q4,58 2,54 Q0,50 3,46 Q5,44 8,44 Q10,44 11,46 Q12,48 10,50 Q8,51 7,50" fill="none" stroke="#111" stroke-width="2.8" stroke-linecap="round"/>
-
-  <!-- K vertical stem with serifs -->
-  <rect x="38" y="2" width="5" height="58" fill="#111"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- K vertical stem -->
+  <rect x="19" y="1" width="2.5" height="30" fill="#111"/>
   <!-- K top serif -->
-  <rect x="35" y="2" width="11" height="2.5" fill="#111"/>
+  <rect x="17.5" y="1" width="5.5" height="1.5" fill="#111"/>
   <!-- K bottom serif -->
-  <rect x="35" y="57.5" width="11" height="2.5" fill="#111"/>
-
-  <!-- K upper arm - goes from center to upper left, crossing over J -->
-  <polygon points="38,30 38,26 18,4 14,4 14,8 36,30" fill="#111"/>
-
-  <!-- K lower arm - goes from center to lower right -->
-  <polygon points="38,34 38,38 54,58 58,58 58,54 40,34" fill="#111"/>
+  <rect x="17.5" y="29.5" width="5.5" height="1.5" fill="#111"/>
+  <!-- K upper arm -->
+  <polygon points="19,15 19,13 9,1 7,1 7,3 18,15" fill="#111"/>
+  <!-- K lower arm -->
+  <polygon points="19,17 19,19 27,29.5 29.5,29.5 29.5,27.5 20,17" fill="#111"/>
   <!-- K lower arm serif -->
-  <polygon points="54,58 58,58 60,60 56,62 52,60" fill="#111"/>
+  <rect x="27" y="29.5" width="4" height="1.5" fill="#111"/>
 
-  <!-- Weave: J stem passes OVER K's upper arm -->
-  <!-- White mask to cut K arm behind J -->
-  <rect x="13" y="10" width="7" height="16" fill="white"/>
-  <!-- Redraw J stem on top -->
-  <rect x="14" y="10" width="5" height="16" fill="#111"/>
+  <!-- J stem -->
+  <rect x="7" y="1" width="2.5" height="21" fill="#111"/>
+  <!-- J top serif -->
+  <rect x="5.5" y="1" width="5.5" height="1.5" fill="#111"/>
+  <!-- J curl -->
+  <path d="M7,22 Q7,27 4,28 Q1,29 0.5,26 Q0.5,24 2.5,23.5 Q4,23.5 4.5,25 Q4.5,26 3.5,26.5" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Weave: J over K's upper arm -->
+  <rect x="6.5" y="5" width="3.5" height="9" fill="white"/>
+  <rect x="7" y="5" width="2.5" height="9" fill="#111"/>
 </svg>
