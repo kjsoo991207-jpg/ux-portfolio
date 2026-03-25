@@ -1,8 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- K arm (behind): upper diagonal -->
-  <path d="M22 5 L13 16" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-  <!-- J: vertical stem curving into a hook -->
-  <path d="M13 3 L13 23 Q13 29 19 29 Q25 29 25 23" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-  <!-- K arm (front): lower diagonal that weaves over J's stem -->
-  <path d="M13 16 L24 28" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+  <!-- K vertical stem (right) -->
+  <rect x="20" y="2" width="4" height="28" fill="#111"/>
+  <!-- K top serif -->
+  <rect x="18" y="2" width="8" height="2.5" fill="#111"/>
+  <!-- K bottom serif -->
+  <rect x="18" y="27.5" width="8" height="2.5" fill="#111"/>
+  <!-- K upper diagonal arm -->
+  <polygon points="20,16 20,13 10,2 7,2 7,5" fill="#111"/>
+  <!-- K lower diagonal arm -->
+  <polygon points="20,16 20,19 28,30 31,30 31,27" fill="#111"/>
+
+  <!-- J vertical stem (left, shared overlap area) -->
+  <rect x="8" y="2" width="4" height="22" fill="#111"/>
+  <!-- J top serif -->
+  <rect x="6" y="2" width="8" height="2.5" fill="#111"/>
+  <!-- J bottom hook/curl -->
+  <path d="M12 24 L12 26 Q12 30 8 30 Q4 30 4 26 Q4 23 6.5 23" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Weave effect: white gap where K's upper arm crosses behind J -->
+  <rect x="9" y="7" width="2.5" height="6" fill="white"/>
+  <rect x="8" y="7" width="4" height="6" fill="#111"/>
 </svg>
