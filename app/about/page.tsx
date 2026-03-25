@@ -9,29 +9,31 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Jinsoo's head center: ~20%, ~28%. Fan out at ~30deg upward-right
-    bubble: { left: '34%', top: '2%' },
-    dotAngle: 248, // pointing down-left toward Jinsoo's ear
-    zoom: { x: 45, y: 45 },
-    person: { left: '33%', top: '28%', width: '24%', height: '70%' },
+    // Left macbook
+    bubble: { left: '18%', top: '2%' },
+    dotAngle: 250,
+    zoom: { x: 20, y: 40 },
+    person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    bubble: { left: '37%', top: '16%' },
-    dotAngle: 232, // pointing down-left toward Jinsoo's ear
-    zoom: { x: 65, y: 50 },
-    person: { left: '55%', top: '30%', width: '20%', height: '68%' },
+    // Center laptop
+    bubble: { left: '50%', top: '0%' },
+    dotAngle: 270,
+    zoom: { x: 50, y: 40 },
+    person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    bubble: { left: '38%', top: '33%' },
-    dotAngle: 186, // pointing left slightly down toward Jinsoo's ear
-    zoom: { x: 85, y: 45 },
-    person: { left: '76%', top: '25%', width: '20%', height: '73%' },
+    // Right iPad
+    bubble: { left: '82%', top: '2%' },
+    dotAngle: 290,
+    zoom: { x: 80, y: 40 },
+    person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
 ]
 
@@ -133,7 +135,7 @@ export default function AboutPage() {
       <div className="border-t border-neutral-200 pt-12 pb-4" ref={sectionRef}>
         {!activeSection && (
           <p className="font-serif text-[22px] sm:text-[28px] text-[#333] leading-snug mb-10">
-            See what I see.
+            This is where I design. Pick a screen.
           </p>
         )}
 
@@ -159,8 +161,8 @@ export default function AboutPage() {
             }}
           >
             <Image
-              src="/images/bus-observation.png"
-              alt="Jinsoo observing passengers on a Korean bus"
+              src="/images/desk-observation.png"
+              alt="Jinsoo working at his desk with three devices"
               width={1456}
               height={816}
               className="w-full h-auto"
