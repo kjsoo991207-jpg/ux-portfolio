@@ -177,14 +177,14 @@ body {
   animation: dotPulse 1.5s ease-in-out infinite;
 }
 
-/* About page: lightbulb brightness pulse */
-@keyframes bulbPulse {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(0.4); }
+/* About page: lightbulb outline pulse */
+@keyframes bulbOutline {
+  0%, 100% { filter: drop-shadow(0 0 0px transparent); }
+  50% { filter: drop-shadow(0 0 4px rgba(0,0,0,0.6)); }
 }
 
-.animate-bulb-pulse {
-  animation: bulbPulse 1.5s ease-in-out infinite;
+.animate-bulb-outline {
+  animation: bulbOutline 1.5s ease-in-out infinite;
 }
 
 /* About page: thought bubble float */

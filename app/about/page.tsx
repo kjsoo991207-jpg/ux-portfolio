@@ -56,7 +56,7 @@ function LightbulbButton({ label, isActive, onClick, style }: {
         <img
           src="/images/lightbulb-sketch.png"
           alt=""
-          className={`w-[40px] sm:w-[60px] h-auto transition-all duration-300 select-none ${isActive ? 'brightness-0' : 'animate-bulb-pulse group-hover:brightness-75'}`}
+          className={`w-[60px] sm:w-[90px] h-auto transition-all duration-300 select-none ${isActive ? 'brightness-0' : 'animate-bulb-outline group-hover:brightness-75'}`}
           draggable={false}
         />
         {/* Label below */}
