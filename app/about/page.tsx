@@ -49,6 +49,7 @@ export default function AboutPage() {
   }
 
   return (
+    <div className="mx-auto max-w-7xl border-l border-r border-neutral-200">
     <div className="mx-auto max-w-5xl px-6 py-16 sm:py-24">
       {/* Header */}
       <div className="flex flex-col gap-12 lg:flex-row lg:gap-16 mb-16">
@@ -241,6 +242,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
