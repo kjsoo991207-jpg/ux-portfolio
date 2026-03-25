@@ -65,9 +65,6 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold tracking-tight text-[#111] mb-6">
             Jinsoo Kim
           </h1>
-          <p className="text-[22px] sm:text-[26px] text-[#333] leading-snug max-w-[500px] mb-6" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}>
-            I design products that just feel right.
-          </p>
           <p className="text-[15px] text-[#555] leading-[1.75] max-w-[480px] mb-5">
             Hi, I&rsquo;m Jinsoo. I study cognitive science at UCLA and design products grounded in how people actually think and behave. I got into design not through pixels, but through watching people, and I haven&rsquo;t stopped since.
           </p>
