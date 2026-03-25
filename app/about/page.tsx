@@ -137,7 +137,11 @@ export default function AboutPage() {
                       ? 'scale-125 drop-shadow-[0_0_10px_rgba(255,220,100,0.7)]'
                       : 'group-hover:scale-115 group-hover:drop-shadow-[0_0_8px_rgba(255,220,100,0.5)]'
                   }`}
-                  style={{ transform: `rotate(${-section.bulb.rotate}deg)` }}
+                  style={{
+                    transform: `rotate(${-section.bulb.rotate}deg)`,
+                    animation: activeSection === section.id ? 'none' : 'bulbBlink 2s ease-in-out infinite',
+                    animationDelay: `${SECTIONS.findIndex(s => s.id === section.id) * 0.6}s`,
+                  }}
                 >
                   💡
                 </span>

@@ -183,10 +183,15 @@ body {
   50% { filter: drop-shadow(0 0 8px rgba(0,0,0,0.8)); }
 }
 
-/* About page: lightbulb float */
+/* About page: lightbulb float + blink */
 @keyframes bulbFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+@keyframes bulbBlink {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(255,220,100,0.5)); }
+  50% { opacity: 0.4; filter: drop-shadow(0 0 0px rgba(255,220,100,0)); }
 }
 
 /* About page: lens reveal */
