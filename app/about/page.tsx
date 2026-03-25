@@ -10,25 +10,25 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     labelShort: 'Background',
-    // Fan position: left bulb
     bulb: { left: '32%', top: '42%', rotate: -25 },
-    zoom: { x: 20, y: 40 },
+    // Left macbook screen center
+    zoom: { x: 18, y: 35, scale: 3.2 },
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    // Fan position: center bulb
     bulb: { left: '48%', top: '35%', rotate: 0 },
-    zoom: { x: 50, y: 40 },
+    // Center monitor screen center
+    zoom: { x: 48, y: 33, scale: 2.8 },
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    // Fan position: right bulb
     bulb: { left: '64%', top: '42%', rotate: 25 },
-    zoom: { x: 80, y: 40 },
+    // Right iPad screen center
+    zoom: { x: 78, y: 38, scale: 3.5 },
   },
 ]
 
@@ -97,7 +97,7 @@ export default function AboutPage() {
           <div
             className="transition-all duration-700 ease-in-out"
             style={activeSection ? {
-              transform: `scale(2.5) translate(${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.x ?? 50)}%, ${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.y ?? 50)}%)`,
+              transform: `scale(${SECTIONS.find(s => s.id === activeSection)?.zoom.scale ?? 2.5}) translate(${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.x ?? 50)}%, ${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.y ?? 50)}%)`,
               opacity: 0.3,
               filter: 'blur(2px)',
             } : {
