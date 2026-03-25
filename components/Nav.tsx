@@ -42,7 +42,7 @@ export default function Nav() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm transition-transform duration-300"
       style={{ transform: visible ? 'translateY(0)' : 'translateY(-100%)' }}
     >
-      <div className="mx-auto max-w-7xl border-l border-r border-neutral-200">
+      <div className="mx-auto max-w-7xl border-l border-r border-b border-neutral-200">
         <nav
           className="mx-auto flex max-w-5xl items-center justify-between px-6 md:px-10 h-14"
           aria-label="Main"
