@@ -10,8 +10,7 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     // Left macbook
-    bubble: { left: '18%', top: '2%' },
-    dotAngle: 250,
+    bubble: { left: '18%', top: '18%' },
     zoom: { x: 20, y: 40 },
     person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
@@ -20,8 +19,7 @@ const SECTIONS = [
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
     // Center laptop
-    bubble: { left: '50%', top: '0%' },
-    dotAngle: 270,
+    bubble: { left: '50%', top: '15%' },
     zoom: { x: 50, y: 40 },
     person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
@@ -30,8 +28,7 @@ const SECTIONS = [
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
     // Right iPad
-    bubble: { left: '82%', top: '2%' },
-    dotAngle: 290,
+    bubble: { left: '82%', top: '20%' },
     zoom: { x: 80, y: 40 },
     person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
