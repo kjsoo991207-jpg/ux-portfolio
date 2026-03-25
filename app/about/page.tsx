@@ -116,28 +116,30 @@ export default function AboutPage() {
               priority
             />
 
-            {/* Pill buttons in fan layout above head */}
+            {/* Lightbulb emojis in fan layout above head */}
             {SECTIONS.map((section) => (
               <button
                 key={section.id}
                 onClick={() => handleClick(section.id)}
-                className={`absolute transition-all duration-300 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] tracking-[0.06em] uppercase whitespace-nowrap ${
-                  activeSection === section.id
-                    ? 'bg-[#111] text-white shadow-lg'
-                    : 'bg-white/90 text-[#555] shadow-md hover:bg-[#111] hover:text-white hover:shadow-lg backdrop-blur-sm border border-neutral-200 hover:border-transparent'
-                }`}
+                className="absolute transition-all duration-300 group"
                 style={{
                   left: section.bulb.left,
                   top: section.bulb.top,
                   transform: `translateX(-50%) rotate(${section.bulb.rotate}deg)`,
                   zIndex: 20,
-                  fontFamily: 'var(--font-mono), monospace',
                   animation: activeSection === section.id ? 'none' : 'bulbFloat 3s ease-in-out infinite',
                 }}
                 aria-label={section.labelShort || section.label.replace('\n', ' ')}
               >
-                <span style={{ display: 'inline-block', transform: `rotate(${-section.bulb.rotate}deg)` }}>
-                  {section.labelShort || section.label.replace('\n', ' ')}
+                <span
+                  className={`text-[28px] sm:text-[36px] block transition-all duration-300 select-none ${
+                    activeSection === section.id
+                      ? 'scale-125 drop-shadow-[0_0_10px_rgba(255,220,100,0.7)]'
+                      : 'group-hover:scale-115 group-hover:drop-shadow-[0_0_8px_rgba(255,220,100,0.5)]'
+                  }`}
+                  style={{ transform: `rotate(${-section.bulb.rotate}deg)` }}
+                >
+                  💡
                 </span>
               </button>
             ))}
