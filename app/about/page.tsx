@@ -94,9 +94,11 @@ export default function AboutPage() {
           onClick={() => { if (activeSection) setActiveSection(null) }}
         >
           <div
-            className="transition-all duration-500 ease-in-out"
+            className="transition-all duration-1000 ease-in-out"
             style={{
-              opacity: activeSection ? 0.3 : 1,
+              opacity: activeSection ? 0.25 : 1,
+              transform: activeSection ? 'scale(0.92)' : 'scale(1)',
+              transformOrigin: 'center center',
             }}
           >
             <Image
@@ -132,8 +134,6 @@ export default function AboutPage() {
                   }`}
                   style={{
                     transform: `rotate(${-section.bulb.rotate}deg)`,
-                    animation: activeSection === section.id ? 'none' : 'bulbBlink 2s ease-in-out infinite',
-                    animationDelay: `${SECTIONS.findIndex(s => s.id === section.id) * 0.6}s`,
                   }}
                 >
                   💡
@@ -147,7 +147,7 @@ export default function AboutPage() {
         {activeSection && (
           <div
             className="-mt-8 relative z-10 cursor-pointer"
-            style={{ animation: 'slideUp 0.5s ease-out forwards' }}
+            style={{ animation: 'slideUp 0.8s ease-out forwards' }}
             onClick={() => setActiveSection(null)}
           >
             <div className="relative mx-auto max-w-[640px]">
