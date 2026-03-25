@@ -12,7 +12,7 @@ const SECTIONS = [
     labelShort: 'Background',
     bulb: { left: '40%', top: '48%', rotate: 20 },
     // Left macbook screen center
-    zoom: { x: 18, y: 35, scale: 3.2 },
+    zoom: { x: 19, y: 30, scale: 3 },
   },
   {
     id: 'philosophy' as const,
@@ -20,7 +20,7 @@ const SECTIONS = [
     labelShort: 'Design Philosophy',
     bulb: { left: '50%', top: '43%', rotate: 0 },
     // Center monitor screen center
-    zoom: { x: 48, y: 33, scale: 2.8 },
+    zoom: { x: 48, y: 28, scale: 2.8 },
   },
   {
     id: 'love' as const,
@@ -28,7 +28,7 @@ const SECTIONS = [
     labelShort: 'Things I Love',
     bulb: { left: '60%', top: '48%', rotate: -20 },
     // Right iPad screen center
-    zoom: { x: 78, y: 38, scale: 3.5 },
+    zoom: { x: 77, y: 32, scale: 3.2 },
   },
 ]
 
@@ -85,25 +85,30 @@ export default function AboutPage() {
           </p>
         )}
 
-        {/* Bus image - zooms into person when clicked */}
+        {/* Desk image - zooms into device when clicked */}
         <div
           className="relative w-full overflow-hidden transition-all duration-700 ease-in-out"
           style={{
-            maxHeight: activeSection ? '180px' : '2000px',
+            maxHeight: activeSection ? '220px' : '2000px',
             cursor: activeSection ? 'pointer' : 'default',
           }}
           onClick={() => { if (activeSection) setActiveSection(null) }}
         >
+          {/* Bottom fade when zoomed */}
+          {activeSection && (
+            <div
+              className="absolute bottom-0 left-0 right-0 h-20 z-10 pointer-events-none"
+              style={{ background: 'linear-gradient(to bottom, transparent, white)' }}
+            />
+          )}
           <div
             className="transition-all duration-700 ease-in-out"
             style={activeSection ? {
               transform: `scale(${SECTIONS.find(s => s.id === activeSection)?.zoom.scale ?? 2.5}) translate(${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.x ?? 50)}%, ${50 - (SECTIONS.find(s => s.id === activeSection)?.zoom.y ?? 50)}%)`,
-              opacity: 0.3,
-              filter: 'blur(2px)',
+              transformOrigin: 'center top',
             } : {
               transform: 'scale(1) translate(0%, 0%)',
-              opacity: 1,
-              filter: 'blur(0px)',
+              transformOrigin: 'center top',
             }}
           >
             <Image
