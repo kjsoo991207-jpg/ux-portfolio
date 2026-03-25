@@ -177,6 +177,16 @@ body {
   animation: dotPulse 1.5s ease-in-out infinite;
 }
 
+/* About page: lightbulb brightness pulse */
+@keyframes bulbPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(0.4); }
+}
+
+.animate-bulb-pulse {
+  animation: bulbPulse 1.5s ease-in-out infinite;
+}
+
 /* About page: thought bubble float */
 @keyframes bubbleFloat {
   0%, 100% { transform: translateY(0); }

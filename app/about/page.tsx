@@ -51,36 +51,17 @@ function LightbulbButton({ label, isActive, onClick, style }: {
       aria-label={label.replace('\n', ' ')}
     >
       <div className="flex flex-col items-center" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
-        {/* Lightbulb icon */}
-        <svg
-          viewBox="0 0 40 52"
-          className="w-[28px] sm:w-[36px] h-auto transition-all duration-300"
-        >
-          {/* Bulb */}
-          <circle
-            cx="20" cy="18" r="14"
-            fill={isActive ? '#111' : 'white'}
-            stroke={isActive ? '#111' : undefined}
-            strokeWidth={isActive ? 0 : 1.5}
-            className={`transition-all duration-300 group-hover:stroke-[#111] ${!isActive ? 'animate-border-pulse' : ''}`}
-          />
-          {/* Filament lines inside */}
-          {!isActive && (
-            <>
-              <line x1="16" y1="14" x2="16" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
-              <line x1="20" y1="12" x2="20" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
-              <line x1="24" y1="14" x2="24" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
-            </>
-          )}
-          {/* Base */}
-          <rect x="15" y="32" width="10" height="3" rx="1" fill={isActive ? '#111' : '#ccc'} className="transition-all duration-300" />
-          <rect x="16" y="36" width="8" height="3" rx="1" fill={isActive ? '#111' : '#ccc'} className="transition-all duration-300" />
-          {/* Connector from bulb to base */}
-          <path d="M14 28 Q14 32 15 32 L25 32 Q26 32 26 28" fill="none" stroke={isActive ? '#111' : '#ccc'} strokeWidth="1.5" className="transition-all duration-300" />
-        </svg>
+        {/* Sketch lightbulb image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/lightbulb-sketch.png"
+          alt=""
+          className={`w-[40px] sm:w-[60px] h-auto transition-all duration-300 select-none ${isActive ? 'brightness-0' : 'animate-bulb-pulse group-hover:brightness-75'}`}
+          draggable={false}
+        />
         {/* Label below */}
         <span
-          className={`mt-1 text-[9px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap transition-colors duration-300 ${isActive ? 'text-[#111]' : 'text-[#999]'}`}
+          className={`mt-1 text-[9px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap transition-colors duration-300 ${isActive ? 'text-[#111] font-bold' : 'text-[#999]'}`}
           style={{ fontFamily: 'var(--font-mono), monospace' }}
         >
           {label.replace('\n', ' ')}
