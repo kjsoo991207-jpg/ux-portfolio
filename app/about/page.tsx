@@ -10,7 +10,7 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     labelShort: 'Background',
-    bulb: { left: '38%', top: '48%', rotate: -20 },
+    bulb: { left: '38%', top: '48%', rotate: 20 },
     // Left macbook screen center
     zoom: { x: 18, y: 35, scale: 3.2 },
   },
@@ -26,7 +26,7 @@ const SECTIONS = [
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    bulb: { left: '58%', top: '48%', rotate: 20 },
+    bulb: { left: '58%', top: '48%', rotate: -20 },
     // Right iPad screen center
     zoom: { x: 78, y: 38, scale: 3.5 },
   },
