@@ -64,7 +64,6 @@ export default function HomePage() {
 
           </article>
         ))}
-        <div className="border-t border-neutral-200" />
       </main>
     </div>
   )
