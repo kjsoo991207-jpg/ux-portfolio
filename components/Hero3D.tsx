@@ -31,7 +31,7 @@ export default function Hero3D() {
             className="text-[15px] sm:text-[17px] text-[#666] leading-snug"
             style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}
           >
-            I study how people think. I design how products feel.
+            I design products that just feel right.
           </p>
           <a
             href="/about"
