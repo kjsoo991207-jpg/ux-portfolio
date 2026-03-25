@@ -228,8 +228,10 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-2">Skills</p>
-            <p className="text-[14px] text-[#111]">User Research, Wireframing, Prototyping, Behavioral Analysis</p>
-            <p className="text-[13px] text-[#767676] mt-1">Figma, Miro, HTML/CSS</p>
+            <p className="text-[14px] text-[#111]">User Research, Usability Testing, Wireframing, Prototyping, Interaction Design, Information Architecture, Data Visualization</p>
+            <p className="text-[13px] text-[#767676] mt-2">Figma, Miro, FigJam, Adobe XD, Maze, HTML/CSS, Notion</p>
+            <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-2 mt-6">Methods</p>
+            <p className="text-[14px] text-[#111]">Behavioral Observation, Cognitive Load Analysis, Competitive Audit, Journey Mapping, Persona Development</p>
           </div>
           <div>
             <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-2">Contact</p>
