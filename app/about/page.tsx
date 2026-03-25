@@ -96,9 +96,9 @@ export default function AboutPage() {
           <div
             className="transition-all duration-1000 ease-in-out"
             style={{
-              opacity: activeSection ? 0.25 : 1,
-              transform: activeSection ? 'scale(0.92)' : 'scale(1)',
-              transformOrigin: 'center center',
+              opacity: activeSection ? 0.15 : 1,
+              transform: activeSection ? 'scale(0.55) translateY(-30%)' : 'scale(1) translateY(0)',
+              transformOrigin: 'center top',
             }}
           >
             <Image
@@ -145,7 +145,7 @@ export default function AboutPage() {
           {/* Content card - overlays on top of sketch */}
           {activeSection && (
           <div
-            className="absolute inset-0 z-20 flex items-end justify-center cursor-pointer pb-8"
+            className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer"
             style={{ animation: 'slideUp 0.8s ease-out forwards' }}
             onClick={() => setActiveSection(null)}
           >
