@@ -183,14 +183,10 @@ body {
   50% { filter: drop-shadow(0 0 8px rgba(0,0,0,0.8)); }
 }
 
-.animate-bulb-outline {
-  animation: bulbOutline 1.5s ease-in-out infinite;
-}
-
-/* About page: thought bubble float */
-@keyframes bubbleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+/* About page: screen glow pulse */
+@keyframes screenPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* About page: lens reveal */

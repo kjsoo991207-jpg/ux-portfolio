@@ -9,8 +9,9 @@ const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
-    // Left macbook
-    bubble: { left: '18%', top: '18%' },
+    labelShort: 'Background',
+    // Left macbook screen
+    screen: { left: '7%', top: '14%', width: '24%', height: '34%' },
     zoom: { x: 20, y: 40 },
     person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
@@ -18,8 +19,8 @@ const SECTIONS = [
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    // Center laptop
-    bubble: { left: '50%', top: '15%' },
+    // Center monitor screen
+    screen: { left: '32%', top: '6%', width: '32%', height: '44%' },
     zoom: { x: 50, y: 40 },
     person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
@@ -27,43 +28,54 @@ const SECTIONS = [
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    // Right iPad
-    bubble: { left: '82%', top: '20%' },
+    // Right iPad screen
+    screen: { left: '67%', top: '22%', width: '22%', height: '32%' },
     zoom: { x: 80, y: 40 },
     person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
 ]
 
-function LightbulbButton({ label, isActive, onClick, style }: {
+function ScreenGlow({ label, isActive, onClick, screen }: {
   label: string
   isActive: boolean
   onClick: () => void
-  style: React.CSSProperties
+  screen: { left: string; top: string; width: string; height: string }
 }) {
   return (
     <button
       onClick={onClick}
       className="absolute group"
-      style={{ ...style, zIndex: 20, transform: 'translateX(-50%)' }}
+      style={{
+        left: screen.left,
+        top: screen.top,
+        width: screen.width,
+        height: screen.height,
+        zIndex: 20,
+      }}
       aria-label={label.replace('\n', ' ')}
     >
-      <div className="flex flex-col items-center" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
-        {/* Sketch lightbulb image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/lightbulb-sketch.png"
-          alt=""
-          className={`w-[80px] sm:w-[120px] h-auto transition-all duration-300 select-none ${isActive ? 'brightness-0' : 'animate-bulb-outline group-hover:brightness-75'}`}
-          draggable={false}
-        />
-        {/* Label below */}
-        <span
-          className={`mt-1 text-[9px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap transition-colors duration-300 ${isActive ? 'text-[#111] font-bold' : 'text-[#999]'}`}
-          style={{ fontFamily: 'var(--font-mono), monospace' }}
-        >
-          {label.replace('\n', ' ')}
-        </span>
-      </div>
+      {/* Glow overlay */}
+      <div
+        className={`absolute inset-0 rounded-sm transition-all duration-500 ${
+          isActive
+            ? 'opacity-0'
+            : 'opacity-100 group-hover:opacity-90'
+        }`}
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(200,220,255,0.45) 0%, rgba(180,210,255,0.15) 60%, transparent 100%)',
+          boxShadow: '0 0 20px 8px rgba(180,210,255,0.25), inset 0 0 15px rgba(200,220,255,0.2)',
+          animation: isActive ? 'none' : 'screenPulse 3s ease-in-out infinite',
+        }}
+      />
+      {/* Label on hover */}
+      <span
+        className={`absolute left-1/2 -translate-x-1/2 -bottom-5 sm:-bottom-6 text-[9px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 ${
+          isActive ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'
+        } text-[#555]`}
+        style={{ fontFamily: 'var(--font-mono), monospace' }}
+      >
+        {label.replace('\n', ' ')}
+      </span>
     </button>
   )
 }
@@ -151,26 +163,16 @@ export default function AboutPage() {
               priority
             />
 
-            {/* Cloud thought bubbles */}
+            {/* Screen glow overlays */}
             {SECTIONS.map((section) => (
-              <LightbulbButton
+              <ScreenGlow
                 key={section.id}
                 label={section.label}
                 isActive={activeSection === section.id}
                 onClick={() => handleClick(section.id)}
-                  style={{
-                  left: section.bubble.left,
-                  top: section.bubble.top,
-                }}
+                screen={section.screen}
               />
             ))}
-
-            {/* No trail dots needed for lightbulb design */}
-            {SECTIONS.map(() => {
-              return (
-                null
-              )
-            })}
 
             {/* Invisible clickable hotspots over each person */}
             {SECTIONS.map((section) => (
