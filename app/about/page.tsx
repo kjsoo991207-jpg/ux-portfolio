@@ -68,7 +68,10 @@ export default function AboutPage() {
           <p className="text-[22px] sm:text-[26px] text-[#333] leading-snug max-w-[500px] mb-6" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}>
             I design products that just feel right.
           </p>
-          <p className="text-[14px] text-[#767676] leading-relaxed max-w-[500px]">
+          <p className="text-[15px] text-[#555] leading-[1.75] max-w-[480px] mb-5">
+            Hi, I&rsquo;m Jinsoo. I study cognitive science at UCLA and design products grounded in how people actually think and behave. I got into design not through pixels, but through watching people, and I haven&rsquo;t stopped since.
+          </p>
+          <p className="text-[13px] text-[#999] leading-relaxed max-w-[500px]">
             Product Designer &middot; UCLA Cognitive Science &middot; Behavioral Observation
           </p>
         </div>
