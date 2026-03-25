@@ -85,9 +85,9 @@ export default function AboutPage() {
           </p>
         )}
 
-        {/* Desk image - fades slightly when section is active */}
+        {/* Desk image + overlay card container */}
         <div
-          className="relative w-full overflow-hidden"
+          className="relative w-full"
           style={{
             cursor: activeSection ? 'pointer' : 'default',
           }}
@@ -141,12 +141,11 @@ export default function AboutPage() {
               </button>
             ))}
           </div>
-        </div>
 
-        {/* Content card - slides up from below */}
-        {activeSection && (
+          {/* Content card - overlays on top of sketch */}
+          {activeSection && (
           <div
-            className="-mt-8 relative z-10 cursor-pointer"
+            className="absolute inset-0 z-20 flex items-end justify-center cursor-pointer pb-8"
             style={{ animation: 'slideUp 0.8s ease-out forwards' }}
             onClick={() => setActiveSection(null)}
           >
@@ -211,7 +210,7 @@ export default function AboutPage() {
             </div>
           </div>
         )}
-      </div>
+        </div>
 
       {/* Education + Skills + Contact */}
       <div className="border-t border-neutral-200 py-12">
