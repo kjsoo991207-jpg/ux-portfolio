@@ -28,6 +28,14 @@ export default function Nav() {
           className="font-serif text-sm text-[#111] tracking-tight hover:opacity-60 transition-opacity"
           aria-label="Jinsoo Kim – Home"
         >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" className="inline-block mr-2 -mt-0.5">
+            <rect x="5.5" y="2" width="1.8" height="10.5" fill="currentColor"/>
+            <rect x="4" y="2" width="4.8" height="1" fill="currentColor"/>
+            <path d="M5.5,12.5 Q5.5,14.5 3.5,14.5 Q2,14.5 2,13 Q2,12 3,12" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+            <polygon points="7.3,8 12,2.5 13.5,2.5 13.5,3.5 7.3,9" fill="currentColor"/>
+            <polygon points="7.3,9 13,14.5 14,14.5 14,13.5 7.3,8" fill="currentColor"/>
+            <rect x="12" y="13.5" width="2.5" height="1" fill="currentColor"/>
+          </svg>
           Jinsoo Kim
         </Link>
 
