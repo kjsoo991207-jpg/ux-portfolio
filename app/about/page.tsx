@@ -5,16 +5,12 @@ import { useEffect, useRef, useState } from 'react'
 
 type SectionId = 'background' | 'philosophy' | 'love' | null
 
-// SVG viewBox = 1456 x 816 (matches desk image dimensions)
-// Each screen's corner points traced to match the illustration's perspective
 const SECTIONS = [
   {
     id: 'background' as const,
     label: 'Background',
     labelShort: 'Background',
-    // Left macbook screen (angled slightly)
-    screenPoints: '120,195 420,175 425,390 115,400',
-    labelPos: { x: 270, y: 420 },
+    screenArea: { left: '8%', top: '22%', width: '22%', height: '26%' },
     zoom: { x: 20, y: 40 },
     person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
@@ -22,9 +18,7 @@ const SECTIONS = [
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    // Center monitor screen
-    screenPoints: '530,155 870,155 870,395 530,395',
-    labelPos: { x: 700, y: 420 },
+    screenArea: { left: '36%', top: '18%', width: '24%', height: '30%' },
     zoom: { x: 50, y: 40 },
     person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
@@ -32,15 +26,12 @@ const SECTIONS = [
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    // Right iPad screen (angled slightly)
-    screenPoints: '1020,260 1270,245 1275,420 1025,430',
-    labelPos: { x: 1148, y: 450 },
+    screenArea: { left: '69%', top: '28%', width: '18%', height: '24%' },
     zoom: { x: 80, y: 40 },
     person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
 ]
 
-// No separate component needed - SVG handles everything
 
 export default function AboutPage() {
   const [activeSection, setActiveSection] = useState<SectionId>(null)
@@ -125,67 +116,22 @@ export default function AboutPage() {
               priority
             />
 
-            {/* SVG overlay for screen border glow */}
-            <svg
-              viewBox="0 0 1456 816"
-              className="absolute inset-0 w-full h-full"
-              style={{ zIndex: 20 }}
-              preserveAspectRatio="xMidYMid slice"
-            >
-              <defs>
-                <filter id="screenGlow">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter id="screenGlowHover">
-                  <feGaussianBlur stdDeviation="8" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              {SECTIONS.map((section) => {
-                const isActive = activeSection === section.id
-                return (
-                  <g key={section.id} className="group cursor-pointer" onClick={() => handleClick(section.id)}>
-                    {/* Invisible fill for click area */}
-                    <polygon
-                      points={section.screenPoints}
-                      fill="transparent"
-                    />
-                    {/* Glowing border */}
-                    <polygon
-                      points={section.screenPoints}
-                      fill="none"
-                      stroke="rgba(140,190,255,0.7)"
-                      strokeWidth="2.5"
-                      filter="url(#screenGlow)"
-                      className={`transition-opacity duration-500 ${isActive ? 'opacity-0' : 'opacity-100'}`}
-                      style={{
-                        animation: isActive ? 'none' : 'borderGlow 3s ease-in-out infinite',
-                      }}
-                    />
-                    {/* Label */}
-                    <text
-                      x={section.labelPos.x}
-                      y={section.labelPos.y}
-                      textAnchor="middle"
-                      fill="#666"
-                      fontSize="14"
-                      fontFamily="var(--font-mono), monospace"
-                      letterSpacing="0.1em"
-                      className={`uppercase transition-opacity duration-300 ${isActive ? 'opacity-0' : 'opacity-0 group-hover:opacity-100'}`}
-                    >
-                      {section.labelShort || section.label.replace('\n', ' ')}
-                    </text>
-                  </g>
-                )
-              })}
-            </svg>
+            {/* Invisible clickable hotspots over each screen */}
+            {SECTIONS.map((section) => (
+              <button
+                key={`screen-${section.id}`}
+                onClick={() => handleClick(section.id)}
+                className="absolute cursor-pointer"
+                style={{
+                  left: section.screenArea.left,
+                  top: section.screenArea.top,
+                  width: section.screenArea.width,
+                  height: section.screenArea.height,
+                  zIndex: 20,
+                }}
+                aria-label={section.labelShort || section.label.replace('\n', ' ')}
+              />
+            ))}
 
             {/* Invisible clickable hotspots over each person */}
             {SECTIONS.map((section) => (
