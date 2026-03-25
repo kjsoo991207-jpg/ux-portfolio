@@ -52,10 +52,9 @@ export default function Nav() {
             className="font-serif text-sm text-[#111] tracking-tight hover:opacity-60 transition-opacity"
             aria-label="Jinsoo Kim – Home"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="18" height="18" className="inline-block mr-1.5 -mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" className="block">
               <text x="50" y="72" textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontSize="72" fontWeight="400" fill="currentColor" letterSpacing="-8">JK</text>
             </svg>
-            Jinsoo Kim
           </Link>
 
           <ul className="flex items-center gap-8">
