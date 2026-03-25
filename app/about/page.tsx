@@ -85,25 +85,18 @@ export default function AboutPage() {
           </p>
         )}
 
-        {/* Desk image - shrinks when section is active */}
+        {/* Desk image - fades slightly when section is active */}
         <div
-          className="relative w-full overflow-hidden transition-all duration-700 ease-in-out"
+          className="relative w-full overflow-hidden"
           style={{
             cursor: activeSection ? 'pointer' : 'default',
           }}
           onClick={() => { if (activeSection) setActiveSection(null) }}
         >
           <div
-            className="transition-all duration-700 ease-in-out"
-            style={activeSection ? {
-              transform: 'scale(0.6)',
-              transformOrigin: 'center top',
-              opacity: 0.4,
-              maxHeight: '200px',
-            } : {
-              transform: 'scale(1)',
-              transformOrigin: 'center top',
-              opacity: 1,
+            className="transition-all duration-500 ease-in-out"
+            style={{
+              opacity: activeSection ? 0.3 : 1,
             }}
           >
             <Image
@@ -150,11 +143,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Content - replaces the bus image space */}
+        {/* Content card - slides up from below */}
         {activeSection && (
           <div
-            className="mt-4 cursor-pointer"
-            style={{ animation: 'lensReveal 0.4s ease-out forwards' }}
+            className="-mt-8 relative z-10 cursor-pointer"
+            style={{ animation: 'slideUp 0.5s ease-out forwards' }}
             onClick={() => setActiveSection(null)}
           >
             <div className="relative mx-auto max-w-[640px]">
