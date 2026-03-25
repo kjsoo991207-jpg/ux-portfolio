@@ -116,47 +116,29 @@ export default function AboutPage() {
               priority
             />
 
-            {/* Lightbulbs in fan layout above head */}
+            {/* Pill buttons in fan layout above head */}
             {SECTIONS.map((section) => (
               <button
                 key={section.id}
                 onClick={() => handleClick(section.id)}
-                className="absolute group"
+                className={`absolute transition-all duration-300 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-[9px] sm:text-[11px] tracking-[0.06em] uppercase whitespace-nowrap ${
+                  activeSection === section.id
+                    ? 'bg-[#111] text-white shadow-lg'
+                    : 'bg-white/90 text-[#555] shadow-md hover:bg-[#111] hover:text-white hover:shadow-lg backdrop-blur-sm border border-neutral-200 hover:border-transparent'
+                }`}
                 style={{
                   left: section.bulb.left,
                   top: section.bulb.top,
                   transform: `translateX(-50%) rotate(${section.bulb.rotate}deg)`,
                   zIndex: 20,
+                  fontFamily: 'var(--font-mono), monospace',
+                  animation: activeSection === section.id ? 'none' : 'bulbFloat 3s ease-in-out infinite',
                 }}
                 aria-label={section.labelShort || section.label.replace('\n', ' ')}
               >
-                <div
-                  className="flex flex-col items-center transition-transform duration-200 group-hover:scale-110"
-                  style={{ animation: activeSection === section.id ? 'none' : 'bulbFloat 3s ease-in-out infinite' }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/lightbulb-sketch.png"
-                    alt=""
-                    className={`w-[50px] sm:w-[75px] h-auto select-none transition-all duration-300 ${
-                      activeSection === section.id
-                        ? 'brightness-110 drop-shadow-[0_0_8px_rgba(255,220,100,0.6)]'
-                        : 'opacity-80 group-hover:opacity-100 group-hover:drop-shadow-[0_0_6px_rgba(255,220,100,0.4)]'
-                    }`}
-                    draggable={false}
-                  />
-                  <span
-                    className={`mt-1 text-[8px] sm:text-[10px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 ${
-                      activeSection === section.id ? 'text-[#111] font-semibold' : 'text-[#999] group-hover:text-[#666]'
-                    }`}
-                    style={{
-                      fontFamily: 'var(--font-mono), monospace',
-                      transform: `rotate(${-section.bulb.rotate}deg)`,
-                    }}
-                  >
-                    {section.labelShort || section.label.replace('\n', ' ')}
-                  </span>
-                </div>
+                <span style={{ display: 'inline-block', transform: `rotate(${-section.bulb.rotate}deg)` }}>
+                  {section.labelShort || section.label.replace('\n', ' ')}
+                </span>
               </button>
             ))}
           </div>
