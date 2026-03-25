@@ -54,17 +54,17 @@ function ScreenGlow({ label, isActive, onClick, screen }: {
       }}
       aria-label={label.replace('\n', ' ')}
     >
-      {/* Glow overlay */}
+      {/* Border glow */}
       <div
-        className={`absolute inset-0 rounded-sm transition-all duration-500 ${
+        className={`absolute inset-0 rounded-[3px] transition-all duration-500 ${
           isActive
             ? 'opacity-0'
-            : 'opacity-100 group-hover:opacity-90'
+            : 'group-hover:shadow-[0_0_18px_4px_rgba(160,200,255,0.5)]'
         }`}
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(200,220,255,0.45) 0%, rgba(180,210,255,0.15) 60%, transparent 100%)',
-          boxShadow: '0 0 20px 8px rgba(180,210,255,0.25), inset 0 0 15px rgba(200,220,255,0.2)',
-          animation: isActive ? 'none' : 'screenPulse 3s ease-in-out infinite',
+          border: '2px solid rgba(160,200,255,0.6)',
+          boxShadow: '0 0 12px 3px rgba(160,200,255,0.3), inset 0 0 8px rgba(160,200,255,0.1)',
+          animation: isActive ? 'none' : 'borderGlow 3s ease-in-out infinite',
         }}
       />
       {/* Label on hover */}

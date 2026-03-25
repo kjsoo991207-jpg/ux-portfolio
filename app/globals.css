@@ -183,10 +183,16 @@ body {
   50% { filter: drop-shadow(0 0 8px rgba(0,0,0,0.8)); }
 }
 
-/* About page: screen glow pulse */
-@keyframes screenPulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+/* About page: screen border glow */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(160,200,255,0.3);
+    box-shadow: 0 0 8px 2px rgba(160,200,255,0.15), inset 0 0 6px rgba(160,200,255,0.05);
+  }
+  50% {
+    border-color: rgba(160,200,255,0.7);
+    box-shadow: 0 0 16px 4px rgba(160,200,255,0.4), inset 0 0 10px rgba(160,200,255,0.15);
+  }
 }
 
 /* About page: lens reveal */
