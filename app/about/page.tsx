@@ -37,15 +37,12 @@ const SECTIONS = [
   },
 ]
 
-function CloudBubble({ label, isActive, onClick, style, dotAngle = 180 }: {
+function LightbulbButton({ label, isActive, onClick, style }: {
   label: string
   isActive: boolean
   onClick: () => void
   style: React.CSSProperties
-  dotAngle?: number // angle in degrees pointing toward Jinsoo's head
 }) {
-  const lines = label.split('\n')
-
   return (
     <button
       onClick={onClick}
@@ -53,36 +50,42 @@ function CloudBubble({ label, isActive, onClick, style, dotAngle = 180 }: {
       style={{ ...style, zIndex: 20, transform: 'translateX(-50%)' }}
       aria-label={label.replace('\n', ' ')}
     >
-      {/* Cloud */}
-      <div className="relative" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
+      <div className="flex flex-col items-center" style={{ animation: isActive ? 'none' : 'bubbleFloat 3s ease-in-out infinite' }}>
+        {/* Lightbulb icon */}
         <svg
-          viewBox="0 0 180 100"
-          className="w-[80px] sm:w-[150px] h-auto transition-all duration-300"
+          viewBox="0 0 40 52"
+          className="w-[28px] sm:w-[36px] h-auto transition-all duration-300"
         >
-          <path
-            d="M30,70 C10,70 5,55 15,45 C5,35 15,15 35,20 C40,5 65,0 80,10 C95,0 120,0 135,15 C155,10 175,25 165,45 C175,55 170,70 150,70 Z"
+          {/* Bulb */}
+          <circle
+            cx="20" cy="18" r="14"
             fill={isActive ? '#111' : 'white'}
             stroke={isActive ? '#111' : undefined}
             strokeWidth={isActive ? 0 : 1.5}
             className={`transition-all duration-300 group-hover:stroke-[#111] ${!isActive ? 'animate-border-pulse' : ''}`}
           />
-          <text
-            x="90"
-            y={lines.length > 1 ? '36' : '44'}
-            textAnchor="middle"
-            fill={isActive ? 'white' : '#555'}
-            fontSize="13"
-            fontFamily="var(--font-mono), monospace"
-            letterSpacing="0.05em"
-            className="transition-all duration-300 group-hover:fill-[#111] uppercase"
-          >
-            {lines.map((line, i) => (
-              <tspan key={i} x="90" dy={i === 0 ? 0 : 16}>{line}</tspan>
-            ))}
-          </text>
+          {/* Filament lines inside */}
+          {!isActive && (
+            <>
+              <line x1="16" y1="14" x2="16" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
+              <line x1="20" y1="12" x2="20" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
+              <line x1="24" y1="14" x2="24" y2="22" stroke="#ccc" strokeWidth="1" strokeLinecap="round" />
+            </>
+          )}
+          {/* Base */}
+          <rect x="15" y="32" width="10" height="3" rx="1" fill={isActive ? '#111' : '#ccc'} className="transition-all duration-300" />
+          <rect x="16" y="36" width="8" height="3" rx="1" fill={isActive ? '#111' : '#ccc'} className="transition-all duration-300" />
+          {/* Connector from bulb to base */}
+          <path d="M14 28 Q14 32 15 32 L25 32 Q26 32 26 28" fill="none" stroke={isActive ? '#111' : '#ccc'} strokeWidth="1.5" className="transition-all duration-300" />
         </svg>
+        {/* Label below */}
+        <span
+          className={`mt-1 text-[9px] sm:text-[11px] tracking-[0.08em] uppercase whitespace-nowrap transition-colors duration-300 ${isActive ? 'text-[#111]' : 'text-[#999]'}`}
+          style={{ fontFamily: 'var(--font-mono), monospace' }}
+        >
+          {label.replace('\n', ' ')}
+        </span>
       </div>
-      {/* Trail dots removed - now rendered directly on the image */}
     </button>
   )
 }
@@ -172,43 +175,22 @@ export default function AboutPage() {
 
             {/* Cloud thought bubbles */}
             {SECTIONS.map((section) => (
-              <CloudBubble
+              <LightbulbButton
                 key={section.id}
                 label={section.label}
                 isActive={activeSection === section.id}
                 onClick={() => handleClick(section.id)}
-                dotAngle={section.dotAngle}
-                style={{
+                  style={{
                   left: section.bubble.left,
                   top: section.bubble.top,
                 }}
               />
             ))}
 
-            {/* Trail dots: from Jinsoo's ear (20%, 35%) toward each bubble */}
-            {SECTIONS.map((section) => {
-              const earX = 20
-              const earY = 35
-              const bx = parseFloat(section.bubble.left)
-              const by = parseFloat(section.bubble.top) + 5 // center of bubble approx
-              // Dot 1: 30% of the way from ear to bubble (smaller, closer to ear)
-              const d1x = earX + (bx - earX) * 0.35
-              const d1y = earY + (by - earY) * 0.35
-              // Dot 2: 55% of the way from ear to bubble (bigger, closer to bubble)
-              const d2x = earX + (bx - earX) * 0.6
-              const d2y = earY + (by - earY) * 0.6
-              const isActive = activeSection === section.id
+            {/* No trail dots needed for lightbulb design */}
+            {SECTIONS.map(() => {
               return (
-                <div key={`dots-${section.id}`}>
-                  <div
-                    className={`absolute w-[5px] h-[5px] sm:w-[8px] sm:h-[8px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
-                    style={{ left: `${d1x}%`, top: `${d1y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
-                  />
-                  <div
-                    className={`absolute hidden sm:block w-[12px] h-[12px] rounded-full transition-all duration-300 ${isActive ? 'bg-[#111]' : 'bg-white border-[1.5px] animate-dot-pulse'}`}
-                    style={{ left: `${d2x}%`, top: `${d2y}%`, transform: 'translate(-50%, -50%)', zIndex: 15 }}
-                  />
-                </div>
+                null
               )
             })}
 
