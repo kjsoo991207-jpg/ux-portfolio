@@ -108,8 +108,8 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold tracking-tight text-[#111] mb-6">
             Jinsoo Kim
           </h1>
-          <p className="font-serif text-[22px] sm:text-[26px] text-[#333] leading-snug max-w-[500px] mb-6">
-            &ldquo;I don&apos;t ask users what they want. I watch what they do.&rdquo;
+          <p className="text-[22px] sm:text-[26px] text-[#333] leading-snug max-w-[500px] mb-6" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}>
+            I study how people think. I design how products feel.
           </p>
           <p className="text-[14px] text-[#767676] leading-relaxed max-w-[500px]">
             Product Designer &middot; UCLA Cognitive Science &middot; Behavioral Observation

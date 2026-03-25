@@ -28,9 +28,10 @@ export default function Hero3D() {
         <div className="w-[1px] h-10 bg-[#ccc] mt-[2px]" />
         <div>
           <p
-            className="font-serif text-[15px] sm:text-[17px] text-[#666] leading-snug"
+            className="text-[15px] sm:text-[17px] text-[#666] leading-snug"
+            style={{ fontFamily: 'var(--font-inter), Inter, sans-serif', letterSpacing: '-0.04em' }}
           >
-            I don&apos;t ask users what they want. I watch what they do.
+            I study how people think. I design how products feel.
           </p>
           <a
             href="/about"
