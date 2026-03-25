@@ -122,7 +122,7 @@ export default function AboutPage() {
                   top: section.bulb.top,
                   transform: `translateX(-50%) rotate(${section.bulb.rotate}deg)`,
                   zIndex: 20,
-                  animation: activeSection === section.id ? 'none' : 'bulbFloat 3s ease-in-out infinite',
+                  animation: activeSection ? 'none' : 'bulbFloat 3s ease-in-out infinite',
                 }}
                 aria-label={section.labelShort || section.label.replace('\n', ' ')}
               >
