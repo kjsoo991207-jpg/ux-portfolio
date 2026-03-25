@@ -54,7 +54,7 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: 'UX Portfolio',
+  title: 'JinsooKim Design',
   description: 'Designer-friendly UX portfolio',
 }
 
