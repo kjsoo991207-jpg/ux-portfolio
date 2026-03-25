@@ -44,7 +44,7 @@ export default function Nav() {
     >
       <div className="mx-auto max-w-7xl border-l border-r border-b border-neutral-200">
         <nav
-          className="mx-auto flex max-w-5xl items-center justify-between px-6 md:px-10 h-14"
+          className="mx-auto flex items-center justify-between px-6 md:px-10 h-14"
           aria-label="Main"
         >
           <Link
