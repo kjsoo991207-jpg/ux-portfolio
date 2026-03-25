@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
-const RESUME_URL = '/resume/jinsoo-kim-cv.pdf'
+const RESUME_URL = '/resume/jinsoo-kim-cv.html'
 
 const navLinks = [
   { href: '/', label: 'Work' },

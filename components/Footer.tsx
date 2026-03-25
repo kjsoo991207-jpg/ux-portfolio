@@ -1,5 +1,5 @@
 const CONTACT_EMAIL = 'jinsoo991207@ucla.edu'
-const RESUME_URL = '/resume/jinsoo-kim-cv.pdf'
+const RESUME_URL = '/resume/jinsoo-kim-cv.html'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/jinsoo-kim-2715553b9'
 
 export default function Footer() {
