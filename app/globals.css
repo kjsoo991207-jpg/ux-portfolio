@@ -183,16 +183,10 @@ body {
   50% { filter: drop-shadow(0 0 8px rgba(0,0,0,0.8)); }
 }
 
-/* About page: SVG screen border glow pulse */
-@keyframes borderGlow {
-  0%, 100% {
-    stroke: rgba(140,190,255,0.35);
-    stroke-width: 2;
-  }
-  50% {
-    stroke: rgba(140,190,255,0.85);
-    stroke-width: 3;
-  }
+/* About page: lightbulb float */
+@keyframes bulbFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 /* About page: lens reveal */

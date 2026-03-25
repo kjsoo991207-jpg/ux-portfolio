@@ -10,25 +10,25 @@ const SECTIONS = [
     id: 'background' as const,
     label: 'Background',
     labelShort: 'Background',
-    screenArea: { left: '8%', top: '22%', width: '22%', height: '26%' },
+    // Fan position: left bulb
+    bulb: { left: '32%', top: '42%', rotate: -25 },
     zoom: { x: 20, y: 40 },
-    person: { left: '3%', top: '15%', width: '30%', height: '75%' },
   },
   {
     id: 'philosophy' as const,
     label: 'Design\nPhilosophy',
     labelShort: 'Design Philosophy',
-    screenArea: { left: '36%', top: '18%', width: '24%', height: '30%' },
+    // Fan position: center bulb
+    bulb: { left: '48%', top: '35%', rotate: 0 },
     zoom: { x: 50, y: 40 },
-    person: { left: '33%', top: '15%', width: '34%', height: '75%' },
   },
   {
     id: 'love' as const,
     label: 'Things\nI Love',
     labelShort: 'Things I Love',
-    screenArea: { left: '69%', top: '28%', width: '18%', height: '24%' },
+    // Fan position: right bulb
+    bulb: { left: '64%', top: '42%', rotate: 25 },
     zoom: { x: 80, y: 40 },
-    person: { left: '67%', top: '15%', width: '30%', height: '75%' },
   },
 ]
 
@@ -116,38 +116,48 @@ export default function AboutPage() {
               priority
             />
 
-            {/* Invisible clickable hotspots over each screen */}
+            {/* Lightbulbs in fan layout above head */}
             {SECTIONS.map((section) => (
               <button
-                key={`screen-${section.id}`}
+                key={section.id}
                 onClick={() => handleClick(section.id)}
-                className="absolute cursor-pointer"
+                className="absolute group"
                 style={{
-                  left: section.screenArea.left,
-                  top: section.screenArea.top,
-                  width: section.screenArea.width,
-                  height: section.screenArea.height,
+                  left: section.bulb.left,
+                  top: section.bulb.top,
+                  transform: `translateX(-50%) rotate(${section.bulb.rotate}deg)`,
                   zIndex: 20,
                 }}
                 aria-label={section.labelShort || section.label.replace('\n', ' ')}
-              />
-            ))}
-
-            {/* Invisible clickable hotspots over each person */}
-            {SECTIONS.map((section) => (
-              <button
-                key={`person-${section.id}`}
-                onClick={() => handleClick(section.id)}
-                className="absolute cursor-pointer hover:bg-black/[0.03] transition-colors duration-200 rounded-lg"
-                style={{
-                  left: section.person.left,
-                  top: section.person.top,
-                  width: section.person.width,
-                  height: section.person.height,
-                  zIndex: 10,
-                }}
-                aria-label={`Observe: ${section.label.replace('\n', ' ')}`}
-              />
+              >
+                <div
+                  className="flex flex-col items-center transition-transform duration-200 group-hover:scale-110"
+                  style={{ animation: activeSection === section.id ? 'none' : 'bulbFloat 3s ease-in-out infinite' }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/lightbulb-sketch.png"
+                    alt=""
+                    className={`w-[50px] sm:w-[75px] h-auto select-none transition-all duration-300 ${
+                      activeSection === section.id
+                        ? 'brightness-110 drop-shadow-[0_0_8px_rgba(255,220,100,0.6)]'
+                        : 'opacity-80 group-hover:opacity-100 group-hover:drop-shadow-[0_0_6px_rgba(255,220,100,0.4)]'
+                    }`}
+                    draggable={false}
+                  />
+                  <span
+                    className={`mt-1 text-[8px] sm:text-[10px] tracking-[0.08em] uppercase whitespace-nowrap transition-all duration-300 ${
+                      activeSection === section.id ? 'text-[#111] font-semibold' : 'text-[#999] group-hover:text-[#666]'
+                    }`}
+                    style={{
+                      fontFamily: 'var(--font-mono), monospace',
+                      transform: `rotate(${-section.bulb.rotate}deg)`,
+                    }}
+                  >
+                    {section.labelShort || section.label.replace('\n', ' ')}
+                  </span>
+                </div>
+              </button>
             ))}
           </div>
         </div>
