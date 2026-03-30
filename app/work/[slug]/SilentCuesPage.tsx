@@ -678,7 +678,7 @@ function FamilyHomeInteractive({ onSend }: { onSend: () => void }) {
         border: '1px solid rgba(232,226,216,0.5)',
       }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: '#A89880', marginBottom: 8 }}>최근 대화에서</div>
-        <div style={{ fontSize: 14, color: '#6B5D4F', lineHeight: 1.6, fontStyle: 'italic' }}>"결혼하고 첫 여행이었어. 비가 왔었는데도 좋았어."</div>
+        <div style={{ fontSize: 14, color: '#6B5D4F', lineHeight: 1.6, fontStyle: 'italic' }}>&ldquo;결혼하고 첫 여행이었어. 비가 왔었는데도 좋았어.&rdquo;</div>
         <div style={{ fontSize: 11, color: '#A89880', marginTop: 6 }}>오늘 오전 10:15 · 함덕 해변 이야기</div>
       </div>
 
@@ -924,7 +924,7 @@ function ElderChat() {
         </div>
 
         <Bubble from="ai">
-          "할머니, 할머니 함덕 해변 사진 봤어요!<br/>할머니가 젊었을 때 진짜 예뻤어요."
+          &ldquo;할머니, 할머니 함덕 해변 사진 봤어요!<br/>할머니가 젊었을 때 진짜 예뻤어요.&rdquo;
         </Bubble>
         <Bubble from="user">
           함덕 해변... 할아버지랑 갔었는데.
@@ -1062,7 +1062,7 @@ function FamilyHome() {
         border: '1px solid rgba(232,226,216,0.5)',
       }}>
         <div style={{ fontSize: 14, color: '#6B5D4F', lineHeight: 1.6 }}>
-          "결혼하고 첫 여행이었어. 비가 왔었는데도 좋았어."
+          &ldquo;결혼하고 첫 여행이었어. 비가 왔었는데도 좋았어.&rdquo;
         </div>
         <div style={{ fontSize: 11, color: '#A89880', marginTop: 8 }}>오늘 오전 10:15 · 함덕 해변 이야기</div>
       </div>
@@ -1459,7 +1459,7 @@ function PhoneFamilyGallery() {
       <div style={{ padding: '8px 28px 0', fontSize: 28, fontWeight: 700, color: '#2D2418', letterSpacing: '-0.03em' }}>가족이 보내준 것들</div>
       <div style={{ margin: '20px 20px 0', background: '#FBF5E8', borderRadius: 22, padding: '20px' }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: '#D4A853' }}>손녀 수연</div>
-        <div style={{ fontSize: 18, fontWeight: 700, color: '#2D2418', marginTop: 6, lineHeight: 1.4 }}>"할머니, 오늘 학교에서요..."</div>
+        <div style={{ fontSize: 18, fontWeight: 700, color: '#2D2418', marginTop: 6, lineHeight: 1.4 }}>&ldquo;할머니, 오늘 학교에서요...&rdquo;</div>
         <div style={{ fontSize: 13, color: '#A89880', marginTop: 6 }}>오늘 오전 8:30 · 1분 12초</div>
         <div style={{
           marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 8,
