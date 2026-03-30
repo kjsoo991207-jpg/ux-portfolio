@@ -176,8 +176,8 @@ function ColorHierarchyBlock({ paragraphs }: { paragraphs: { text: string; isKey
     <div className="mt-6 space-y-4 max-w-[700px]">
       {paragraphs.map((segs, i) => (
         <p key={i}>
-          <span className={segs[0].isKey ? 'text-[15px] font-bold leading-[1.7] text-white' : 'text-[15px] leading-[1.7] text-neutral-400'}>{segs[0].text}</span>
-          {segs[1] && <>{' '}<span className={segs[1].isKey ? 'text-[15px] font-bold leading-[1.7] text-white' : 'text-[15px] leading-[1.7] text-neutral-400'}>{segs[1].text}</span></>}
+          <span className={segs[0].isKey ? 'text-[15px] font-bold leading-[1.7] text-[#111]' : 'text-[15px] leading-[1.7] text-[#767676]'}>{segs[0].text}</span>
+          {segs[1] && <>{' '}<span className={segs[1].isKey ? 'text-[15px] font-bold leading-[1.7] text-[#111]' : 'text-[15px] leading-[1.7] text-[#767676]'}>{segs[1].text}</span></>}
         </p>
       ))}
     </div>
@@ -203,7 +203,7 @@ function IMessageMockup() {
         />
 
         {/* Screen */}
-        <div className="relative rounded-[38px] overflow-hidden bg-[#111]">
+        <div className="relative rounded-[38px] overflow-hidden bg-white">
           {/* Dynamic Island */}
           <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[80px] h-[22px] bg-black rounded-full z-10" />
 
@@ -233,7 +233,7 @@ function IMessageMockup() {
           {/* iMessage nav bar */}
           <div className="text-center pt-2 pb-2.5 border-b border-[#e5e5ea]">
             <p className="text-[10px] text-[#8e8e93]">iMessage</p>
-            <p className="text-[14px] font-semibold text-white">Health Trackers</p>
+            <p className="text-[14px] font-semibold text-[#111]">Health Trackers</p>
             <p className="text-[10px] text-[#8e8e93]">4 people</p>
           </div>
 
@@ -247,7 +247,7 @@ function IMessageMockup() {
                 <span className="text-[8px] font-semibold text-white">S</span>
               </div>
               <div className="bg-[#e9e9eb] rounded-[18px] rounded-bl-[4px] px-3 py-2 max-w-[210px]">
-                <p className="text-[12px] leading-[1.4] text-white">
+                <p className="text-[12px] leading-[1.4] text-[#111]">
                   I track everything - steps, HRV, sleep, supplements. But I have no idea if I{'\u2019'}m actually getting healthier.
                 </p>
               </div>
@@ -268,7 +268,7 @@ function IMessageMockup() {
                 <span className="text-[8px] font-semibold text-white">M</span>
               </div>
               <div className="bg-[#e9e9eb] rounded-[18px] rounded-bl-[4px] px-3 py-2 max-w-[210px]">
-                <p className="text-[12px] leading-[1.4] text-white">
+                <p className="text-[12px] leading-[1.4] text-[#111]">
                   I just deleted the app. Opening it every day felt like looking at all my failures on a wall.
                 </p>
               </div>
@@ -309,8 +309,8 @@ function IMessageMockup() {
 function SectionHeader({ sec, color }: { sec: ProcessSection; color?: string }) {
   return (
     <div className="mb-8">
-      <span className="text-[15px] block mb-2" style={{ color: color || '#a3a3a3' }}>{sec.number}.</span>
-      <h3 className="text-[36px] font-bold text-white leading-[1.1]">{sec.title}</h3>
+      <span className="text-[15px] block mb-2" style={{ color: color || '#767676' }}>{sec.number}.</span>
+      <h3 className="text-[36px] font-bold text-[#111] leading-[1.1]">{sec.title}</h3>
       {sec.titleLine2 && (
         <p className="text-[15px] text-[#888] mt-2">{sec.titleLine2}</p>
       )}
@@ -324,10 +324,10 @@ function SubFeatureList({ features }: { features: { heading: string; desc: strin
       {features.map((f, i) => (
         <div key={i}>
           <div className="flex items-center gap-2 mb-1">
-            <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-            <p className="text-[14px] font-semibold text-white">{f.heading}</p>
+            <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+            <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
           </div>
-          <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">{f.desc}</p>
+          <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">{f.desc}</p>
         </div>
       ))}
     </div>
@@ -338,13 +338,13 @@ function BeforeAfterCard({ before, after }: { before: string; after: string }) {
   return (
     <div className="grid grid-cols-[1fr_1px_1fr] bg-[#f7f7f7] rounded-lg overflow-hidden mb-6">
       <div className="py-5 px-5">
-        <p className="text-[10px] uppercase tracking-[0.1em] text-neutral-400 mb-2">Before</p>
-        <p className="text-[15px] text-neutral-400 line-through">{before}</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#767676] mb-2">Before</p>
+        <p className="text-[15px] text-[#767676] line-through">{before}</p>
       </div>
       <div className="bg-[#e5e5e5]" />
       <div className="py-5 px-5">
-        <p className="text-[10px] uppercase tracking-[0.1em] text-white mb-2">After</p>
-        <p className="text-[15px] text-white font-medium">{after}</p>
+        <p className="text-[10px] uppercase tracking-[0.1em] text-[#111] mb-2">After</p>
+        <p className="text-[15px] text-[#111] font-medium">{after}</p>
       </div>
     </div>
   )
@@ -355,12 +355,12 @@ function BeforeAfterCard({ before, after }: { before: string; after: string }) {
 function AbandonmentChart() {
   return (
     <div className="mt-10 max-w-[520px]">
-      <p className="text-[15px] font-medium text-white mb-6">Abandonment after missing one day</p>
+      <p className="text-[15px] font-medium text-[#111] mb-6">Abandonment after missing one day</p>
       <div className="space-y-5">
         <div>
           <div className="flex justify-between mb-1.5">
             <span className="text-[15px] text-[#555]">Streak counter apps</span>
-            <span className="text-[15px] font-medium text-white">68%</span>
+            <span className="text-[15px] font-medium text-[#111]">68%</span>
           </div>
           <div className="h-[6px] bg-[#f0f0f0] rounded-full overflow-hidden">
             <div className="h-full bg-[#111] rounded-full" style={{ width: '68%' }} />
@@ -369,14 +369,14 @@ function AbandonmentChart() {
         <div>
           <div className="flex justify-between mb-1.5">
             <span className="text-[15px] text-[#555]">Flexible tracking</span>
-            <span className="text-[13px] font-medium text-neutral-400">18%</span>
+            <span className="text-[13px] font-medium text-[#767676]">18%</span>
           </div>
           <div className="h-[6px] bg-[#f0f0f0] rounded-full overflow-hidden">
             <div className="h-full bg-[#ccc] rounded-full" style={{ width: '18%' }} />
           </div>
         </div>
       </div>
-      <p className="text-[11px] text-neutral-400 mt-5">Moore Momentum · Cohorty</p>
+      <p className="text-[11px] text-[#bbb] mt-5">Moore Momentum · Cohorty</p>
     </div>
   )
 }
@@ -384,15 +384,15 @@ function AbandonmentChart() {
 function AutomaticityCurve() {
   return (
     <div className="mt-10 max-w-[560px]">
-      <p className="text-[15px] font-medium text-white mb-5">Habit automaticity over time</p>
+      <p className="text-[15px] font-medium text-[#111] mb-5">Habit automaticity over time</p>
       <svg viewBox="0 0 500 230" className="w-full" aria-label="S-curve showing habit automaticity increasing over 12 weeks">
         {/* Axes */}
         <line x1="60" y1="30" x2="60" y2="180" stroke="#e5e5e5" strokeWidth="1" />
         <line x1="60" y1="180" x2="470" y2="180" stroke="#e5e5e5" strokeWidth="1" />
 
         {/* Y axis labels */}
-        <text x="52" y="38" textAnchor="end" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">High</text>
-        <text x="52" y="183" textAnchor="end" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">Low</text>
+        <text x="52" y="38" textAnchor="end" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">High</text>
+        <text x="52" y="183" textAnchor="end" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">Low</text>
         <text x="15" y="110" textAnchor="middle" fontSize="8" fill="#bbb" fontFamily="system-ui, sans-serif" transform="rotate(-90, 15, 110)">Automaticity</text>
 
         {/* Horizontal grid lines */}
@@ -405,27 +405,27 @@ function AutomaticityCurve() {
         <line x1="460" y1="180" x2="460" y2="185" stroke="#ddd" strokeWidth="1" />
 
         {/* X axis labels */}
-        <text x="80" y="200" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">Week 1</text>
-        <text x="200" y="200" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">Week 4</text>
-        <text x="340" y="200" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">Week 8</text>
-        <text x="460" y="200" textAnchor="middle" fontSize="9" fill="#737373" fontFamily="system-ui, sans-serif">Week 12</text>
+        <text x="80" y="200" textAnchor="middle" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">Week 1</text>
+        <text x="200" y="200" textAnchor="middle" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">Week 4</text>
+        <text x="340" y="200" textAnchor="middle" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">Week 8</text>
+        <text x="460" y="200" textAnchor="middle" fontSize="9" fill="#767676" fontFamily="system-ui, sans-serif">Week 12</text>
         <text x="270" y="225" textAnchor="middle" fontSize="8" fill="#bbb" fontFamily="system-ui, sans-serif">(66 days)</text>
 
         {/* S-curve */}
         <path
           d="M 80 170 C 130 168, 180 160, 220 130 C 260 100, 300 50, 340 42 C 380 34, 430 32, 460 30"
           fill="none"
-          stroke="#34d399"
+          stroke="#111"
           strokeWidth="2"
           strokeLinecap="round"
         />
 
         {/* Curve endpoint dots */}
-        <circle cx="80" cy="170" r="3" fill="#000" stroke="#34d399" strokeWidth="1.5" />
-        <circle cx="460" cy="30" r="3" fill="#34d399" stroke="#34d399" strokeWidth="1.5" />
+        <circle cx="80" cy="170" r="3" fill="#fff" stroke="#111" strokeWidth="1.5" />
+        <circle cx="460" cy="30" r="3" fill="#111" stroke="#111" strokeWidth="1.5" />
 
         {/* Dotted vertical line at ~week 9 */}
-        <line x1="390" y1="36" x2="390" y2="180" stroke="#737373" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1="390" y1="36" x2="390" y2="180" stroke="#767676" strokeWidth="1" strokeDasharray="4 3" />
 
         {/* Annotation arrow + text */}
         <text fontSize="8" fill="#888" fontFamily="system-ui, sans-serif">
@@ -433,7 +433,7 @@ function AutomaticityCurve() {
           <tspan x="398" y="107">habit graduates off dashboard</tspan>
         </text>
       </svg>
-      <p className="text-[11px] text-neutral-400 mt-2">Lally et al. (2010) · UCL</p>
+      <p className="text-[11px] text-[#bbb] mt-2">Lally et al. (2010) · UCL</p>
     </div>
   )
 }
@@ -441,12 +441,12 @@ function AutomaticityCurve() {
 function AdherenceChart() {
   return (
     <div className="mt-10 max-w-[520px]">
-      <p className="text-[15px] font-medium text-white mb-6">Habit adherence at 90 days</p>
+      <p className="text-[15px] font-medium text-[#111] mb-6">Habit adherence at 90 days</p>
       <div className="space-y-5">
         <div>
           <div className="flex justify-between mb-1.5">
             <span className="text-[15px] text-[#555]">Solo tracking</span>
-            <span className="text-[13px] font-medium text-neutral-400">31%</span>
+            <span className="text-[13px] font-medium text-[#767676]">31%</span>
           </div>
           <div className="h-[6px] bg-[#f0f0f0] rounded-full overflow-hidden">
             <div className="h-full bg-[#ccc] rounded-full" style={{ width: '31%' }} />
@@ -455,14 +455,14 @@ function AdherenceChart() {
         <div>
           <div className="flex justify-between mb-1.5">
             <span className="text-[15px] text-[#555]">With social accountability</span>
-            <span className="text-[15px] font-medium text-white">67%</span>
+            <span className="text-[15px] font-medium text-[#111]">67%</span>
           </div>
           <div className="h-[6px] bg-[#f0f0f0] rounded-full overflow-hidden">
             <div className="h-full bg-[#111] rounded-full" style={{ width: '67%' }} />
           </div>
         </div>
       </div>
-      <p className="text-[11px] text-neutral-400 mt-5">JMIR mHealth</p>
+      <p className="text-[11px] text-[#bbb] mt-5">JMIR mHealth</p>
     </div>
   )
 }
@@ -472,11 +472,11 @@ function AdherenceChart() {
 function StreakIterationCard() {
   return (
     <div className="mt-10 mb-4">
-      <p className="inline-flex items-center gap-2 text-[13px] font-semibold text-white mb-6"><span className="w-[3px] h-[16px] bg-emerald-400 rounded-full inline-block"></span>Design iteration</p>
+      <p className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#111] mb-6"><span className="w-[3px] h-[16px] bg-[#3478F6] rounded-full inline-block"></span>Design iteration</p>
       <div className="grid grid-cols-[1fr_auto_1fr] gap-0 items-stretch">
         {/* Before */}
         <div className="bg-[#f7f7f7] rounded-l-lg p-6">
-          <p className="text-[10px] uppercase tracking-[0.1em] text-neutral-400 mb-4">Before</p>
+          <p className="text-[10px] uppercase tracking-[0.1em] text-[#767676] mb-4">Before</p>
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               <div className="flex gap-1">
@@ -487,7 +487,7 @@ function StreakIterationCard() {
                 ))}
               </div>
             </div>
-            <p className="text-[15px] font-medium text-white mt-3">Day 7</p>
+            <p className="text-[15px] font-medium text-[#111] mt-3">Day 7</p>
             <div className="flex items-center gap-2 mt-2">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="#cc0000" strokeWidth="1.5" strokeLinecap="round" transform="rotate(45 8 8)" /></svg>
               <span className="text-[14px] text-[#cc0000]">Miss one day</span>
@@ -495,29 +495,29 @@ function StreakIterationCard() {
             <div className="flex gap-1 mt-2">
               {[1,2,3,4,5,6,7].map(d => (
                 <div key={d} className={`w-6 h-6 rounded-full ${d === 1 ? 'bg-[#ddd]' : 'border border-[#ddd]'} flex items-center justify-center`}>
-                  <span className="text-[8px] text-neutral-400 font-medium">{d === 1 ? '0' : ''}</span>
+                  <span className="text-[8px] text-[#767676] font-medium">{d === 1 ? '0' : ''}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[13px] text-neutral-400 line-through mt-2">Day 0</p>
+            <p className="text-[13px] text-[#767676] line-through mt-2">Day 0</p>
           </div>
         </div>
 
         {/* Arrow */}
         <div className="flex items-center px-4 bg-[#f7f7f7]">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="#737373" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="#767676" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
 
         {/* After */}
         <div className="bg-[#f0f0e8] rounded-r-lg p-6">
-          <p className="text-[10px] uppercase tracking-[0.1em] text-white mb-4">After</p>
+          <p className="text-[10px] uppercase tracking-[0.1em] text-[#111] mb-4">After</p>
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="text-[20px]">{'\u{1F331}'}</span>
               <div>
-                <p className="text-[15px] font-medium text-white">Sprout Scout</p>
+                <p className="text-[15px] font-medium text-[#111]">Sprout Scout</p>
                 <p className="text-[11px] text-[#888]">Week 2 of consistency</p>
               </div>
             </div>
@@ -528,8 +528,8 @@ function StreakIterationCard() {
             <div className="flex items-center gap-2">
               <span className="text-[20px]">{'\u{1F331}'}</span>
               <div>
-                <p className="text-[15px] font-medium text-white">Still Sprout Scout</p>
-                <p className="text-[11px] text-emerald-400">Stage survives a single skip</p>
+                <p className="text-[15px] font-medium text-[#111]">Still Sprout Scout</p>
+                <p className="text-[11px] text-[#3478F6]">Stage survives a single skip</p>
               </div>
             </div>
           </div>
@@ -541,14 +541,14 @@ function StreakIterationCard() {
 
 // ─── Section accent colors ──────────────────────────────────────────────────
 const sectionColors: Record<string, string> = {
-  '01': '#34d399',
-  '02': '#34d399',
-  '03': '#34d399',
-  '05': '#34d399',
-  '06': '#34d399',
-  '07': '#34d399',
-  '08': '#34d399',
-  '09': '#34d399',
+  '01': '#3478F6',
+  '02': '#3478F6',
+  '03': '#3478F6',
+  '05': '#3478F6',
+  '06': '#3478F6',
+  '07': '#3478F6',
+  '08': '#3478F6',
+  '09': '#3478F6',
 }
 
 // ─── Main export ─────────────────────────────────────────────────────────────
@@ -567,15 +567,15 @@ export function SolutionContent({
 
   return (
     <div>
-      <p className="text-[15px] leading-[1.7] text-neutral-400 max-w-[700px] -mt-4 pb-16">
+      <p className="text-[15px] leading-[1.7] text-[#767676] max-w-[700px] -mt-4 pb-16">
         {cs.solutionIntro}
       </p>
-      <div className="border-b border-white/10 mb-20" />
+      <div className="border-b border-[#e8e8e4] mb-20" />
 
       {sections.map((sec, idx) => {
         const features = subFeatures[sec.number]
         const img = mockupImages[sec.number]
-        const accentColor = sectionColors[sec.number] || '#34d399'
+        const accentColor = sectionColors[sec.number] || '#3478F6'
 
         // ── Aika Age (01): Problem → Thinking → Solution ──────────
         if (sec.number === '01') {
@@ -583,15 +583,15 @@ export function SolutionContent({
             <section key={sec.number} className={`max-w-[800px] mx-auto ${idx > 0 ? 'mt-[160px]' : ''}`}>
               {/* Section header */}
               <div className="mb-12">
-                <span className="text-[15px] block mb-2" style={{ color: '#34d399' }}>01.</span>
-                <h3 className="text-[36px] font-bold text-white leading-[1.1]">Aika Age</h3>
+                <span className="text-[15px] block mb-2" style={{ color: '#3478F6' }}>01.</span>
+                <h3 className="text-[36px] font-bold text-[#111] leading-[1.1]">Aika Age</h3>
                 <p className="text-[15px] text-[#888] mt-2">One number, less overwhelm</p>
               </div>
 
               {/* Context paragraphs */}
               <div className="mb-12 max-w-[700px]">
-                <p className="text-[15px] leading-[1.7] text-neutral-400">
-                  Fifty metrics. No clarity. <span className="font-bold text-white">Aika Age collapses them all into one number: your biological age, recalculated daily.</span> One line graph. One answer: am I moving forward, or not?
+                <p className="text-[15px] leading-[1.7] text-[#767676]">
+                  Fifty metrics. No clarity. <span className="font-bold text-[#111]">Aika Age collapses them all into one number: your biological age, recalculated daily.</span> One line graph. One answer: am I moving forward, or not?
                 </p>
               </div>
 
@@ -614,8 +614,8 @@ export function SolutionContent({
               {/* Context */}
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Every health app punished failure the same way: red marks, reset streaks. <span className="font-bold text-white">I rewrote every failure indicator as &lsquo;slip,&rsquo; surfaced wins first, and stripped all punitive copy.</span>
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Every health app punished failure the same way: red marks, reset streaks. <span className="font-bold text-[#111]">I rewrote every failure indicator as &lsquo;slip,&rsquo; surfaced wins first, and stripped all punitive copy.</span>
                 </p>
               </div>
 
@@ -625,24 +625,24 @@ export function SolutionContent({
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Slip, Not Fail</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Slip, Not Fail</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Every failure indicator rewritten as a <span className="font-bold text-white">recoverable slip</span>, not a permanent mark.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Every failure indicator rewritten as a <span className="font-bold text-[#111]">recoverable slip</span>, not a permanent mark.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Wins First</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Wins First</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">The daily view leads with <span className="font-bold text-white">accomplishments</span> before surfacing anything that fell short.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">The daily view leads with <span className="font-bold text-[#111]">accomplishments</span> before surfacing anything that fell short.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Recovery-Centered</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Recovery-Centered</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">All punitive copy stripped, replaced with <span className="font-bold text-white">language that invites return</span>.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">All punitive copy stripped, replaced with <span className="font-bold text-[#111]">language that invites return</span>.</p>
                   </div>
                 </div>
               </div>
@@ -659,32 +659,32 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Showing everyone the same fifty habits meant ignoring the person. <span className="font-bold text-white">Participants froze. No signal about where to start.</span> Research backs this: 6 options convert at 30%, 24 options drop to 3%. I redesigned the habit library as a personalized shelf with <span className="font-bold text-white">impact scores</span> showing exactly how each habit affects your Aika Age.
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Showing everyone the same fifty habits meant ignoring the person. <span className="font-bold text-[#111]">Participants froze. No signal about where to start.</span> Research backs this: 6 options convert at 30%, 24 options drop to 3%. I redesigned the habit library as a personalized shelf with <span className="font-bold text-[#111]">impact scores</span> showing exactly how each habit affects your Aika Age.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">&ldquo;For You&rdquo; Shelf</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">&ldquo;For You&rdquo; Shelf</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Habits ranked by <span className="font-bold text-white">age, mode, and behavior patterns</span>. No more scrolling through fifty options.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits ranked by <span className="font-bold text-[#111]">age, mode, and behavior patterns</span>. No more scrolling through fifty options.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Impact Scores</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Impact Scores</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Each habit shows its <span className="font-bold text-white">+0.X effect on Aika Age</span>, turning abstract choices into clear priorities.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Each habit shows its <span className="font-bold text-[#111]">+0.X effect on Aika Age</span>, turning abstract choices into clear priorities.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Reduced Choice</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Reduced Choice</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Only <span className="font-bold text-white">relevant habits surface first</span>. The rest are available, not pushed.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Only <span className="font-bold text-[#111]">relevant habits surface first</span>. The rest are available, not pushed.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/aika-add-habit-mockup.jpeg" alt="Add Habit screen with personalized For You recommendations" /></div>
@@ -702,8 +702,8 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Every design decision had assumed people would build habits alone. <span className="font-bold text-white">But structured accountability consistently outperforms self-monitoring. It&rsquo;s one of the strongest predictors of long-term adherence.</span>
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Every design decision had assumed people would build habits alone. <span className="font-bold text-[#111]">But structured accountability consistently outperforms self-monitoring. It&rsquo;s one of the strongest predictors of long-term adherence.</span>
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -711,24 +711,24 @@ export function SolutionContent({
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Habit Clubs</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Habit Clubs</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Join others working on the <span className="font-bold text-white">same habit</span>. Shared progress, shared accountability.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Join others working on the <span className="font-bold text-[#111]">same habit</span>. Shared progress, shared accountability.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Weekly Challenges</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Weekly Challenges</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]"><span className="font-bold text-white">Time-bound goals</span> that create natural rhythms of participation.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Time-bound goals</span> that create natural rhythms of participation.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Trust Signals</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Trust Signals</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Verification badges so accountability comes from <span className="font-bold text-white">people you can trust</span>.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Verification badges so accountability comes from <span className="font-bold text-[#111]">people you can trust</span>.</p>
                   </div>
                 </div>
               </div>
@@ -745,32 +745,32 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Changing the language helped. But the number was still there. <span className="font-bold text-white">A streak counter says nothing about who you&rsquo;re becoming. And when it hits zero, a setback registers twice as intensely as an equivalent gain.</span>
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Changing the language helped. But the number was still there. <span className="font-bold text-[#111]">A streak counter says nothing about who you&rsquo;re becoming. And when it hits zero, a setback registers twice as intensely as an equivalent gain.</span>
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Growth Stages</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Growth Stages</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Named stages like <span className="font-bold text-white">Baby Seed and Sprout Scout</span> that reflect identity, not a count.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Named stages like <span className="font-bold text-[#111]">Baby Seed and Sprout Scout</span> that reflect identity, not a count.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Survives Missed Days</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Survives Missed Days</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Stages advance on <span className="font-bold text-white">consistency, not perfection</span>. A single skip doesn&rsquo;t reset anything.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Stages advance on <span className="font-bold text-[#111]">consistency, not perfection</span>. A single skip doesn&rsquo;t reset anything.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Identity Over Number</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Identity Over Number</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">You&rsquo;re <span className="font-bold text-white">something growing</span>, not a number that can shatter.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">You&rsquo;re <span className="font-bold text-[#111]">something growing</span>, not a number that can shatter.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/aika-streak-mockup.jpeg" alt="Aika growth stages - Baby Seed, Sprout Scout, Leafy Rookie" /></div>
@@ -788,8 +788,8 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Existing AI health assistants gave technically accurate answers. But they had no idea what the user had done that morning. <span className="font-bold text-white">Trust in AI coaching isn&rsquo;t determined by accuracy. It&rsquo;s determined by perceived fit between response and personal context.</span>
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Existing AI health assistants gave technically accurate answers. But they had no idea what the user had done that morning. <span className="font-bold text-[#111]">Trust in AI coaching isn&rsquo;t determined by accuracy. It&rsquo;s determined by perceived fit between response and personal context.</span>
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -797,24 +797,24 @@ export function SolutionContent({
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Context-First Responses</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Context-First Responses</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Coach ingests <span className="font-bold text-white">today&rsquo;s logged data</span> before generating any guidance.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Coach ingests <span className="font-bold text-[#111]">today&rsquo;s logged data</span> before generating any guidance.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">No Data, No Guess</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">No Data, No Guess</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">If the data isn&rsquo;t there, the Coach <span className="font-bold text-white">stays silent</span>. Generic advice actively erodes trust.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">If the data isn&rsquo;t there, the Coach <span className="font-bold text-[#111]">stays silent</span>. Generic advice actively erodes trust.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Trust Through Relevance</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Trust Through Relevance</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]"><span className="font-bold text-white">Perceived fit</span> between response and context determines whether advice is followed.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Perceived fit</span> between response and context determines whether advice is followed.</p>
                   </div>
                 </div>
               </div>
@@ -831,32 +831,32 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  The most common reason people stopped logging wasn&rsquo;t bad features or confusing design. <span className="font-bold text-white">The input itself was too much effort. Five manual entries a day isn&rsquo;t a habit. It&rsquo;s a job.</span>
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  The most common reason people stopped logging wasn&rsquo;t bad features or confusing design. <span className="font-bold text-[#111]">The input itself was too much effort. Five manual entries a day isn&rsquo;t a habit. It&rsquo;s a job.</span>
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
                 <div className="space-y-5 flex flex-col justify-center md:order-1">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Snap</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Snap</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Take a photo or <span className="font-bold text-white">scan a barcode</span> to log supplements instantly.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Take a photo or <span className="font-bold text-[#111]">scan a barcode</span> to log supplements instantly.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Talk</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Talk</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]"><span className="font-bold text-white">Voice input</span> for hands-free logging on the go.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]"><span className="font-bold text-[#111]">Voice input</span> for hands-free logging on the go.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Type</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Type</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Quick text entry when that&rsquo;s the <span className="font-bold text-white">fastest route</span>.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Quick text entry when that&rsquo;s the <span className="font-bold text-[#111]">fastest route</span>.</p>
                   </div>
                 </div>
                 <div className="md:order-2"><PhoneFrame src="/images/aika/hero-logging.jpeg" alt="Aika camera logging - snap a photo or scan a barcode" /></div>
@@ -874,8 +874,8 @@ export function SolutionContent({
             >
               <div className="mb-12 max-w-[700px]">
                 <SectionHeader sec={sec} color={accentColor} />
-                <p className="mt-6 text-[15px] leading-[1.7] text-neutral-400">
-                  Health apps weren&rsquo;t designed with an ending. Every habit stayed active forever. <span className="font-bold text-white">Automaticity averages 66 days. I designed habits to graduate off the dashboard once they become automatic behavior.</span> Your queue gets shorter over time, not longer.
+                <p className="mt-6 text-[15px] leading-[1.7] text-[#767676]">
+                  Health apps weren&rsquo;t designed with an ending. Every habit stayed active forever. <span className="font-bold text-[#111]">Automaticity averages 66 days. I designed habits to graduate off the dashboard once they become automatic behavior.</span> Your queue gets shorter over time, not longer.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -883,24 +883,24 @@ export function SolutionContent({
                 <div className="space-y-5 flex flex-col justify-center">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">66-Day Reinforcement</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">66-Day Reinforcement</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Habits follow a <span className="font-bold text-white">research-backed automaticity timeline</span> with a defined finish line.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits follow a <span className="font-bold text-[#111]">research-backed automaticity timeline</span> with a defined finish line.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Graduation System</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Graduation System</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Habits move to background once they become <span className="font-bold text-white">automatic behavior</span>. No more endless tracking.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Habits move to background once they become <span className="font-bold text-[#111]">automatic behavior</span>. No more endless tracking.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">Shrinking Dashboard</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">Shrinking Dashboard</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">Your active queue gets <span className="font-bold text-white">shorter over time</span>, not longer. A finish line, not a treadmill.</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">Your active queue gets <span className="font-bold text-[#111]">shorter over time</span>, not longer. A finish line, not a treadmill.</p>
                   </div>
                 </div>
               </div>
@@ -962,7 +962,7 @@ export function SolutionContent({
                     className="bg-[#fafafa] border border-[#ebebeb] rounded-xl p-5 text-center"
                   >
                     <span className="text-[28px] block mb-3">{card.emoji}</span>
-                    <p className="text-[15px] font-semibold text-white">{card.title}</p>
+                    <p className="text-[15px] font-semibold text-[#111]">{card.title}</p>
                     <p className="text-[14px] text-[#888] mt-1">{card.subtitle}</p>
                     <p className="text-[15px] text-[#666] leading-[1.6] mt-3">{card.body}</p>
                   </div>
@@ -976,10 +976,10 @@ export function SolutionContent({
                 {features?.map((f, i) => (
                   <div key={i}>
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-[3px] h-[16px] bg-emerald-400 rounded-full flex-shrink-0" />
-                      <p className="text-[14px] font-semibold text-white">{f.heading}</p>
+                      <div className="w-[3px] h-[16px] bg-[#3478F6] rounded-full flex-shrink-0" />
+                      <p className="text-[14px] font-semibold text-[#111]">{f.heading}</p>
                     </div>
-                    <p className="text-[13px] text-neutral-400 leading-[1.7] ml-[11px]">{f.desc}</p>
+                    <p className="text-[13px] text-[#767676] leading-[1.7] ml-[11px]">{f.desc}</p>
                   </div>
                 ))}
               </div>

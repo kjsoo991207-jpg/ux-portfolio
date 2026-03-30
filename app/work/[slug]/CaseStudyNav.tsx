@@ -23,7 +23,7 @@ export function CaseStudyNav({
   const next = currentIndex < SECTIONS.length - 1 && currentIndex >= 0 ? SECTIONS[currentIndex + 1] : null
 
   return (
-    <nav className="border-b border-white/10 pb-6 mb-10" aria-label="Case study sections">
+    <nav className="border-b border-neutral-200 pb-6 mb-10" aria-label="Case study sections">
       <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
         {SECTIONS.map((s) => (
           <li key={s.id}>

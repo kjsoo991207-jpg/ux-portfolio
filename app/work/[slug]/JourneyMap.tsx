@@ -56,7 +56,7 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
 
   return (
     <div className="mt-14">
-      <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 mb-10">
+      <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#767676] mb-10">
         Emotional journey — Participants 01 &amp; 02
       </p>
       <p className="text-sm text-neutral-400 mb-6 font-light">
@@ -69,8 +69,8 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
       >
         <defs>
           <linearGradient id="blue-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#34d399" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#34d399" stopOpacity="0" />
+            <stop offset="0%" stopColor="#3478F6" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#3478F6" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="coral-fade" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#E85555" stopOpacity="0.15" />
@@ -82,7 +82,7 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
         <line x1="60" y1="160" x2="680" y2="160" stroke="#e5e5e5" strokeWidth="1" strokeDasharray="4 4" />
 
         {/* Y axis labels */}
-        <text x="50" y="54" textAnchor="end" fontSize="8" fill="#34d399" fontFamily="system-ui,sans-serif" fontWeight="500">Motivated</text>
+        <text x="50" y="54" textAnchor="end" fontSize="8" fill="#3478F6" fontFamily="system-ui,sans-serif" fontWeight="500">Motivated</text>
         <text x="50" y="274" textAnchor="end" fontSize="8" fill="#E85555" fontFamily="system-ui,sans-serif" fontWeight="500">Defeated</text>
 
         {/* Area fills */}
@@ -90,7 +90,7 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
         <path d={negativeArea} fill="url(#coral-fade)" />
 
         {/* Lines */}
-        <path d={positivePath} fill="none" stroke="#34d399" strokeWidth="2.5" strokeLinecap="round" />
+        <path d={positivePath} fill="none" stroke="#3478F6" strokeWidth="2.5" strokeLinecap="round" />
         <path d={negativePath} fill="none" stroke="#E85555" strokeWidth="2.5" strokeLinecap="round" />
 
         {/* Dots, labels, quotes */}
@@ -98,7 +98,7 @@ export function JourneyMapDiagram({ journeyMap }: { journeyMap: JourneyMap }) {
           const x = xs[i]
           const y = ys[i]
           const isPositive = step.sentiment >= 0
-          const dotColor = isPositive ? '#34d399' : '#E85555'
+          const dotColor = isPositive ? '#3478F6' : '#E85555'
           const quote = quoteTexts[i]
           const stageY = 330
 
