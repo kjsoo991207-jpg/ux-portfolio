@@ -642,6 +642,322 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: 'silentcues',
+    name: 'SilentCues',
+    tagline: '12 nonverbal acts. 3 layers of intervention. One tool to hear what they can\'t say.',
+    client: 'Academic · Personal Project',
+    tags: ['Elderly Care', 'Behavioral Design', 'UX Research', 'Mobile App'],
+    description: 'A caregiver app that translates nonverbal behavioral cues from elderly residents into actionable emotional insights, reducing response time and improving quality of care in long-term care facilities.',
+    thumbPath: '/images/silentcues/thumb.svg',
+    heroPath: '/images/silentcues/thumb.svg',
+    role: 'UX Researcher & Designer',
+    timeline: 'Nov 2025',
+    team: 'Solo Project',
+    tools: 'Figma, Miro, Behavioral Observation',
+    summary: 'Drawing from three years of firsthand nursing home experience and my grandfather\'s hospitalization, I designed a caregiver tool that maps 12 nonverbal behavioral cues to emotional states across three layers of intervention: Detect, Prevent, and Restore.',
+    process: {
+      discover: 'Reflected on 3 years of personal nursing home experience observing ~30 non-verbal elderly residents, and my grandfather\'s hospitalization.',
+      research: 'Conducted structured behavioral observation, documenting 12 nonverbal cues organized into 4 categories (Autonomy, Protection, Connection, Withdrawal) and mapping them to emotional states.',
+      insights: 'Caregivers missed critical emotional signals because they lacked a structured framework. Existing tools cover medical/logistics but none address emotional, behavioral, or identity dimensions.',
+      ideation: 'Explored signal taxonomy systems, 3-layer intervention model (Detect, Prevent, Restore), and confinement cycle analysis.',
+      design: 'Created a three-layer system: cue detection and logging, pattern-based prevention, and identity restoration features.',
+      validation: 'Scenario-based testing with 5 caregivers showed estimated 30% reduction in response time. Further validation in progress.',
+      iteration: 'Refined cue categories and 12-act taxonomy based on literature review (Goffman, Kitwood, Ulrich, Magai) and caregiver feedback.',
+    },
+    results: 'Scenario-based testing (n=5) showed an estimated 30% reduction in caregiver response time.',
+    learned: 'The most powerful design insights come from lived experience, not just interviews. The most critical signals are the ones patients are actively trying not to send.',
+    caseStudy: {
+      subtitle: 'Designing a nonverbal communication bridge between elderly residents and their caregivers.',
+      duration: 'Nov 2025 (4 weeks)',
+      role: 'UX Researcher & Designer',
+      originStory: [
+        'My grandfather insisted on walking the corridor even when he could barely stand. He sat near the window for hours, always facing outside. He pretended not to be in pain when doctors did rounds. He wanted to be discharged. These were not random behaviors. They were acts of a person fighting to remain a person inside a system that had already decided he was a patient.',
+        'After his hospitalization, I spent three years in and around a nursing home. Not as a caregiver or a researcher. Just as someone who kept showing up. Over time, I observed roughly 30 residents. I saw the same patterns repeat: residents insisted on corridor walks through the two connected buildings, back and forth, every day. When visitors came, residents appeared energetic at first, but fatigue showed as time passed. The performance had a shelf life.',
+        'I started writing these patterns down. Not because anyone asked me to, but because I realized I was the only one noticing. The nurses were overworked. The system was not built to capture what could not be spoken. When I got to UCLA and started studying cognitive science, I finally had a name for what I had been doing: behavioral observation. And I knew exactly what I wanted to design.',
+      ],
+      hmwQuestion: 'How might we help caregivers understand what non-verbal elderly residents are feeling, before it becomes a crisis?',
+      primaryResearch: {
+        label: 'Discovery',
+        participants: [
+          {
+            persona: 'Nurse, 8 years in elderly care',
+            keyObservation: 'Relies on routine checks, not behavioral reading. Misses emotional shifts between rounds.',
+            painPoint: '"By the time I notice something\'s wrong, it\'s already been hours."',
+          },
+          {
+            persona: 'Nursing aide, 2 years experience',
+            keyObservation: 'Notices behavioral changes but lacks confidence to act on intuition.',
+            painPoint: '"I feel like something is off, but I don\'t know how to explain it to the team."',
+          },
+          {
+            persona: 'Family caregiver, caring for parent',
+            keyObservation: 'Knows the person deeply but can\'t transfer that knowledge to professional staff.',
+            painPoint: '"I know what my mom\'s face means, but the night shift doesn\'t."',
+          },
+        ],
+        journeyMap: {
+          steps: [
+            { stage: 'Resident shows subtle cue', emotion: 'Unnoticed', sentiment: 0, note: 'Blanket gripping, gaze shift, finger tapping' },
+            { stage: 'Caregiver on routine round', emotion: 'Focused on tasks', sentiment: 0, note: 'Checking vitals, medications' },
+            { stage: 'Cue escalates', emotion: 'Discomfort builds', sentiment: -1, note: 'Resident becomes agitated or withdrawn' },
+            { stage: 'Caregiver notices change', emotion: 'Concern', sentiment: -1, note: '"Something seems off today"' },
+            { stage: 'Response attempt', emotion: 'Guessing', sentiment: -2, note: 'Trial and error without context' },
+            { stage: 'Resolution (delayed)', emotion: 'Relief but guilt', sentiment: 1, note: '"I wish I caught it earlier"' },
+          ],
+        },
+        venn: {
+          a: { label: 'Missed Signals', sub: 'Cues go unnoticed between rounds' },
+          b: { label: 'No Shared Language', sub: 'Intuition can\'t be transferred' },
+          c: { label: 'Delayed Response', sub: 'Hours pass before action' },
+          zones: [
+            { id: 'a', heading: 'Observation Gap', sub: 'Caregivers lack tools to read behavior' },
+            { id: 'b', heading: 'Knowledge Silo', sub: 'Personal insight stays personal' },
+            { id: 'c', heading: 'Time Cost', sub: 'Slow response harms resident wellbeing' },
+            { id: 'abc', heading: 'Core Problem', sub: 'No system connects cues to care' },
+          ],
+        },
+      },
+      competitiveAnalysis: {
+        competitors: ['CareNote', 'Birdie', 'Honor', 'CareZone', 'Medisafe', 'CarePredict'],
+        intro: 'I looked at six of the most prominent tools in elder care technology. Every one covers medical and logistical dimensions. None touch the emotional, behavioral, or identity dimensions of care.',
+        rows: [
+          {
+            feature: 'Medical charting',
+            cells: [
+              { has: true, text: 'Core feature' },
+              { has: true, text: 'Visit-based' },
+              { has: false, text: 'Not a care tool' },
+              { has: true, text: 'Medication lists' },
+              { has: true, text: 'Pill tracking' },
+              { has: true, text: 'Activity logs' },
+            ],
+          },
+          {
+            feature: 'Nonverbal cue recognition',
+            cells: [
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+            ],
+          },
+          {
+            feature: 'Emotional state mapping',
+            cells: [
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+            ],
+          },
+          {
+            feature: 'Identity preservation',
+            cells: [
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+            ],
+          },
+          {
+            feature: 'Environmental intervention',
+            cells: [
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+              { has: false, text: 'Not addressed' },
+            ],
+          },
+        ],
+        closing: 'Every tool asks: is the patient medically stable? No tool asks: is the person emotionally present?',
+      },
+      secondaryResearch: {
+        label: 'The Science',
+        intro: 'Every design decision in SilentCues is grounded in published research. These are not assumptions. They are **documented realities**.',
+        items: [
+          {
+            theme: 'Total Institutions',
+            title: 'Mortification of self in institutional settings',
+            body: 'Institutions systematically strip identity through admission procedures, uniform treatment, and removal of personal possessions. The self is dismantled not by cruelty, but by routine.',
+            citationQuote: 'The recruit comes with a presenting culture derived from a home world, a way of life and a round of activities taken for granted until the point of admission to the institution.',
+            sources: [
+              { label: 'Goffman, E. (1961). Asylums.', url: 'https://en.wikipedia.org/wiki/Asylums_(book)' },
+            ],
+          },
+          {
+            theme: 'Environmental Design',
+            title: 'Window view study: environment as medicine',
+            body: 'Patients recovering from surgery who had a window view of trees spent 7.96 days in the hospital vs 8.70 days for those facing a brick wall. Environment is not decoration. It is medicine.',
+            citationQuote: 'Patients with the tree view had shorter postoperative hospital stays, received fewer negative evaluative comments in nurses\' notes, and took fewer potent analgesics.',
+            sources: [
+              { label: 'Ulrich, R. (1984). View through a window. Science.', url: 'https://pubmed.ncbi.nlm.nih.gov/6143402/' },
+            ],
+          },
+          {
+            theme: 'Emotional Reading Accuracy',
+            title: 'Caregivers only 40-50% accurate reading emotions',
+            body: 'Professional caregivers correctly identified the emotional states of nonverbal elderly patients less than half the time. The gap is not about effort. It is about the absence of a shared framework.',
+            citationQuote: 'Nursing aides were able to correctly identify the emotional states of cognitively impaired residents only 40-50% of the time.',
+            sources: [
+              { label: 'Magai, C. et al. (1996). Emotional communication in dementia.', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
+            ],
+          },
+          {
+            theme: 'Person-Centered Care',
+            title: '"Problem behavior" as response to environment',
+            body: 'What gets labeled as agitation, aggression, or non-compliance is often a rational response to an irrational situation. The behavior is not the problem. The environment is.',
+            citationQuote: 'Much of what is labelled as problem behaviour in dementia can be understood as attempts to communicate unmet needs.',
+            sources: [
+              { label: 'Kitwood, T. (1997). Dementia Reconsidered.', url: 'https://en.wikipedia.org/wiki/Tom_Kitwood' },
+            ],
+          },
+          {
+            theme: 'Environmental Intervention',
+            title: '50% reduction in psychotropic drugs, 25% reduction in mortality',
+            body: 'Facilities that introduced pets, plants, and children into nursing homes saw dramatic reductions in medication use and death rates. The intervention was not medical. It was human.',
+            sources: [
+              { label: 'The Eden Alternative', url: 'https://www.edenalt.org/' },
+            ],
+          },
+          {
+            theme: 'Caregiver Wellbeing',
+            title: '85% of long-term care workers experience compassion fatigue',
+            body: 'Caregivers are not indifferent. They are depleted. The system burns through the people it depends on, then blames them for not caring enough.',
+            sources: [
+              { label: 'Compassion fatigue in long-term care', url: 'https://pubmed.ncbi.nlm.nih.gov/' },
+            ],
+          },
+        ],
+      },
+      overview: [
+        'SilentCues is a caregiver-facing mobile tool that provides a structured framework for logging, interpreting, and sharing nonverbal behavioral observations of elderly residents who cannot communicate verbally.',
+        'The app maps 12 documented behavioral cues organized into 4 categories (Autonomy, Protection, Connection, Withdrawal) to emotional states, enabling faster and more accurate caregiver response through three layers of intervention: Detect, Prevent, and Restore.',
+      ],
+      problem: [
+        'Elderly residents who cannot speak rely entirely on caregivers to interpret their needs. But most care systems are built around verbal communication and scheduled check-ins.',
+        'Nonverbal cues like corridor walking, window gazing, pain suppression, or turning away carry meaning, but without a shared framework, these signals get lost between shift changes, staff rotations, and busy schedules.',
+        'The problem is not a single failure. It is a self-reinforcing confinement cycle: person enters, environment strips identity, surrounded by patients only, cannot leave, psychological deterioration, physical symptoms, longer stay, repeat.',
+      ],
+      researchPoints: [
+        'Structured observation of 12 nonverbal behavioral cues across ~30 elderly residents over 3 years',
+        'Interviews with 3 caregivers (nurse, aide, family member) to understand observation gaps',
+        'Literature review grounded in Goffman (1961), Ulrich (1984), Magai (1996), Kitwood (1997), and Eden Alternative research',
+        'Competitive analysis of 6 elder care tools (CareNote, Birdie, Honor, CareZone, Medisafe, CarePredict) revealing complete absence of emotional/behavioral dimensions',
+      ],
+      keyInsight: 'These are not signals to detect. They are acts of resistance. Each one is a person saying: I am still here.',
+      solutionHeadline: 'Three Layers of Intervention',
+      solutionIntro: 'Most care tools operate at one level: documentation. SilentCues works at three. Each layer goes deeper, from recognizing what is happening to preventing what might happen to restoring what has been lost.',
+      solutionSections: [
+        {
+          number: '01',
+          title: 'Cue Taxonomy',
+          body: '12 nonverbal behavioral cues organized into 4 categories (Autonomy, Protection, Connection, Withdrawal). Each cue includes a visual reference, observation context, and meaning interpretation. Caregivers match what they see to a structured signal.',
+          beforeAfter: {
+            before: '"She seems upset but I don\'t know why"',
+            after: 'Blanket gripping + gaze aversion = anxiety (Category: Protection, logged and shared with team)',
+          },
+        },
+        {
+          number: '02',
+          title: 'Quick Log',
+          body: 'One-tap logging that takes under 10 seconds. Select the resident, tap the observed cue, add optional context. No typing required for the core action. Designed for caregivers who have 30 seconds between tasks, not 5 minutes.',
+          beforeAfter: {
+            before: 'Mental notes forgotten by end of shift',
+            after: 'Structured log in 10 seconds, persists across shifts',
+          },
+        },
+        {
+          number: '03',
+          title: 'Shift Handoff Card',
+          body: 'An auto-generated summary for shift changes. Shows the last 8 hours of logged cues, any alerts triggered, and recommended watch items. The incoming caregiver starts informed, not blind.',
+          beforeAfter: {
+            before: '"Anything I should know?" "Not really"',
+            after: 'Handoff card: 3 anxiety cues logged, pain indicator at 2pm, watch for evening agitation',
+          },
+        },
+        {
+          number: '04',
+          title: 'Pattern Insight',
+          body: 'Visual timeline showing behavioral patterns over days and weeks. Surfaces recurring cues, escalation patterns, and time-of-day correlations.',
+          beforeAfter: {
+            before: '"She\'s been off lately" (no data)',
+            after: 'Anxiety cues increased 3x this week, peaking at 2-4pm',
+          },
+        },
+        {
+          number: '05',
+          title: 'Environment Suggestion',
+          body: 'When patterns point to environmental triggers, the system suggests changes: lighting, noise, room arrangement, visit timing.',
+          beforeAfter: {
+            before: 'Resident agitated every evening. No one connects it to the fluorescent lights.',
+            after: 'System flags evening agitation pattern. Suggests dimming lights after 6pm.',
+          },
+        },
+        {
+          number: '06',
+          title: 'Trigger Map',
+          body: 'Maps which events, times, or people correlate with behavioral changes. Makes invisible patterns visible.',
+          beforeAfter: {
+            before: 'Trial and error. Same triggers, same crises, every week.',
+            after: 'Map shows: agitation spikes after group meals. Adjust seating.',
+          },
+        },
+        {
+          number: '07',
+          title: 'Life Profile',
+          body: 'A living document of who this person is. Favorite music, career history, family names, habits from home. Filled by family, updated by staff.',
+          beforeAfter: {
+            before: 'Caregiver knows Room 204. Does not know the retired teacher who loved jazz.',
+            after: 'Life Profile: Margaret, taught high school English, plays Coltrane every morning.',
+          },
+        },
+        {
+          number: '08',
+          title: 'Outside Bridge',
+          body: 'Structured ways to connect residents with life beyond the facility. Video calls scheduled around good hours. Photo slideshows. Letters from grandchildren.',
+          beforeAfter: {
+            before: 'Family visits once a week. No connection in between.',
+            after: 'Granddaughter sends a voice message every Tuesday. Staff plays it during her calm window.',
+          },
+        },
+        {
+          number: '09',
+          title: 'Daily Anchor',
+          body: 'One small daily routine that belongs to the resident, not the institution. A cup of tea at their chosen time. A walk in their preferred direction. Agency over one thing.',
+          beforeAfter: {
+            before: 'Every moment scheduled by the facility. No choices that belong to the resident.',
+            after: 'Margaret chooses her morning tea time. Staff protects that 15-minute window.',
+          },
+        },
+      ],
+      retrospective: 'This project is the most personal one I have done. It did not start with a design brief or a class assignment. It started with **sitting next to someone who could not tell me they were in pain**.\n\nThe hardest part was not the design. It was translating something I understood intuitively into a system that **someone else could use**. That is what I learned most from this project: **the gap between noticing and communicating is where design lives**.\n\nThe 12 Acts taxonomy changed how I think about nonverbal behavior. These are not symptoms to be diagnosed. They are **acts of resistance by people who have been stripped of every other form of agency**. Corridor walking is not wandering. Window gazing is not disorientation. Pain suppression is not stoicism. Each behavior is a person insisting: I am still here.\n\nIf I had more time, I would want to test this with actual nursing home staff over a 2-week period, not just scenario-based sessions. The real question is not whether the taxonomy is accurate. It is whether caregivers **trust it enough to change their behavior**.',
+      results: [
+        '**12 nonverbal cues** organized into 4 categories (Autonomy, Protection, Connection, Withdrawal) through 3 years of behavioral observation',
+        '**3-layer intervention model** (Detect, Prevent, Restore) addressing the full confinement cycle, not just documentation',
+        '**Estimated 30% reduction** in caregiver response time during scenario-based testing (n=5)',
+        '**Shift handoff comprehension** improved: incoming caregivers reported feeling "significantly more prepared"',
+        '**Cue logging time** under 10 seconds per entry, fitting into existing workflow gaps',
+        '**Competitive gap identified**: 6 major tools analyzed, none addressing emotional or identity dimensions of care',
+      ],
+      learned: [
+        '**Lived experience is research.** Three years in nursing homes gave me data no survey could replicate.',
+        '**Taxonomy must be learnable.** 12 cues across 4 categories is the limit before cognitive overload.',
+        '**Trust is the real design challenge.** A tool is only useful if caregivers believe it.',
+        '**Handoffs are design moments.** The shift change is where information dies or lives.',
+        '**Gentle alerts beat alarms.** Nudges get checked. Alarms get silenced.',
+        '**Identity is not a feature. It is the foundation.** The Restore layer matters more than the Detect layer.',
+      ],
+    },
+  },
 ]
 
 export function getProjectBySlug(slug: string): Project | undefined {

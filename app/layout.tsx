@@ -3,6 +3,7 @@ import { Source_Serif_4, Inter, IBM_Plex_Mono, EB_Garamond, DM_Sans, Noto_Serif,
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import { PostHogProvider } from './providers'
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
@@ -70,10 +71,12 @@ export default function RootLayout({
         <link rel="preload" href="/images/aika/aika-daily.png" as="image" />
         <link rel="preload" href="/images/aika/aika-add-habit.png" as="image" />
       </head>
-      <body className="min-h-screen flex flex-col font-sans text-base antialiased bg-white text-[#0a0a0a]">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-screen flex flex-col font-sans text-base antialiased bg-black text-white">
+        <PostHogProvider>
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   )

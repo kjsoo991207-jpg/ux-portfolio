@@ -154,19 +154,19 @@ export function StickyPhoneSolution() {
               ref={(el) => { sectionRefs.current[i] = el }}
               className="min-h-[60vh] flex flex-col justify-center"
             >
-              <span className="text-[15px] block mb-2 text-[#3478F6]">{f.number}.</span>
-              <h3 className="text-[36px] font-bold text-[#111] leading-[1.1]">{f.title}</h3>
+              <span className="text-[15px] block mb-2 text-emerald-400">{f.number}.</span>
+              <h3 className="text-[36px] font-bold text-white leading-[1.1]">{f.title}</h3>
               <p className="text-[15px] text-[#888] mt-2">{f.subtitle}</p>
               <p
-                className="mt-8 text-[15px] leading-[1.7] text-[#767676] max-w-[500px]"
+                className="mt-8 text-[15px] leading-[1.7] text-neutral-400 max-w-[500px]"
                 dangerouslySetInnerHTML={{ __html: f.context }}
               />
               <div className="space-y-5 mt-8">
                 {f.bullets.map((b, j) => (
                   <div key={j}>
-                    <p className="text-[14px] font-semibold text-[#111]">{b.heading}</p>
+                    <p className="text-[14px] font-semibold text-white">{b.heading}</p>
                     <p
-                      className="text-[13px] text-[#767676] leading-[1.7] mt-1"
+                      className="text-[13px] text-neutral-400 leading-[1.7] mt-1"
                       dangerouslySetInnerHTML={{ __html: b.desc }}
                     />
                   </div>
@@ -181,11 +181,11 @@ export function StickyPhoneSolution() {
       <div className="md:hidden space-y-24">
         {stickyFeatures.map((f) => (
           <div key={f.number}>
-            <span className="text-[15px] block mb-2 text-[#3478F6]">{f.number}.</span>
-            <h3 className="text-[28px] font-bold text-[#111] leading-[1.1]">{f.title}</h3>
+            <span className="text-[15px] block mb-2 text-emerald-400">{f.number}.</span>
+            <h3 className="text-[28px] font-bold text-white leading-[1.1]">{f.title}</h3>
             <p className="text-[15px] text-[#888] mt-2">{f.subtitle}</p>
             <p
-              className="mt-6 text-[15px] leading-[1.7] text-[#767676]"
+              className="mt-6 text-[15px] leading-[1.7] text-neutral-400"
               dangerouslySetInnerHTML={{ __html: f.context }}
             />
             <div className="flex justify-center my-8">
@@ -201,9 +201,9 @@ export function StickyPhoneSolution() {
             <div className="space-y-5">
               {f.bullets.map((b, j) => (
                 <div key={j}>
-                  <p className="text-[14px] font-semibold text-[#111]">{b.heading}</p>
+                  <p className="text-[14px] font-semibold text-white">{b.heading}</p>
                   <p
-                    className="text-[13px] text-[#767676] leading-[1.7] mt-1"
+                    className="text-[13px] text-neutral-400 leading-[1.7] mt-1"
                     dangerouslySetInnerHTML={{ __html: b.desc }}
                   />
                 </div>

@@ -42,7 +42,7 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
       </g>
 
       {/* Circle A label — upper left */}
-      <text x="195" y="88" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#0a0a0a" fontFamily="system-ui,sans-serif" fontWeight="500">
+      <text x="195" y="88" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#fff" fontFamily="system-ui,sans-serif" fontWeight="500">
         {venn.a.label.toUpperCase()}
       </text>
       {venn.a.sub && (
@@ -52,7 +52,7 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
       )}
 
       {/* Circle B label — upper right */}
-      <text x="605" y="88" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#0a0a0a" fontFamily="system-ui,sans-serif" fontWeight="500">
+      <text x="605" y="88" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#fff" fontFamily="system-ui,sans-serif" fontWeight="500">
         {venn.b.label.toUpperCase()}
       </text>
       {venn.b.sub && (
@@ -62,7 +62,7 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
       )}
 
       {/* Circle C label — bottom */}
-      <text x="400" y="714" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#0a0a0a" fontFamily="system-ui,sans-serif" fontWeight="500">
+      <text x="400" y="714" textAnchor="middle" fontSize="13" letterSpacing="0.14em" fill="#fff" fontFamily="system-ui,sans-serif" fontWeight="500">
         {venn.c.label.toUpperCase()}
       </text>
       {venn.c.sub && (
@@ -84,7 +84,7 @@ export function VennDiagram({ venn }: { venn: VennDiagramData }) {
               textAnchor="middle"
               fontSize={isCenter ? '14' : '18'}
               fontWeight={isCenter ? '700' : '500'}
-              fill={isCenter ? '#D4A853' : '#0a0a0a'}
+              fill={isCenter ? '#D4A853' : '#fff'}
               fontFamily="system-ui,sans-serif"
             >
               {zone.heading}

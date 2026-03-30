@@ -1,0 +1,5 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#111"/>
+  <text x="400" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#34d399">SilentCues</text>
+  <text x="400" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#737373">Nonverbal Communication Tool for Elderly Care</text>
+</svg>

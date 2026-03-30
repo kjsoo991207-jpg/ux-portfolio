@@ -19,11 +19,13 @@ export default function Nav() {
   const isAbout = pathname === '/about'
 
   const [visible, setVisible] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
   const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY
+      setScrolled(currentY > 50)
       if (currentY < 10) {
         setVisible(true)
       } else if (currentY > lastScrollY.current) {
@@ -39,17 +41,21 @@ export default function Nav() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm transition-transform duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-black/95 backdrop-blur-sm border-b border-white/5'
+          : 'bg-transparent'
+      }`}
       style={{ transform: visible ? 'translateY(0)' : 'translateY(-100%)' }}
     >
-      <div className="mx-auto max-w-7xl border-l border-r border-b border-neutral-200">
+      <div className="mx-auto max-w-7xl">
         <nav
           className="mx-auto flex items-center justify-between px-6 md:px-10 h-14"
           aria-label="Main"
         >
           <Link
             href="/"
-            className="font-serif text-sm text-[#111] tracking-tight hover:opacity-60 transition-opacity"
+            className="font-serif text-sm text-white tracking-tight hover:opacity-60 transition-opacity"
             aria-label="Jinsoo Kim – Home"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" className="block">
@@ -70,7 +76,7 @@ export default function Nav() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`font-mono text-[10px] uppercase tracking-[0.25em] transition-colors ${
-                        isActive ? 'text-[#111]' : 'text-neutral-400 hover:text-neutral-700'
+                        isActive ? 'text-white' : 'text-neutral-500 hover:text-emerald-400'
                       }`}
                     >
                       {label}
@@ -79,7 +85,7 @@ export default function Nav() {
                     <Link
                       href={href}
                       className={`font-mono text-[10px] uppercase tracking-[0.25em] transition-colors ${
-                        isActive ? 'text-[#111]' : 'text-neutral-400 hover:text-neutral-700'
+                        isActive ? 'text-white' : 'text-neutral-500 hover:text-emerald-400'
                       }`}
                     >
                       {label}

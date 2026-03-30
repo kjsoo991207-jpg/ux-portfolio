@@ -9,45 +9,45 @@ export default function ReferencePanel() {
     <div className="fixed bottom-6 right-6 z-50">
       {/* Panel */}
       {open && (
-        <div className="absolute bottom-14 right-0 w-[320px] max-h-[480px] overflow-y-auto bg-white border border-[#e0e0e0] rounded-xl shadow-lg p-5 mb-2">
+        <div className="absolute bottom-14 right-0 w-[320px] max-h-[480px] overflow-y-auto bg-[#111] border border-[#e0e0e0] rounded-xl shadow-lg p-5 mb-2">
           {/* Header */}
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#767676] mb-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-400 mb-4">
             Reference: junhyungpark.com
           </p>
 
           {/* Typography hierarchy */}
           <div className="space-y-4 mb-6">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Section Label</p>
-              <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#767676]">
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Section Label</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-400">
                 &mdash; Why I built this
               </p>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Sub Tag</p>
-              <span className="text-[11px] uppercase tracking-[0.08em] text-[#767676] border border-[#e5e5e5] rounded-[4px] px-[10px] py-[3px] inline-block">
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Sub Tag</p>
+              <span className="text-[11px] uppercase tracking-[0.08em] text-neutral-400 border border-[#e5e5e5] rounded-[4px] px-[10px] py-[3px] inline-block">
                 Personal Context
               </span>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Section Number + Title</p>
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Section Number + Title</p>
               <p>
-                <span className="text-[16px] text-[#bbb]">01.</span>{' '}
-                <span className="text-[20px] font-semibold text-[#111]">Section Title</span>
+                <span className="text-[16px] text-neutral-400">01.</span>{' '}
+                <span className="text-[20px] font-semibold text-white">Section Title</span>
               </p>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Subtitle</p>
-              <p className="text-[16px] text-[#767676]">Subtitle text here</p>
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Subtitle</p>
+              <p className="text-[16px] text-neutral-400">Subtitle text here</p>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Insight Line</p>
-              <p className="text-[11px] uppercase tracking-[0.06em] text-[#bbb]">
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Insight Line</p>
+              <p className="text-[11px] uppercase tracking-[0.06em] text-neutral-400">
                 ↳ From pain point origin
               </p>
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-[0.06em] text-[#bbb] mb-1">Body</p>
+              <p className="text-[10px] uppercase tracking-[0.06em] text-neutral-400 mb-1">Body</p>
               <p className="text-[15px] leading-[1.8] text-[#444]">
                 15px, line-height 1.8, #444
               </p>
@@ -55,10 +55,10 @@ export default function ReferencePanel() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-[#e8e8e4] my-4" />
+          <div className="border-t border-white/10 my-4" />
 
           {/* Checklist */}
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-[#767676] mb-3">
+          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-400 mb-3">
             Aika Checklist
           </p>
           <ul className="space-y-2 text-[13px] text-[#444]">
